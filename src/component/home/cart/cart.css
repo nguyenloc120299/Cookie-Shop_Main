@@ -1,0 +1,27 @@
+.cart {
+    position: relative;
+    transform: scaleY(0.98);
+    display: flex;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 80px;
+    font-family: "Sigmar One", cursive;
+}
+.table__cart {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.amount {
+    display: flex;
+    margin: 10px;
+    align-items: center;
+}
+
+.total {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    font-weight: bold;
+}

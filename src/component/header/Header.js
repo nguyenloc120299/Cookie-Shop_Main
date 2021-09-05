@@ -41,10 +41,10 @@ const Header = () => {
                     }} />
                 </div>
                 <div className='icon-cart' style={{ marginLeft: '30px' }} />
-                <BiShoppingBag style={{
+                <Link to='/cart'>  <BiShoppingBag style={{
                     fontSize: '27px',
                     color: 'white'
-                }} />
+                }} /></Link>
                 <span>{cart.length}</span>
             </div>
 
