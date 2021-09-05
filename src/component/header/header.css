@@ -1,0 +1,123 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    height: 70px;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    align-items: center;
+    background: black;
+    position: fixed;
+}
+.logo a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-family: "Sigmar One", cursive;
+}
+.header ul {
+    margin-top: 15px;
+}
+.header ul li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 30px;
+}
+.header ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    font-family: "Sigmar One", cursive;
+}
+ul li a:hover {
+    color: rgb(43, 123, 254);
+}
+.menu,
+.close {
+    display: none;
+}
+.shop-cart {
+    display: flex;
+    align-items: center;
+}
+.shop-cart {
+    position: relative;
+}
+
+.shop-cart .icon-cart {
+    font-size: 27px;
+    color: white;
+}
+.shop-cart span {
+    color: white;
+    background: crimson;
+    border-radius: 50%;
+    padding: 0px 5px;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+.header ul li img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.header .li-info {
+    position: relative;
+}
+.header .li-info p {
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.header .li-info .option-header {
+    position: absolute;
+    width: 100px;
+    background: #ddd;
+    height: 50px;
+    border-radius: 5px;
+    top: 37px;
+    right: 0;
+    padding: 10px;
+}
+.option-header a {
+    color: #999;
+}
+.option-header a:hover {
+    color: #444;
+}
+@media (max-width: 700px) {
+    .header {
+        justify-content: space-around;
+        position: fixed;
+    }
+    .header .logo {
+        font-size: 20px;
+    }
+    .header ul {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: 80px;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: white;
+        transition: all 0.7s linear;
+    }
+    .header ul li {
+        margin-top: 80px;
+    }
+    .menu {
+        display: block;
+        font-size: 20px;
+        color: white;
+    }
+    .icon-cart {
+        font-size: 20px;
+    }
+}

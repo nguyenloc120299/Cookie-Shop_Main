@@ -1,0 +1,223 @@
+.landing {
+    margin-top: 70px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.slider {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 10x;
+    border-radius: 10px;
+}
+.slide-show {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    transition: all 0.3s linear;
+    overflow: hidden;
+}
+.slider .slide-show img {
+    width: 100%;
+    min-width: 500px;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.slide-show .info {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+}
+
+.slide-show .info h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: white;
+    animation-name: h2;
+    animation-duration: 3s;
+    font-family: "Sigmar One", cursive;
+}
+
+.slide-show .info span {
+    color: white;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-family: "Sigmar One", cursive;
+}
+.slide-show .info a {
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    border: transparent;
+    padding: 20px 20px;
+    text-transform: capitalize;
+    color: white;
+    border-radius: 10px;
+    font-family: "Sigmar One", cursive;
+}
+.slide-show .prev {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    font-size: 30px;
+    opacity: 0.4;
+    border: transparent;
+}
+.slide-show .next {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    font-size: 30px;
+    opacity: 0.4;
+    border: transparent;
+}
+.prev:hover,
+.next:hover {
+    color: turquoise;
+}
+.abount {
+    font-family: "Sigmar One", cursive;
+    animation: expand 0.8s ease forwards;
+    transition: all 0.8s ease;
+}
+@keyframes expand {
+    0% {
+        transform: translateX(1400px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+.abount h5 {
+    margin-top: 10px;
+    text-align: center;
+}
+.abount span {
+    margin-top: 10px;
+    text-align: center;
+}
+.abount .icon {
+    color: black;
+    font-size: 30px;
+}
+
+/* //////card slide */
+.landing-slider {
+    padding: 30px;
+}
+.slider__products {
+    display: flex;
+    width: 100%;
+    transition: all 2s ease-in-out;
+    overflow: hidden;
+}
+.slider__products .card {
+    max-width: 20%;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    height: 370px;
+    margin: 10px;
+}
+
+.slider__products .card img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    padding: 20px;
+}
+.slider__products .card .des__slide {
+    position: absolute;
+
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    opacity: 0.8;
+    transition: all 0.8s ease-in-out;
+}
+
+.slider__products .card .des__slide h4 {
+    padding: 10px;
+    text-align: center;
+    height: 170px;
+    color: black;
+    overflow: hidden;
+}
+
+.des__slide a {
+    text-decoration: none;
+}
+
+.des__slide p {
+    color: crimson;
+    height: 50px;
+}
+.des__slide button {
+    width: 100%;
+}
+.left-slide-products,
+.right-slide-products {
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+    font-size: 30px;
+    color: black;
+    transform: translateY(-50%);
+}
+.left-slide-products {
+    left: 0;
+    padding: 10px;
+}
+.right-slide-products {
+    right: 0;
+    padding: 10px;
+}
+@media (max-width: 900px) {
+    .slide-show {
+        min-width: 50%;
+    }
+}
+
+@media (max-width: 550px) {
+    .slider__products .card {
+        min-width: 100%;
+        margin: auto;
+        height: 300px;
+    }
+    .landing-slider {
+        margin: auto;
+    }
+    .slide-show .info h2 {
+        font-size: 15px;
+    }
+    .slider__products {
+        margin: auto;
+    }
+    .slide-show .info span {
+        font-size: 15px;
+    }
+    .slide-show .info a {
+        padding: 15px;
+    }
+    .slide-show {
+        min-width: 50%;
+    }
+    .slider .slide-show img {
+        height: 100%;
+        width: 100%;
+    }
+}
