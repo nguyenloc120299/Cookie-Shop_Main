@@ -8,8 +8,9 @@ export const DataProvider = ({ children }) => {
     const [products, setProducts] = useState([])
     const [callBack, setCallBack] = useState(false)
     const [cart, setCart] = useState([])
-
-    const getCategories = async () => {
+    const [isLoggin, setIsLoggin] = useState(false)
+    const [isBuyer, setIsBuyer] = useState(false)
+    const getProducts = async () => {
         let arr = []
         const res = await axios.get("/products")
         if (res && res.data) {
@@ -20,7 +21,15 @@ export const DataProvider = ({ children }) => {
         }
     }
     useEffect(() => {
-        getCategories()
+        const res = JSON.parse(localStorage.getItem('login_admin_main'))
+        if (res) {
+            if (res.roles[0].authority === 'Admin' || res.roles[0].authority === 'user') setIsLoggin(true)
+        }
+        else setIsLoggin(false)
+
+    }, [])
+    useEffect(() => {
+        getProducts()
     }, [callBack])
 
     const addCart = (id) => {
@@ -46,7 +55,8 @@ export const DataProvider = ({ children }) => {
 
         productsApi: ProductApi(),
         addCart: addCart,
-        cart: [cart, setCart]
+        cart: [cart, setCart],
+        isLoggin: [isLoggin, setIsLoggin]
     }
     useEffect(() => {
         const dataCart = JSON.parse(localStorage.getItem('cart'))

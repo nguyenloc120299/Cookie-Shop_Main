@@ -35,10 +35,10 @@ const Header = () => {
 
             <div className='shop-cart'>
                 <div className='user-profile' >
-                    <FaUserAlt style={{
+                    <Link to='/login'>    <FaUserAlt style={{
                         fontSize: '20px',
                         color: 'white'
-                    }} />
+                    }} /></Link>
                 </div>
                 <div className='icon-cart' style={{ marginLeft: '30px' }} />
                 <Link to='/cart'>  <BiShoppingBag style={{

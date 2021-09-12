@@ -93,3 +93,13 @@
     color: black !important;
     background-color: var(--color---1);
 }
+/* ----------------detail--------------------------------- */
+.single {
+    font-family: "Sigmar One", cursive;
+}
+.single img {
+    width: 100%;
+    object-fit: cover;
+}
+@media (max-width: 992px) {
+}

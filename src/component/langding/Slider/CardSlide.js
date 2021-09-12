@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaShoppingCart } from 'react-icons/fa'
+import { ButtonAddCart } from '../../view/ButtonAddCart'
 const CardSlide = ({ item }) => {
     const [isShow, setIsShow] = useState(false)
     return (
@@ -11,7 +12,7 @@ const CardSlide = ({ item }) => {
                 <Link to='#' className='title__des'><h4>{item.name}</h4></Link>
 
                 <p>{item.price}</p>
-                <button type="button" className="btn btn-outline-dark"><FaShoppingCart /></button>
+                <ButtonAddCart id={item.id} />
             </div>
         </div>
 
