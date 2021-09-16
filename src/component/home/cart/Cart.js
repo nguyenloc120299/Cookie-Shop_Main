@@ -9,7 +9,7 @@ const Cart = () => {
     const [total, setTotal] = useState(0)
     const reduction = id => {
         cart.forEach(item => {
-            if (item._id === id) {
+            if (item.id === id) {
                 item.count === 1 ? item.count = 1 : item.count -= 1;
             }
         })
@@ -18,7 +18,7 @@ const Cart = () => {
 
     const increase = id => {
         cart.forEach(item => {
-            if (item._id === id) {
+            if (item.id === id) {
                 item.count += 1;
             }
         })
@@ -35,9 +35,12 @@ const Cart = () => {
             setCart([...cart])
         }
     }
-    return (
+    let body = (
         <>
+
+
             <div class="cart">
+
 
                 <table class="table table-hover table-condensed table__cart">
                     <thead>
@@ -74,10 +77,12 @@ const Cart = () => {
 
                                     </td>
                                     <td className='td__cart'>0</td>
-                                    <td><MdDelete className='text-danger' style={{
-                                        fontSize: '30px',
+                                    <td><button className='btn btn-outline-dark' onClick={() => removeProduct(p.id)}>
+                                        <MdDelete style={{
+                                            fontSize: '20px',
 
-                                    }} onClick={() => removeProduct(p.id)} /></td>
+                                        }} />
+                                    </button></td>
                                 </tr>
                             ))
                         }
@@ -90,7 +95,20 @@ const Cart = () => {
                 }}>Payment</Link>
                 <h5>Total: ${total}</h5>
             </div>
+
         </>
+    )
+    return (
+        <>
+            {
+                cart.length > 0 ? body : <h1 className='position-absolute' style={{
+                    left: '50%',
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)'
+                }}>Không có sản phẩm</h1>
+            }
+        </>
+
     )
 }
 

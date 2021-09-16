@@ -7,9 +7,11 @@ import './header.css'
 const Header = () => {
     const context = useContext(GlobalContext)
     const [cart] = context.cart
+    const [isLoggin] = context.isLoggin
+    const { name } = JSON.parse(localStorage.getItem('login_admin_main'))
 
     return (
-        <div className='header'>
+        <div className='header col col-lg-12 col-12'>
             <div className='menu' >
                 <FaList />
             </div>
@@ -35,11 +37,23 @@ const Header = () => {
 
             <div className='shop-cart'>
                 <div className='user-profile' >
-                    <Link to='/login'>    <FaUserAlt style={{
-                        fontSize: '20px',
-                        color: 'white'
-                    }} /></Link>
+                    {
+                        isLoggin ?
+
+                            <Link to='/profile' style={{
+                                fontWeight: 'bold',
+                                color: 'white',
+                                textDecoration: 'none'
+                            }} >{name}</Link>
+
+                            :
+                            <Link to={'/login'}>    <FaUserAlt style={{
+                                fontSize: '20px',
+                                color: 'white'
+                            }} /></Link>
+                    }
                 </div>
+
                 <div className='icon-cart' style={{ marginLeft: '30px' }} />
                 <Link to='/cart'>  <BiShoppingBag style={{
                     fontSize: '27px',

@@ -10,6 +10,8 @@ import Login from './component/auth/Login';
 import Register from './component/auth/Register';
 import { GlobalContext } from './GlobalContext';
 import { useContext } from 'react';
+import Profile from './component/auth/Profile';
+import MyAccount from './component/auth/MyAccount';
 function App() {
   const context = useContext(GlobalContext)
   const [isLogin] = context.isLoggin
@@ -24,6 +26,16 @@ function App() {
           <Route path='/detail/:id' component={SingleProduct} />
           <Route path='/login' component={isLogin ? Product : Login} />
           <Route path='/register' component={isLogin ? Product : Register} />
+          <Route
+            exact
+            path='/profile'
+            render={props => isLogin ? <Profile {...props} optionRoute='myaccount' /> : <Register />}
+          />
+          <Route
+            exact
+            path='/oders'
+            render={props => isLogin ? <Profile {...props} optionRoute='oders' /> : <Register />}
+          />
         </Switch>
       </div>
 

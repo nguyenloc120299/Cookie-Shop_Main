@@ -90,7 +90,7 @@ const Register = () => {
             </div>
             <button className="btn btn-outline-light" onClick={() => submitRegister()}>Đăng kí</button>
 
-            <div class="text-white mt-3">Bạn đã có tài khoản ? <span><Link to='/login'>Đăng nhập</Link></span> </div>
+            <div className="text-white mt-3">Bạn đã có tài khoản ? <span><Link to='/login'>Đăng nhập</Link></span> </div>
         </div>
     )
 }

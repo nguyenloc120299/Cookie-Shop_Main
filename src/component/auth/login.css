@@ -11,3 +11,33 @@
     color: white;
     background: black;
 }
+.my__account {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+.input {
+    display: flex;
+    justify-content: space-around;
+}
+.input input {
+    width: 50%;
+}
+.my__account {
+    display: flex;
+    justify-content: space-around;
+}
+.info_account {
+    text-align: left;
+}
+.info_account {
+    font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    .my__account {
+        flex-direction: column;
+    }
+    .btn_edit-info {
+    }
+}

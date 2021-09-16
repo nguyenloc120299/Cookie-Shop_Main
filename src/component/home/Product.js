@@ -59,6 +59,7 @@ const Product = () => {
 
                 {
                     products.map(product => (
+
                         <div className='card__product mt-5' key={product.id}>
                             <Link to={`/detail/${product.id}`}>
                                 <img src={product.avartar} alt='' />

@@ -24,7 +24,7 @@ const Login = () => {
             <h2 className='text-center' style={{
                 border: '1px solid white',
                 padding: '5px',
-                marginBottom: '10px'
+                marginBottom: '2rem'
             }}>Cookies Shop</h2>
 
             <div className="mb-3">

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-
+import UsersApi from './api/UserApi'
 import ProductApi from './api/ProductApi'
 export const GlobalContext = createContext()
 
@@ -56,7 +56,8 @@ export const DataProvider = ({ children }) => {
         productsApi: ProductApi(),
         addCart: addCart,
         cart: [cart, setCart],
-        isLoggin: [isLoggin, setIsLoggin]
+        isLoggin: [isLoggin, setIsLoggin],
+        usersApi: UsersApi()
     }
     useEffect(() => {
         const dataCart = JSON.parse(localStorage.getItem('cart'))
