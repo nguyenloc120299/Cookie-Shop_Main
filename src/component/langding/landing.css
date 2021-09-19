@@ -90,14 +90,14 @@
     animation: expand 0.8s ease forwards;
     transition: all 0.8s ease;
 }
-@keyframes expand {
+/* @keyframes expand {
     0% {
         transform: translateX(1400px);
     }
     100% {
         transform: translateX(0px);
     }
-}
+} */
 .abount h5 {
     margin-top: 10px;
     text-align: center;

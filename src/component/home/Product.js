@@ -29,33 +29,34 @@ const Product = () => {
     }, [products])
     return (
         <>
-            <div className='products'>
-                <div className='w-100 abount home-slider mt-5'>
+            <div className='w-100 abount home-slider mt-5'>
 
-                    <h4 style={{
-                        textAlign: 'left',
-                        margin: '10px'
-                    }}>Sản phẩm nổi bật</h4>
-                    <div className='landing-slider mt-5' >
-                        <div className='slider__products' ref={listRef}>
-                            {
-                                listSlide.map((item, i) => (
+                <h4 style={{
+                    textAlign: 'left',
+                    margin: '10px'
+                }}>Sản phẩm nổi bật</h4>
+                <div className='landing-slider mt-5' >
+                    <div className='slider__products' ref={listRef}>
+                        {
+                            listSlide.map((item, i) => (
 
-                                    <CardSlide item={item} key={item.id} />
+                                <CardSlide item={item} key={item.id} />
 
 
-                                ))
+                            ))
 
-                            }
+                        }
 
-                        </div>
-                        <ButtonSlide listRef={listRef} />
                     </div>
-                    <h4 style={{
-                        textAlign: 'left',
-                        margin: '10px'
-                    }}>Tất cả sản phẩm</h4>
+                    <ButtonSlide listRef={listRef} />
                 </div>
+                <h4 style={{
+                    textAlign: 'left',
+                    margin: '10px'
+                }}>Tất cả sản phẩm</h4>
+            </div>
+            <div className='products'>
+
 
                 {
                     products.map(product => (

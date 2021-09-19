@@ -3,19 +3,18 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     margin-top: 80px;
     font-family: "Sigmar One", cursive;
-    animation: expand 1s ease forwards;
 }
-@keyframes expand {
+/* @keyframes expand {
     0% {
         transform: translateX(1400px);
     }
     100% {
         transform: translateX(0px);
     }
-}
+} */
 .card__product {
     max-width: 250px;
     width: 100%;

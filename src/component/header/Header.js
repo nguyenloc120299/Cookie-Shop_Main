@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FaList, FaUserAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { BiShoppingBag } from 'react-icons/bi'
@@ -8,10 +8,15 @@ const Header = () => {
     const context = useContext(GlobalContext)
     const [cart] = context.cart
     const [isLoggin] = context.isLoggin
-    const { name } = JSON.parse(localStorage.getItem('login_admin_main'))
-
+    const [nameUser, setNameUser] = useState(null)
+    useEffect(() => {
+        if (isLoggin) {
+            const { name } = JSON.parse(localStorage.getItem('login_admin_main'))
+            setNameUser(name)
+        }
+    }, [isLoggin])
     return (
-        <div className='header col col-lg-12 col-12'>
+        <div className='header'>
             <div className='menu' >
                 <FaList />
             </div>
@@ -44,7 +49,7 @@ const Header = () => {
                                 fontWeight: 'bold',
                                 color: 'white',
                                 textDecoration: 'none'
-                            }} >{name}</Link>
+                            }} >{nameUser}</Link>
 
                             :
                             <Link to={'/login'}>    <FaUserAlt style={{

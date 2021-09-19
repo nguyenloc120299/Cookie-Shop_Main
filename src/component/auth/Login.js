@@ -15,9 +15,19 @@ const Login = () => {
     }
     const onSubmitLogin = async () => {
         const res = await axios.post('/signin', { ...userLogin })
-        // localStorage.setItem('login_admin', true)
-        localStorage.setItem('login_admin_main', JSON.stringify(res.data))
-        window.location.href = '/home'
+        //  localStorage.setItem('login_admin', true)
+        // console.log(res.data);
+        console.log(res);
+        if (!res.data.status) {
+
+
+            localStorage.setItem('login_admin_main', JSON.stringify(res.data))
+            window.location.href = '/home'
+        } else {
+            alert('Đăng nhập không thành công')
+
+        }
+
     }
     return (
         <div className='login mt-5 col col-10 col-lg-4'>
