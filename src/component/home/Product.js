@@ -71,7 +71,7 @@ const Product = () => {
                         productsTotal.map(product => (
 
                             <div className='card__product' key={product.id}>
-                                <Link to={`/detail/${product.id}`}>
+                                <Link className='card__product__img' to={`/detail/${product.id}`}>
                                     <img src={product.avartar} alt='' />
                                 </Link>
                                 <div className='box'>

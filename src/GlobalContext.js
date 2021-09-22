@@ -37,17 +37,26 @@ export const DataProvider = ({ children }) => {
         const check = cart.every(item => {
             return item.id !== id
         })
+        setTimeout(() => {
+            if (check) {
 
-        if (check) {
+                const item = products.filter(p => {
+                    return p.id === id
+                })
+                setCart([...cart, ...item])
+            }
+            else {
+                // swal({
+                //     title: "Hay lắm ",
+                //     text: "nothing",
+                //     icon: "warning",
+                //     buttons: true,
+                //     dangerMode: false,
+                //     html: true
+                // })
+            }
+        }, 1500);
 
-            const item = products.filter(p => {
-                return p.id === id
-            })
-            setCart([...cart, ...item])
-        }
-        else {
-            alert("San phẩm đã thêm")
-        }
 
     }
 

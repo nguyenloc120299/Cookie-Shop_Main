@@ -80,7 +80,7 @@ const Header = () => {
                 </div>
 
                 <div className='icon-cart' style={{ marginLeft: '30px' }} />
-                <Link to='/cart'>  <BiShoppingBag style={{
+                <Link to='/cart' id='cart-shop'>  <BiShoppingBag style={{
                     fontSize: '27px',
                     color: 'white'
                 }} /></Link>

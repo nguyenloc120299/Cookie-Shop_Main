@@ -17,9 +17,14 @@ const Profile = ({ optionRoute }) => {
         </>
     )
     return (
-        <div style style={{ marginTop: '80px', width: '100%', padding: '10px', overflow: 'hidden' }}>
-            <div className='row '>
-                <div className='col-12 col-lg-2 d-flex flex-column  align-items-start'>
+        <div style style={{ marginTop: '60px', width: '100%', padding: '10px', overflow: 'hidden', height: '95vh' }}>
+            <div className='row ' style={{
+                height: '100%'
+            }}>
+                <div className='col-12 col-lg-2 d-flex flex-column  align-items-start' style={{
+                    borderRight: '1px solid #ccc',
+
+                }}>
                     <Link to='/profile' className='mt-3 text-dark text-decoration-none' style={{
                         fontWeight: 'bold'
                     }}><i className="fa fa-user" style={{

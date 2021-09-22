@@ -42,3 +42,34 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+}
+
+.img-product-fly {
+  position: absolute;
+  z-index: 99999999;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: white;
+  /* border: 1px solid rgb(161, 155, 155); */
+  transition: all 1s ease;
+  animation: MyAnimation 1.5s infinite;
+}
+
+@keyframes MyAnimation {
+  0% {
+    transform: scale(0.5);
+  }
+  25% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}

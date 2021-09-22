@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
-
+import valid from '../../valid/ProductsValid'
 const AddProducts = () => {
     const [suppliers, setSuppliers] = useState([])
     const context = useContext(GlobalContext)
@@ -11,6 +11,8 @@ const AddProducts = () => {
     const [categories, setCategories] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const { id } = JSON.parse(localStorage.getItem('login_admin_main'))
+
+    const [err, setErr] = useState('')
     const [productValue, setProductValue] = useState({
         name: '',
         code: '',
@@ -71,6 +73,9 @@ const AddProducts = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         try {
+            const check = valid(productValue)
+            if (check.errLength > 0) return setErr(check.errMsg)
+
             setIsLoading(true)
             await axios.post(`/products/categories/${productValue.category}/suppliers/${productValue.supplier}/users/${id} `, {
                 ...productValue,
@@ -105,6 +110,9 @@ const AddProducts = () => {
                         value={productValue.name}
                         onChange={onChangeInput}
                     />
+                    <small id="emailHelp" className="form-text text-danger ">
+                        {err.name ? err.name : ''}
+                    </small >
 
                 </div>
                 <div className='mb-3'>
@@ -113,7 +121,9 @@ const AddProducts = () => {
                         value={productValue.code}
                         onChange={onChangeInput}
                     />
-
+                    <small id="emailHelp" className="form-text text-danger ">
+                        {err.code ? err.code : ''}
+                    </small >
 
                 </div>
                 <div className='mb-3'>
@@ -123,7 +133,9 @@ const AddProducts = () => {
                         value={productValue.sort_description}
                         onChange={onChangeInput}
                     />
-
+                    <small id="emailHelp" className="form-text text-danger ">
+                        {err.sort_description ? err.sort_description : ''}
+                    </small >
                 </div>
                 <div className='mb-3'>
                     <textarea type='text' className='form-control' placeholder='Mô tả chi tiết'
@@ -131,7 +143,9 @@ const AddProducts = () => {
                         value={productValue.detail_description}
                         onChange={onChangeInput}
                     />
-
+                    <small id="emailHelp" className="form-text text-danger ">
+                        {err.detail_description ? err.detail_description : ''}
+                    </small >
                 </div>
                 {/* {isEdit &&
                 <div className='mb-3'>
@@ -150,7 +164,9 @@ const AddProducts = () => {
                         value={productValue.price}
                         onChange={onChangeInput}
                     />
-
+                    <small id="emailHelp" className="form-text text-danger ">
+                        {err.price ? err.price : ''}
+                    </small >
                 </div>
                 <div className='mb-3'>
                     <input type='text' className='form-control' placeholder='Số lượng'
@@ -158,7 +174,9 @@ const AddProducts = () => {
                         value={productValue.quantity}
                         onChange={onChangeInput}
                     />
-
+                    <small id="emailHelp" className="form-text text-danger ">
+                        {err.quantity ? err.quantity : ''}
+                    </small >
                 </div>
 
                 <div className='mb-3'>
@@ -200,6 +218,7 @@ const AddProducts = () => {
                 <h5>Hình ảnh sản phẩm</h5>
 
                 <div className='img__product position-relative'>
+
                     {
                         img ?
                             <>
@@ -219,14 +238,21 @@ const AddProducts = () => {
 
                             </>
                             :
-                            <label htmlFor="fileInput">
-                                <i className="fas fa-camera" style={{
-                                    fontSize: '50px'
-                                }} />
+                            <>
+                                <label htmlFor="fileInput">
+                                    <i className="fas fa-camera" style={{
+                                        fontSize: '50px'
+                                    }} />
 
-                                <input type='file' onChange={handleUploadImg} id='fileInput' style={{ display: 'none' }} />
-                            </label>
+                                    <input type='file' onChange={handleUploadImg} id='fileInput' style={{ display: 'none' }} />
+                                </label>
+                                <small id="emailHelp" className="text-danger ">
+                                    {err.avartar ? err.avartar : ''}
+                                </small >
+                            </>
                     }
+
+
                 </div>
 
             </div>

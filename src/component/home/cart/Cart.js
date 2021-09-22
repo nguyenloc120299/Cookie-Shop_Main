@@ -7,6 +7,8 @@ const Cart = () => {
     const context = useContext(GlobalContext)
     const [cart, setCart] = context.cart
     const [total, setTotal] = useState(0)
+
+    const [quantity, setQuantity] = useState(0)
     const reduction = id => {
         cart.forEach(item => {
             if (item.id === id) {
@@ -76,7 +78,7 @@ const Cart = () => {
                                         </div>
 
                                     </td>
-                                    <td className='td__cart'>0</td>
+                                    <td className='td__cart'>{quantity}</td>
                                     <td><button className='btn btn-outline-dark' onClick={() => removeProduct(p.id)}>
                                         <MdDelete style={{
                                             fontSize: '20px',

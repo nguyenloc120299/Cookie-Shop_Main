@@ -11,7 +11,7 @@ export const ButtonAddCart = ({ id }) => {
             {
                 isLogin ?
 
-                    <button className='btn btn-outline-dark w-100' onClick={() => addCart(id)} >
+                    <button className='btn btn-outline-dark w-100 btn-buy-now' onClick={() => addCart(id)} >
                         Mua ngay
                     </button> :
 
