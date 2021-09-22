@@ -126,8 +126,9 @@
     border-radius: 15px;
     position: relative;
     overflow: hidden;
-    height: 370px;
+    height: 400px;
     margin: 10px;
+    width: 100%;
 }
 
 .slider__products .card img {

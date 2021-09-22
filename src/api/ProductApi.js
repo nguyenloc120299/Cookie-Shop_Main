@@ -6,13 +6,13 @@ function CategoriesApi() {
     const [callBack, setCallBack] = useState(false)
 
     const getCategories = async () => {
-        let arr = []
+        //  let arr = []
         const res = await axios.get("/products")
         if (res && res.data) {
-            res.data.forEach(data => {
-                if (data.status === 1) arr.push(data)
-            });
-            setProducts(arr)
+            // res.data.forEach(data => {
+            //     if (data.status === 1) arr.push(data)
+            // });
+            setProducts(res.data)
         }
     }
     useEffect(() => {

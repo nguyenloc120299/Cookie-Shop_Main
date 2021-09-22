@@ -9,12 +9,14 @@ import SingleProduct from './component/product/SingleProduct';
 import Login from './component/auth/Login';
 import Register from './component/auth/Register';
 import { GlobalContext } from './GlobalContext';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Profile from './component/auth/Profile';
 import MyAccount from './component/auth/MyAccount';
 function App() {
   const context = useContext(GlobalContext)
   const [isLogin] = context.isLoggin
+
+
   return (
     <Router>
       <div className="App">
@@ -35,6 +37,16 @@ function App() {
             exact
             path='/oders'
             render={props => isLogin ? <Profile {...props} optionRoute='oders' /> : <Register />}
+          />
+          <Route
+            exact
+            path='/my-shop'
+            render={props => isLogin ? <Profile {...props} optionRoute='myshop' /> : <Register />}
+          />
+          <Route
+            exact
+            path='/add-product'
+            render={props => isLogin ? <Profile {...props} optionRoute='addproduct' /> : <Register />}
           />
         </Switch>
       </div>

@@ -6,15 +6,27 @@ import { GlobalContext } from '../../GlobalContext'
 import './header.css'
 const Header = () => {
     const context = useContext(GlobalContext)
+    const [users] = context.usersApi.users
     const [cart] = context.cart
     const [isLoggin] = context.isLoggin
     const [nameUser, setNameUser] = useState(null)
-    useEffect(() => {
+    // useEffect(() => {
+    //     if (isLoggin) {
+    //         const { id } = JSON.parse(localStorage.getItem('login_admin_main'))
+    //         users && users.forEach(user => {
+    //             if (user.id === id) setNameUser(user.avartar)
+    //         });
+    //     }
+    // }, [isLoggin])
+    const [user] = users.filter(item => {
         if (isLoggin) {
-            const { name } = JSON.parse(localStorage.getItem('login_admin_main'))
-            setNameUser(name)
+            const { id } = JSON.parse(localStorage.getItem('login_admin_main'))
+            return item.id === id
         }
-    }, [isLoggin])
+    })
+
+
+
     return (
         <div className='header'>
             <div className='menu' >
@@ -49,7 +61,15 @@ const Header = () => {
                                 fontWeight: 'bold',
                                 color: 'white',
                                 textDecoration: 'none'
-                            }} >{nameUser}</Link>
+                            }} >
+                                <img src={user && user.avartar} alt='' style={{
+                                    width: '40px',
+                                    height: '40px',
+                                    borderRadius: '50%',
+                                    objectFit: 'cover'
+                                }} />
+
+                            </Link>
 
                             :
                             <Link to={'/login'}>    <FaUserAlt style={{

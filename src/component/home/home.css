@@ -3,9 +3,8 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    padding: 10px;
     /* justify-content: space-around; */
-    margin-top: 80px;
-    font-family: "Sigmar One", cursive;
 }
 /* @keyframes expand {
     0% {
@@ -93,9 +92,7 @@
     background-color: var(--color---1);
 }
 /* ----------------detail--------------------------------- */
-.single {
-    font-family: "Sigmar One", cursive;
-}
+
 .single img {
     width: 100%;
     object-fit: cover;

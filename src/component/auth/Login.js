@@ -1,9 +1,12 @@
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { GlobalContext } from '../../GlobalContext'
 import './login.css'
 const Login = () => {
-
+    const context = useContext(GlobalContext)
+    const [users] = context.usersApi.users
+    const [callback, setCallback] = context.usersApi.callBack
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: ''
@@ -17,12 +20,18 @@ const Login = () => {
         const res = await axios.post('/signin', { ...userLogin })
         //  localStorage.setItem('login_admin', true)
         // console.log(res.data);
-        console.log(res);
+
         if (!res.data.status) {
+            const [user] = users.filter(item => {
+                return item.id === res.data.id
+            })
 
-
-            localStorage.setItem('login_admin_main', JSON.stringify(res.data))
-            window.location.href = '/home'
+            if (user.status === 1) {
+                localStorage.setItem('login_admin_main', JSON.stringify(res.data))
+                window.location.href = '/home'
+            } else {
+                alert('Chưa xác thực email')
+            }
         } else {
             alert('Đăng nhập không thành công')
 

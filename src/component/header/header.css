@@ -59,7 +59,9 @@ ul li a:hover {
     top: -15px;
     right: -15px;
 }
-
+.shop-cart a:hover {
+    color: rgb(43, 123, 254);
+}
 .header ul li img {
     width: 35px;
     height: 35px;
@@ -103,7 +105,7 @@ ul li a:hover {
         flex-direction: column;
         align-items: center;
         top: 0;
-        left: 0%;
+        left: -100%;
         width: 50%;
         height: 100%;
         background: white;
