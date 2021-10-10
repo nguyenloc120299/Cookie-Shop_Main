@@ -1,20 +1,25 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
-
+import { GrEdit } from 'react-icons/all'
 const MyShop = () => {
     const context = useContext(GlobalContext)
     const [users] = context.usersApi.users
     const { id } = JSON.parse(localStorage.getItem('login_admin_main'))
-    const [user] = users.filter(item => {
-        return item.id === id
-    })
+
+    const [products, setProducts] = useState([])
+    useEffect(() => {
+        users.forEach(user => {
+            if (user.id === id) setProducts(user.products)
+        });
+    }, [users])
+
     const [readmore, SetReadMore] = useState(false);
     return (
         <div className='my_shop w-100 h-100'>
             <div className='row__title justify-content-around d-flex'>
                 <div className=''>
-                    <h3> {user && user.products.length} Sản phẩm</h3>
+                    <h3> Tổng cộng {products.length} sản phẩm</h3>
                 </div>
                 <div className=''>
                     <Link to='add-product' className='btn btn-outline-dark '>+ Thêm 1 sản phẩm mới</Link>
@@ -32,13 +37,14 @@ const MyShop = () => {
                             <th scope="col">Số lượng</th>
                             <th scope="col">Giá</th>
                             <th scope="col">Trạng thái</th>
+                            <th scope="col"></th>
 
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            user && user.products.map((item, i) => (
-                                <tr>
+                            products.map((item, i) => (
+                                <tr key={i}>
                                     <td><img src={item.avartar} alt='' style={{
                                         width: '120px',
                                         height: '150px'
@@ -62,6 +68,7 @@ const MyShop = () => {
                                     <td>{item.quantity}</td>
                                     <td>{item.price}</td>
                                     <td style={item.status === 1 ? { color: 'green', fontWeight: 'bold' } : { color: 'red', fontWeight: 'bold' }}>{item.status === 1 ? 'Đã duyệt' : 'Chờ duyệt'}</td>
+                                    <td><GrEdit style={{ fontSize: '20px' }} /></td>
                                 </tr>
                             ))
                         }

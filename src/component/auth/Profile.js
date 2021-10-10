@@ -17,7 +17,7 @@ const Profile = ({ optionRoute }) => {
         </>
     )
     return (
-        <div style style={{ marginTop: '60px', width: '100%', padding: '10px', overflow: 'hidden', height: '95vh' }}>
+        <div style style={{ marginTop: '60px', width: '100%', padding: '10px', height: '95vh' }}>
             <div className='row ' style={{
                 height: '100%'
             }}>
@@ -52,7 +52,7 @@ const Profile = ({ optionRoute }) => {
                         </ul>
                     </div>
                 </div>
-                <div className='col-12 col-lg-10 d-flex flex-column  align-items-start'>
+                <div className='col-12 col-lg-10 d-flex flex-column  align-items-start mt-3'>
                     {
                         body
                     }

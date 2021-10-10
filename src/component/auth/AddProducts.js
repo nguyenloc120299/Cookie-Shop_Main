@@ -1,17 +1,20 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
 import valid from '../../valid/ProductsValid'
 const AddProducts = () => {
-    const [suppliers, setSuppliers] = useState([])
+
     const context = useContext(GlobalContext)
     const [callback, setCallBack] = context.productsApi.callBack
+    const [callback1, setCallBack1] = context.usersApi.callBack
     const [img, setImg] = useState(false)
-    const [categories, setCategories] = useState([])
+
+    const [categories] = context.untillApi.categories
+    const [suppliers] = context.untillApi.suppliers
     const [isLoading, setIsLoading] = useState(false)
     const { id } = JSON.parse(localStorage.getItem('login_admin_main'))
-
+    const history = useHistory()
     const [err, setErr] = useState('')
     const [productValue, setProductValue] = useState({
         name: '',
@@ -27,19 +30,7 @@ const AddProducts = () => {
         const { name, value } = e.target
         setProductValue({ ...productValue, [name]: value })
     }
-    const getSupplier = async () => {
-        const res = await axios.get("/suppliers")
-        if (res && res.data) setSuppliers(res.data)
-    }
-    const getCategories = async () => {
-        const res = await axios.get("/categories")
-        if (res && res.data) setCategories(res.data)
-    }
 
-    useEffect(() => {
-        getCategories()
-        getSupplier()
-    }, [])
     const handleUploadImg = async e => {
         e.preventDefault()
         try {
@@ -73,25 +64,32 @@ const AddProducts = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         try {
+
             const check = valid(productValue)
+
             if (check.errLength > 0) return setErr(check.errMsg)
+            else {
+                setIsLoading(true)
+                await axios.post(`/products/categories/${productValue.category}/suppliers/${productValue.supplier}/users/${id} `, {
+                    ...productValue,
+                    avartar: img.url,
+                    featured: 0,
+                    status: 0,
+                    ban_nhanh: 0,
+                    competitive_price: 0,
+                    date_sale: new Date(),
+                    promotion: 0
 
-            setIsLoading(true)
-            await axios.post(`/products/categories/${productValue.category}/suppliers/${productValue.supplier}/users/${id} `, {
-                ...productValue,
-                avartar: img.url,
-                featured: 0,
-                status: 0,
-                ban_nhanh: 0,
-                competitive_price: 0,
-                date_sale: new Date(),
-                promotion: 0
+                })
 
-            })
 
-            setIsLoading(false)
-            setCallBack(!callback)
-            setProductValue({})
+                setIsLoading(false)
+
+                setCallBack(!callback)
+                setCallBack1(!callback1)
+                history.push('/my-shop')
+
+            }
         } catch (err) {
             console.log(err);
         }

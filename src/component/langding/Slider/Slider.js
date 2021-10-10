@@ -36,7 +36,7 @@ const Slider = () => {
                 <div className='info'>
                     <h2 style={{ color: `${slide[index].type}` }}>{slide[index].title}</h2>
                     <span style={{ color: `${slide[index].type}` }}>Nguyễn Lộc</span>
-                    <Link to='/home' style={{ backgroundColor: `${slide[index].color}` }}>Mua sắm ngay</Link>
+                    <Link to='/home' style={{ backgroundColor: `${slide[index].color}` }}>{slide[index].content}</Link>
                 </div>
 
                 <FaChevronLeft className='prev' onClick={leftOnClick} />

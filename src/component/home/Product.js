@@ -64,27 +64,32 @@ const Product = () => {
                         margin: '10px'
                     }}>Tất cả sản phẩm</h4>
                 </div>
-                <div className='products'>
+                <div className='product_main d-flex'>
+                    <div className='categories_main'>
+                        â
+                    </div>
+                    <div className='products '>
 
 
-                    {
-                        productsTotal.map(product => (
+                        {
+                            productsTotal.map(product => (
 
-                            <div className='card__product' key={product.id}>
-                                <Link className='card__product__img' to={`/detail/${product.id}`}>
-                                    <img src={product.avartar} alt='' />
-                                </Link>
-                                <div className='box'>
-                                    <Link to={`/detail/${product.id}`}><h4>{product.name}</h4></Link>
-                                    <p>{product.sort_description}</p>
-                                    <h5>{product.price}</h5>
-                                    <ButtonAddCart id={product.id} />
+                                <div className='card__product' key={product.id}>
+                                    <Link className='card__product__img' to={`/detail/${product.id}`}>
+                                        <img src={product.avartar} alt='' />
+                                    </Link>
+                                    <div className='box'>
+                                        <Link to={`/detail/${product.id}`}><h4>{product.name}</h4></Link>
+                                        <p>{product.sort_description}</p>
+                                        <h5>{product.price}</h5>
+                                        <ButtonAddCart id={product.id} />
 
+                                    </div>
                                 </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
 
+                    </div>
                 </div>
                 <div className='products mt-3 mb-5'>
                     <Pagination

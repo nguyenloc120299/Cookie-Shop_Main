@@ -1,42 +1,62 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './cart.css'
 import { Link } from 'react-router-dom'
 import { GlobalContext } from '../../../GlobalContext'
 import { MdDelete } from 'react-icons/md'
+import AmountCart from './AmountCart'
+import PaymentModal from '../../payment/PaymentModal'
+import swal from 'sweetalert'
 const Cart = () => {
     const context = useContext(GlobalContext)
     const [cart, setCart] = context.cart
     const [total, setTotal] = useState(0)
+    const [isPayment, setIsPayment] = useState(false)
+    useEffect(() => {
+        const getTotal = () => {
+            const total = cart.reduce((prev, item) => {
+                return prev + item.totalCost
+            }, 0)
+            setTotal(total)
+        }
+        getTotal()
+    })
 
-    const [quantity, setQuantity] = useState(0)
-    const reduction = id => {
-        cart.forEach(item => {
-            if (item.id === id) {
-                item.count === 1 ? item.count = 1 : item.count -= 1;
-            }
-        })
-        setCart([...cart])
-    }
 
-    const increase = id => {
-        cart.forEach(item => {
-            if (item.id === id) {
-                item.count += 1;
-            }
-        })
-        setCart([...cart])
-    }
 
     const removeProduct = id => {
-        if (window.confirm("Bạn muốn xóa")) {
-            cart.forEach((item, index) => {
-                if (item.id === id) {
-                    cart.splice(index, 1)
+        swal({
+            title: " Bạn có chắc không? ",
+
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    cart.forEach((item, index) => {
+                        if (item.id === id) {
+                            cart.splice(index, 1)
+                        }
+                    })
+                    setCart([...cart])
+                    swal(" Bạn đã xóa sản phẩm khỏi giỏi hàng ", {
+                        icon: "success",
+                    });
                 }
-            })
-            setCart([...cart])
-        }
+            });
+        // if (window.confirm("Bạn muốn xóa")) {
+        //     cart.forEach((item, index) => {
+        //         if (item.id === id) {
+        //             cart.splice(index, 1)
+        //         }
+        //     })
+        //     setCart([...cart])
+        // }
     }
+    const numberFormat = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
     let body = (
         <>
 
@@ -66,19 +86,12 @@ const Cart = () => {
                                         }}
                                     /></td>
                                     <td className='td__cart'>{p.name}</td>
-                                    <td className='td__cart'>{p.price}</td>
+                                    <td className='td__cart'>{numberFormat.format(p.price)}</td>
                                     <td className='td__cart'>
-                                        <div className="amount" >
-                                            <button className="btn btn-outline-dark" onClick={() => reduction(p._id)}> - </button>
-                                            <span style={{
-                                                marginLeft: '20px',
-                                                marginRight: '20px'
-                                            }}>0</span>
-                                            <button className="btn btn-outline-dark" onClick={() => increase(p._id)}> + </button>
-                                        </div>
+                                        <AmountCart p={p} removeProduct={removeProduct} />
 
                                     </td>
-                                    <td className='td__cart'>{quantity}</td>
+                                    <td className='td__cart'>{numberFormat.format(p && p.totalCost)}</td>
                                     <td><button className='btn btn-outline-dark' onClick={() => removeProduct(p.id)}>
                                         <MdDelete style={{
                                             fontSize: '20px',
@@ -92,12 +105,14 @@ const Cart = () => {
                 </table>
             </div>
             <div className="total">
-                <Link to="/payment" className='btn btn-outline-dark' style={{
+                <Link to="#" className='btn btn-outline-dark' style={{
                     fontWeight: 'bold'
-                }}>Payment</Link>
-                <h5>Total: ${total}</h5>
+                }} onClick={() => setIsPayment(true)}>Thanh toán </Link>
+                <h5>Tổng cộng: {numberFormat.format(total)} </h5>
             </div>
-
+            {
+                isPayment && <PaymentModal setIsPayment={setIsPayment} cart={cart} />
+            }
         </>
     )
     return (

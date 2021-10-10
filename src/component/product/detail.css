@@ -1,0 +1,67 @@
+.detail {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 50px;
+}
+.img-container {
+    max-width: 400px;
+    width: 100%;
+    margin: 20px;
+    height: 500px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+.img-container:hover {
+    background-size: 150%;
+    border: 1px solid #ddd;
+    cursor: zoom-in;
+}
+.box-detail {
+    max-width: 500px;
+    width: 100%;
+    margin: 20px;
+}
+.box-detail h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 2rem;
+    padding: 10px;
+}
+
+.thumb {
+    display: flex;
+    cursor: pointer;
+}
+.thumb img {
+    width: 100px;
+    height: 80px;
+    margin-right: 20px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.detail p {
+    margin-top: 10px;
+}
+.detail h3 {
+    color: crimson;
+    padding: 10px;
+}
+.addCart {
+    display: flex;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    background: #ddd;
+    width: 200px;
+    height: 35px;
+    padding: 5px 5px;
+    color: teal;
+    text-align: center;
+}
+a {
+    text-align: center;
+}

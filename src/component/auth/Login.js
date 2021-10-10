@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
 import './login.css'
 const Login = () => {
@@ -11,6 +11,7 @@ const Login = () => {
         username: '',
         password: ''
     })
+    const history = useHistory()
     const handleInput = e => {
         const { name, value } = e.target
 
@@ -19,13 +20,13 @@ const Login = () => {
     const onSubmitLogin = async () => {
         const res = await axios.post('/signin', { ...userLogin })
         //  localStorage.setItem('login_admin', true)
-        // console.log(res.data);
 
-        if (!res.data.status) {
+
+        if (res.data.token) {
             const [user] = users.filter(item => {
                 return item.id === res.data.id
             })
-
+            console.log(user);
             if (user.status === 1) {
                 localStorage.setItem('login_admin_main', JSON.stringify(res.data))
                 window.location.href = '/home'

@@ -4,7 +4,7 @@ const validProduct = ({
     sort_description,
     detail_description,
     price,
-    avartar,
+    // avartar,
     quantity,
 }) => {
     const err = {}
@@ -41,9 +41,9 @@ const validProduct = ({
         err.quantity = 'Vui lòng nhập số lượng'
     }
 
-    if (!avartar) {
-        err.avartar = 'Chưa thêm ảnh'
-    }
+    // if (!avartar) {
+    //     err.avartar = 'Chưa thêm ảnh'
+    // }
 
     return {
         errMsg: err,

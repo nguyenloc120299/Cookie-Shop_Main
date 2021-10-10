@@ -4,15 +4,17 @@ const imgData = [
         url: './slide-01.jpg',
         title: 'Website Cửa hàng Cookies',
         type: 'black',
-        color: 'black'
+        color: 'black',
+        content: 'Mua sắm ngay'
 
     },
     {
         id: '2',
         url: './slide-02.jpg',
-        title: 'Website Cửa hàng Cookies',
+        title: 'Đăng kí bán hàng cùng Cookies',
         type: 'white',
-        color: 'teal'
+        color: 'teal',
+        content: 'Đăng kí ngay'
     }
 ]
 

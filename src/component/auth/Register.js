@@ -17,9 +17,10 @@ const Register = () => {
         setUserLogin({ ...userLogin, [name]: value })
     }
     const submitRegister = async () => {
-        await axios.post('/sigup', { ...userLogin });
-        alert('Đăng kí thành công');
-        window.location.href = '/login'
+        const res = await axios.post('/sigup', { ...userLogin });
+
+        alert(res.data);
+        //window.location.href = '/login'
     }
     return (
         <div className='login mt-5 col col-10 col-lg-4'>

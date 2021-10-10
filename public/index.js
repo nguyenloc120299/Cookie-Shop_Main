@@ -1,3 +1,11 @@
+// $(document).on('click', '.btn-payment', function (e) {
+//     setTimeout(function () {
+//         swal("Bạn đã thanh toán thành công", {
+//             customClass: "null",
+//             icon: "success",
+//         });
+//     }, 500)
+// });
 $(document).on('click', '.btn-buy-now', function (e) {
     e.preventDefault();
     if ($(this).hasClass('disable')) {
@@ -40,3 +48,4 @@ $(document).on('click', '.btn-buy-now', function (e) {
         }, 1000);
     }, 500);
 });
+

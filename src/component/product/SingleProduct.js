@@ -26,15 +26,15 @@ const SingleProduct = () => {
     }
     return (
         <div className='single' style={{ marginTop: '100px' }}>
-            <div className='row mt-5'>
-                <div className='col col-12 col-md-4 col-lg-4' >
+            <div className='row mt-5 d-flex'>
+                <div className='col col-12 col-md-6 col-lg-6' >
 
                     <img src={detail.avartar} alt=''
                         onMouseMove={handleMouseMove}
                         onMouseLeave={() => mouse.current.style.backgroundPosition = 'center'}
                         ref={mouse} />
                 </div>
-                <div className="col col-12 col-md-4 col-lg-4 " style={{
+                <div className="col col-12 col-md-6 col-lg-6 " style={{
                     textAlign: 'left'
                 }}>
                     <h3 title={detail.name}>{detail.name}</h3>
@@ -43,13 +43,13 @@ const SingleProduct = () => {
                     <p>Còn {detail.quantity} cái</p>
                     <ButtonAddCart id={detail.id} />
                 </div>
-                <div className="col col-12 col-md-4 col-lg-4">
+                {/* <div className="col col-12 col-md-4 col-lg-4">
 
                     <h5>Mô tả sản phẩm</h5>
                     <p>{detail.detail_description}</p>
 
 
-                </div>
+                </div> */}
 
             </div>
         </div>

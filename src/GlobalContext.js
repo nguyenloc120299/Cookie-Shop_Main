@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import UsersApi from './api/UserApi'
 import ProductApi from './api/ProductApi'
+import UntillApi from './api/untill'
 export const GlobalContext = createContext()
 
 export const DataProvider = ({ children }) => {
@@ -10,6 +11,7 @@ export const DataProvider = ({ children }) => {
     const [cart, setCart] = useState([])
     const [isLoggin, setIsLoggin] = useState(false)
     const [isBuyer, setIsBuyer] = useState(false)
+    const [callBackcart, setCallBackCart] = useState(false)
     const getProducts = async () => {
         let arr = []
         const res = await axios.get("/products")
@@ -22,6 +24,7 @@ export const DataProvider = ({ children }) => {
     }
     useEffect(() => {
         const res = JSON.parse(localStorage.getItem('login_admin_main'))
+
         if (res) {
             if (res.roles[0].authority === 'Admin' || res.roles[0].authority === 'user') setIsLoggin(true)
         }
@@ -38,12 +41,29 @@ export const DataProvider = ({ children }) => {
             return item.id !== id
         })
         setTimeout(() => {
+            let cartArr = []
             if (check) {
 
-                const item = products.filter(p => {
+                const [item] = products.filter(p => {
                     return p.id === id
                 })
-                setCart([...cart, ...item])
+                // cartArr.push({
+                //     id: item.id,
+                //     name: item.name,
+                //     price: item.price,
+                //     quantity: 0,
+                //     quality: item.price
+                // })
+                // console.log(item);
+                setCart([...cart, {
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: 1,
+                    totalCost: item.price,
+                    avartar: item.avartar,
+                    competitive_price: item.competitive_price
+                }])
             }
             else {
                 // swal({
@@ -66,14 +86,28 @@ export const DataProvider = ({ children }) => {
         addCart: addCart,
         cart: [cart, setCart],
         isLoggin: [isLoggin, setIsLoggin],
-        usersApi: UsersApi()
+        usersApi: UsersApi(),
+        untillApi: UntillApi(),
+        callBackcart: [callBackcart, setCallBackCart]
     }
     useEffect(() => {
         const dataCart = JSON.parse(localStorage.getItem('cart'))
         if (dataCart) return setCart(dataCart)
-    }, [])
+    }, [callBackcart])
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart))
+        let cartArr = []
+        cart.forEach(element => {
+            cartArr.push({
+                id: element.id,
+                name: element.name,
+                avartar: element.avartar,
+                quantity: 0,
+                price: element.price,
+                totalCost: element.price,
+                competitive_price: element.competitive_price
+            })
+        });
+        localStorage.setItem('cart', JSON.stringify(cartArr))
     }, [cart])
     return (
         <GlobalContext.Provider value={data}>
