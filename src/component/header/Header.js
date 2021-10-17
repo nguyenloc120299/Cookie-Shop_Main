@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { FaList, FaUserAlt } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { BiShoppingBag } from 'react-icons/bi'
 import { GlobalContext } from '../../GlobalContext'
 import './header.css'
@@ -46,10 +46,10 @@ const Header = () => {
 
             <ul className='links' >
                 <li>
-                    <Link to='/' >Trang chủ</Link>
+                    <NavLink to='/' >Trang chủ</NavLink>
                 </li>
                 <li>
-                    <Link to='/home'>Cửa hàng</Link>
+                    <NavLink to='/home'>Cửa hàng</NavLink>
                 </li>
 
                 <li style={{ position: 'absolute', right: '20%', display: 'flex', top: '38%' }} className='li-info'

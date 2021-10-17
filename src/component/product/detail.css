@@ -29,7 +29,8 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 2rem;
-    padding: 10px;
+
+    margin-bottom: 1rem;
 }
 
 .thumb {
@@ -48,7 +49,12 @@
 }
 .detail h3 {
     color: crimson;
-    padding: 10px;
+
+    margin-bottom: 1rem;
+}
+.detail h6 {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 .addCart {
     display: flex;
@@ -64,4 +70,10 @@
 }
 a {
     text-align: center;
+}
+.box__description {
+    margin: 2rem;
+}
+.box__description h5 {
+    text-align: left;
 }

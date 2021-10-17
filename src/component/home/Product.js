@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import ScrollAnimation from 'react-animate-on-scroll'
 import { Link } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
 import ButtonSlide from '../langding/Slider/ButtonSlide'
 import CardSlide from '../langding/Slider/CardSlide'
 import Pagination from '../product/Pagination'
 import { ButtonAddCart } from '../view/ButtonAddCart'
+import Promotion from '../view/Promotion'
 import './home.css'
 const Product = () => {
     const context = useContext(GlobalContext)
@@ -19,7 +21,10 @@ const Product = () => {
     const changePage = ({ selected }) => {
         setPageNumber(selected)
     }
-
+    const numberFormat = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
     useEffect(() => {
         let arr = []
         products.forEach(p => {
@@ -75,16 +80,19 @@ const Product = () => {
                             productsTotal.map(product => (
 
                                 <div className='card__product' key={product.id}>
-                                    <Link className='card__product__img' to={`/detail/${product.id}`}>
-                                        <img src={product.avartar} alt='' />
-                                    </Link>
-                                    <div className='box'>
-                                        <Link to={`/detail/${product.id}`}><h4>{product.name}</h4></Link>
-                                        <p>{product.sort_description}</p>
-                                        <h5>{product.price}</h5>
-                                        <ButtonAddCart id={product.id} />
+                                    <ScrollAnimation animateIn='animate__fadeInLeft'>
+                                        <Link className='card__product__img' to={`/detail/${product.id}`}>
+                                            <img src={product.avartar} alt='' />
+                                        </Link>
+                                        <div className='box'>
+                                            <Promotion />
+                                            <Link to={`/detail/${product.id}`}><h4>{product.name}</h4></Link>
+                                            <p>{product.sort_description}</p>
+                                            <h5>{numberFormat.format(product.price)}</h5>
+                                            <ButtonAddCart id={product.id} />
 
-                                    </div>
+                                        </div>
+                                    </ScrollAnimation>
                                 </div>
                             ))
                         }

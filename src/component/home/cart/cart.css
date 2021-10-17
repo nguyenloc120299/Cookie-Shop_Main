@@ -12,16 +12,27 @@
     width: 100%;
     overflow-x: scroll;
 }
+.cart table {
+    margin: 50px;
+}
 
 .amount {
     display: flex;
     margin: 10px;
     align-items: center;
+    justify-content: center;
 }
-
 .total {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px;
+    /* display: flex; */
+    margin: 5px;
     font-weight: bold;
+    width: 20%;
+    margin-top: 50px;
+}
+.cart table td {
+    font-size: 12px;
+}
+.total h5 {
+    font-size: 14px;
+    text-align: left;
 }

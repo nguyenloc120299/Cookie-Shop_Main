@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import img from '../../../assets/img/data'
+import ScrollAnimation from 'react-animate-on-scroll';
 const Slider = () => {
     const [slide] = useState(img)
     const [index, setIndex] = useState(0)
@@ -34,9 +35,11 @@ const Slider = () => {
             <div className='slide-show'>
                 <img src={slide[index].url} alt='' />
                 <div className='info'>
-                    <h2 style={{ color: `${slide[index].type}` }}>{slide[index].title}</h2>
-                    <span style={{ color: `${slide[index].type}` }}>Nguyễn Lộc</span>
-                    <Link to='/home' style={{ backgroundColor: `${slide[index].color}` }}>{slide[index].content}</Link>
+                    <ScrollAnimation animateIn='animate__fadeInDownBig'>
+                        <h2 style={{ color: `${slide[index].type}` }}>{slide[index].title}</h2>
+                        <span style={{ color: `${slide[index].type}` }}>Nguyễn Lộc</span>
+                    </ScrollAnimation>
+                    <Link className='mt-3' to='/home' style={{ backgroundColor: `${slide[index].color}` }}>{slide[index].content}</Link>
                 </div>
 
                 <FaChevronLeft className='prev' onClick={leftOnClick} />

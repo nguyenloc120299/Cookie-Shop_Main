@@ -13,6 +13,7 @@ import { useContext, useEffect, useState } from 'react';
 import Profile from './component/auth/Profile';
 import MyAccount from './component/auth/MyAccount';
 import Payment from './component/payment/Payment';
+import 'animate.css';
 function App() {
   const context = useContext(GlobalContext)
   const [isLogin] = context.isLoggin
@@ -51,6 +52,8 @@ function App() {
             render={props => isLogin ? <Profile {...props} optionRoute='addproduct' /> : <Register />}
           />
         </Switch>
+        <div className='footer'>
+        </div>
       </div>
 
     </Router>

@@ -96,6 +96,9 @@ ul li a:hover {
     font-family: unset !important;
     padding: 10px;
 }
+.active_navLink {
+    color: rgb(43, 123, 254) !important;
+}
 @media (max-width: 992px) {
     .header {
         justify-content: space-around;

@@ -81,8 +81,8 @@ const Cart = () => {
                                 <tr key={p.id}>
                                     <td><img src={p.avartar} alt=''
                                         style={{
-                                            width: '150px',
-                                            height: '200px'
+                                            width: '70px',
+                                            height: '80px'
                                         }}
                                     /></td>
                                     <td className='td__cart'>{p.name}</td>
@@ -103,26 +103,52 @@ const Cart = () => {
                         }
                     </tbody>
                 </table>
+                <div className="total">
+                    <h5>Chi tiết hóa đơn</h5>
+                    <hr />
+                    <h5>Tổng cộng: {numberFormat.format(total)} </h5>
+                    <h5>Số lượng sản phẩm: {cart.length} </h5>
+
+                    <h5>Phí vận chuyển: 1000 đ </h5>
+                    <Link to="#" className='btn btn-outline-dark d-flex justify-content-start w-50 m-4' style={{
+                        fontWeight: 'bold',
+                        textAlign: 'center'
+
+                    }} onClick={() => setIsPayment(true)}>Thanh toán </Link>
+
+                </div>
+                {
+                    isPayment && <PaymentModal setIsPayment={setIsPayment} cart={cart} />
+                }
             </div>
-            <div className="total">
-                <Link to="#" className='btn btn-outline-dark' style={{
-                    fontWeight: 'bold'
-                }} onClick={() => setIsPayment(true)}>Thanh toán </Link>
-                <h5>Tổng cộng: {numberFormat.format(total)} </h5>
-            </div>
-            {
-                isPayment && <PaymentModal setIsPayment={setIsPayment} cart={cart} />
-            }
+
         </>
     )
     return (
         <>
             {
-                cart.length > 0 ? body : <h1 className='position-absolute' style={{
-                    left: '50%',
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)'
-                }}>Không có sản phẩm</h1>
+
+                cart.length > 0 ? body :
+
+                    <div className='position-relative' style={{
+                        height: '100vh'
+                    }}>
+                        <div className='position-absolute' style={{
+                            left: '50%',
+                            top: '50%',
+                            transform: 'translate(-50%, -50%)'
+                        }}>
+
+                            <h1>Không có sản phẩm</h1>
+                            <div className='w-100 d-flex justify-content-center align-item-center'>
+                                <button className='btn btn-outline-dark mt-5 ' style={{
+                                    fontWeight: 'bold'
+                                }}>Mua ngay</button>
+                            </div>
+
+                        </div>
+
+                    </div>
             }
         </>
 

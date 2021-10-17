@@ -35,3 +35,6 @@
 #zoid-paypal-button-053dee6e0b > .zoid-outlet {
     width: 100% !important;
 }
+.product_payment table {
+    margin: 0 !important;
+}

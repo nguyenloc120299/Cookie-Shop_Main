@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
-
+import { AiOutlineShoppingCart } from 'react-icons/all'
 export const ButtonAddCart = ({ id }) => {
     const context = useContext(GlobalContext)
     const addCart = context.addCart
@@ -11,12 +11,12 @@ export const ButtonAddCart = ({ id }) => {
             {
                 isLogin ?
 
-                    <button className='btn btn-outline-dark w-100 btn-buy-now' onClick={() => addCart(id)} >
-                        Mua ngay
+                    <button className='btn btn-outline-dark w-50 btn-buy-now' onClick={() => addCart(id)} >
+                        <AiOutlineShoppingCart /> Mua ngay
                     </button> :
 
-                    <Link to='/login' className='btn btn-outline-dark w-100'  >
-                        Mua ngay
+                    <Link to='/login' className='btn btn-outline-dark w-50 d-flex'  >
+                        <AiOutlineShoppingCart /> Mua ngay
                     </Link>
             }
         </>

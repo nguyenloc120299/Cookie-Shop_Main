@@ -72,12 +72,13 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue }) => {
     return (
         <div className='payment_footer'>
             {
-                isType ?
+                !isType ?
                     <div>
-                        <PaypalExpressBtn client={client} currency={"USD"} total={total} style={style} onSuccess={handleSubmit} />
+                        <button className='btn btn-dark w-100 btn-payment' type='submit' style={{ height: '55px' }} onClick={() => handleSubmit()}>Đặt hàng</button>
                     </div>
                     :
-                    <button className='btn btn-dark w-100 btn-payment' type='submit' style={{ height: '55px' }} onClick={() => handleSubmit()}>Đặt hàng</button>
+                    <PaypalExpressBtn client={client} currency={"USD"} total={total} style={style} onSuccess={handleSubmit} />
+
             }
         </div>
     )

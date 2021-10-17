@@ -18,11 +18,15 @@
     max-width: 250px;
     width: 100%;
     overflow: hidden;
-    height: 450px;
+    height: 400px;
     box-shadow: 0 0 5px #ccc;
     padding: 10px;
     margin: 10px;
     border-radius: 8px;
+    position: relative;
+}
+.card__product .box button {
+    width: 100% !important;
 }
 .card__product img {
     width: 100%;
@@ -53,7 +57,7 @@
 
 .card__product .box h5 {
     margin: 5px;
-    color: crimson;
+    color: rgb(240, 108, 65);
 }
 .card__product .box p {
     margin: 5px 0;
@@ -62,7 +66,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
-    height: 100px;
+    height: 50px;
 }
 /* -----------------------------------pagination---------------------------------- */
 .pagination {
