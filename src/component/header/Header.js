@@ -7,15 +7,14 @@ import './header.css'
 const Header = () => {
     const context = useContext(GlobalContext)
     const [users] = context.usersApi.users
+    // const [user, setUser] = useState([])
     const [cart] = context.cart
     const [isLoggin, setIsLoggin] = context.isLoggin
     const [nameUser, setNameUser] = useState(null)
     // useEffect(() => {
     //     if (isLoggin) {
-    //         const { id } = JSON.parse(localStorage.getItem('login_admin_main'))
-    //         users && users.forEach(user => {
-    //             if (user.id === id) setNameUser(user.avartar)
-    //         });
+    //         const res = JSON.parse(localStorage.getItem('login_admin_main'))
+    //         if (res) setUser(res)
     //     }
     // }, [isLoggin])
     const [user] = users.filter(item => {
@@ -28,8 +27,9 @@ const Header = () => {
 
     const Logout = () => {
         localStorage.setItem('login_admin_main', false)
-
+        localStorage.setItem('cart', [])
         setIsLoggin(false)
+        //window.location.href = '/home'
     }
 
     return (

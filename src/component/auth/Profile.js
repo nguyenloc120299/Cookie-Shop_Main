@@ -12,19 +12,17 @@ const Profile = ({ optionRoute }) => {
             {optionRoute === 'myaccount' && <MyAccount />}
             {optionRoute === 'oders' && <Oders />}
             {optionRoute === 'myshop' && <MyShop />}
-            {optionRoute === 'addproduct' && <AddProducts />}
+
 
         </>
     )
     return (
         <div style style={{ marginTop: '60px', width: '100%', padding: '10px', height: '95vh' }}>
             <div className='row ' style={{
-                height: '100%'
+                height: '100%',
+                padding: '0 7rem'
             }}>
-                <div className='col-12 col-lg-2 d-flex flex-column  align-items-start' style={{
-                    borderRight: '1px solid #ccc',
-
-                }}>
+                <div className='col-12 col-lg-2 d-flex flex-column  align-items-start'>
                     <Link to='/profile' className='mt-3 text-dark text-decoration-none' style={{
                         fontWeight: 'bold'
                     }}><i className="fa fa-user" style={{
@@ -38,7 +36,7 @@ const Profile = ({ optionRoute }) => {
                         fontSize: '22px',
                         margin: '4px'
                     }} />Đơn mua</Link>
-                    <div className='mt-3 dropdown'>
+                    {/* <div className='mt-3 dropdown'>
                         <Link to='#' className='text-dark text-decoration-none dropdown-toggle' id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style={{
                             fontWeight: 'bold'
                         }}><i className="fas fa-shopping-basket" style={{
@@ -50,7 +48,7 @@ const Profile = ({ optionRoute }) => {
                             <li><Link to='my-shop' className="dropdown-item" href="#">Quản lý sản phẩm</Link></li>
 
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='col-12 col-lg-10 d-flex flex-column  align-items-start mt-3'>
                     {

@@ -6,6 +6,9 @@
     padding: 10px;
     /* justify-content: space-around; */
 }
+.product_main {
+    padding: 0 2rem;
+}
 /* @keyframes expand {
     0% {
         transform: translateX(1400px);
@@ -18,7 +21,7 @@
     max-width: 250px;
     width: 100%;
     overflow: hidden;
-    height: 400px;
+    height: 450px;
     box-shadow: 0 0 5px #ccc;
     padding: 10px;
     margin: 10px;
@@ -58,6 +61,7 @@
 .card__product .box h5 {
     margin: 5px;
     color: rgb(240, 108, 65);
+    text-align: center;
 }
 .card__product .box p {
     margin: 5px 0;
@@ -67,6 +71,13 @@
     -webkit-line-clamp: 1;
     overflow: hidden;
     height: 50px;
+    text-align: center;
+}
+.categories_main {
+    width: 15%;
+    height: 100%;
+    background: #ccc;
+    margin-right: 2rem;
 }
 /* -----------------------------------pagination---------------------------------- */
 .pagination {

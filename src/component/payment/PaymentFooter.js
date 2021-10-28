@@ -63,7 +63,10 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue }) => {
 
             localStorage.removeItem('cart')
             setCallback(!callBack)
-            swal("Bạn đã thanh toán thành công!", "Tiếp tục mua hàng", "success");
+            swal("Bạn đã thanh toán thành công", "Tiếp tục mua hàng", "success")
+                .then(() => {
+                    window.location.href = '/home'
+                });
         } catch (error) {
             alert("Có lỗi xẩy ra vui lòng thử lại sau")
         }

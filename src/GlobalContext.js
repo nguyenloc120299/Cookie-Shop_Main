@@ -26,7 +26,7 @@ export const DataProvider = ({ children }) => {
         const res = JSON.parse(localStorage.getItem('login_admin_main'))
 
         if (res) {
-            if (res.roles[0].authority === 'Admin' || res.roles[0].authority === 'user') setIsLoggin(true)
+            if (res.listroles[0].role === 'Admin' || res.listroles[0].role === 'user') setIsLoggin(true)
         }
         else setIsLoggin(false)
 

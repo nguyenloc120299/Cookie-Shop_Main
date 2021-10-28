@@ -37,79 +37,82 @@ const Product = () => {
         return item.status === 1
     })
     return (
-        <>{
-            products.length > 0 ? <>
+        <>
 
-                <div className='w-100 abount home-slider' style={{
-                    marginTop: '100px',
+            {
+                products.length > 0 ? <>
 
-                }}>
+                    <div className='w-100 abount home-slider' style={{
+                        marginTop: '100px',
 
-                    <h4 style={{
-                        textAlign: 'left',
-                        margin: '10px'
-                    }}>Sản phẩm nổi bật</h4>
-                    <div className='landing-slider' >
-                        <div className='slider__products' ref={listRef}>
+                    }}>
+
+                        {/* <h4 style={{
+                            textAlign: 'left',
+                            margin: '10px'
+                        }}>Sản phẩm nổi bật</h4>
+                        <div className='landing-slider' >
+                            <div className='slider__products' ref={listRef}>
+                                {
+                                    listSlide.map((item, i) => (
+
+                                        <CardSlide item={item} key={item.id} />
+
+
+                                    ))
+
+                                }
+
+                            </div>
+                            <ButtonSlide listRef={listRef} />
+                        </div> */}
+
+                    </div>
+                    <div className='product_main'>
+                        <h4 style={{
+
+
+                        }}>Tất cả sản phẩm</h4>
+                        <div className='products '>
+
+
                             {
-                                listSlide.map((item, i) => (
+                                productsTotal.map(product => (
 
-                                    <CardSlide item={item} key={item.id} />
+                                    <div className='card__product' key={product.id}>
 
-
-                                ))
-
-                            }
-
-                        </div>
-                        <ButtonSlide listRef={listRef} />
-                    </div>
-                    <h4 style={{
-                        textAlign: 'left',
-                        margin: '10px'
-                    }}>Tất cả sản phẩm</h4>
-                </div>
-                <div className='product_main d-flex'>
-                    <div className='categories_main'>
-                        â
-                    </div>
-                    <div className='products '>
-
-
-                        {
-                            productsTotal.map(product => (
-
-                                <div className='card__product' key={product.id}>
-                                    <ScrollAnimation animateIn='animate__fadeInLeft'>
                                         <Link className='card__product__img' to={`/detail/${product.id}`}>
                                             <img src={product.avartar} alt='' />
                                         </Link>
                                         <div className='box'>
-                                            <Promotion />
+                                            {product.promotion > 0 && <Promotion value={product.promotion} />}
                                             <Link to={`/detail/${product.id}`}><h4>{product.name}</h4></Link>
                                             <p>{product.sort_description}</p>
-                                            <h5>{numberFormat.format(product.price)}</h5>
+                                            <div className='d-flex justify-content-around'>
+                                                <h5>{numberFormat.format(product.competitive_price)}</h5>
+                                                <p className='text-dark'>Đã bán {product.ban_nhanh}</p>
+                                            </div>
                                             <ButtonAddCart id={product.id} />
 
                                         </div>
-                                    </ScrollAnimation>
-                                </div>
-                            ))
-                        }
 
+                                    </div>
+                                ))
+                            }
+
+                        </div>
                     </div>
-                </div>
-                <div className='products mt-3 mb-5'>
-                    <Pagination
-                        pageCount={pageCount}
-                        changePage={changePage} />
-                </div>
-            </> : <h1 className='position-absolute' style={{
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%,-50%)'
-            }}>Chưa có sản phẩm</h1>
-        }
+                    <div className='products mt-3 mb-5'>
+                        <Pagination
+                            pageCount={pageCount}
+                            changePage={changePage} />
+                    </div>
+                </> : <h1 className='position-absolute' style={{
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%,-50%)'
+                }}>Chưa có sản phẩm</h1>
+            }
         </>
     )
 }

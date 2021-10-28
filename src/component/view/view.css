@@ -11,4 +11,9 @@
 .promotion_text {
     font-size: 12px;
     font-weight: 400;
+    text-align: center;
+}
+
+.btn-outline-dark {
+    transition: width 2s;
 }

@@ -35,10 +35,10 @@ const Slider = () => {
             <div className='slide-show'>
                 <img src={slide[index].url} alt='' />
                 <div className='info'>
-                    <ScrollAnimation animateIn='animate__fadeInDownBig'>
-                        <h2 style={{ color: `${slide[index].type}` }}>{slide[index].title}</h2>
-                        <span style={{ color: `${slide[index].type}` }}>Nguyễn Lộc</span>
-                    </ScrollAnimation>
+
+                    <h2 style={{ color: `${slide[index].type}` }}>{slide[index].title}</h2>
+                    <span style={{ color: `${slide[index].type}`, textAlign: 'center' }}>Nguyễn Lộc</span>
+
                     <Link className='mt-3' to='/home' style={{ backgroundColor: `${slide[index].color}` }}>{slide[index].content}</Link>
                 </div>
 

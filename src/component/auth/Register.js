@@ -25,7 +25,7 @@ const Register = () => {
     return (
         <div className='login mt-5 col col-10 col-lg-4'>
             <h2 className='text-center' style={{
-                border: '1px solid white',
+
                 padding: '5px',
                 marginBottom: '10px'
             }}>Cookies Shop</h2>
@@ -89,9 +89,9 @@ const Register = () => {
                 />
 
             </div>
-            <button className="btn btn-outline-light" onClick={() => submitRegister()}>Đăng kí</button>
+            <button className="btn btn-outline-info w-100" onClick={() => submitRegister()}>Đăng kí</button>
 
-            <div className="text-white mt-3">Bạn đã có tài khoản ? <span><Link to='/login'>Đăng nhập</Link></span> </div>
+            <div className="mt-3 text-center">Bạn đã có tài khoản ? <span><Link to='/login'>Đăng nhập</Link></span> </div>
         </div>
     )
 }

@@ -17,7 +17,7 @@ import 'animate.css';
 function App() {
   const context = useContext(GlobalContext)
   const [isLogin] = context.isLoggin
-
+  const seller = true
 
   return (
     <Router>
@@ -52,8 +52,7 @@ function App() {
             render={props => isLogin ? <Profile {...props} optionRoute='addproduct' /> : <Register />}
           />
         </Switch>
-        <div className='footer'>
-        </div>
+
       </div>
 
     </Router>

@@ -31,7 +31,10 @@ const SingleProduct = () => {
         const res = await axios.get(`/products/${id}`)
         if (res && res.data) setDetail(res.data)
     }
-
+    const numberFormat = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
     const getSupplier = async (id) => {
         try {
             const res = await axios.get('/suppliers')
@@ -81,7 +84,21 @@ const SingleProduct = () => {
                     textAlign: 'left'
                 }}>
                     <h2 title={detail.name}>{detail.name}</h2>
-                    <h3>{detail.price} đ</h3>
+                    {
+                        detail.promotion > 0 ? <div className='detail_promotion d-flex align-items-center'>
+                            <h3 style={{
+                                marginRight: '2rem'
+                            }}><strike>{numberFormat.format(detail.price)}</strike></h3>
+
+                            <h3 style={{
+                                marginRight: '2rem'
+                            }}>{numberFormat.format(detail.competitive_price)}</h3>
+
+                            <div className='d-flex justify-content-center align-items-center promotion_detail'>{detail.promotion}% Giảm</div>
+                        </div>
+                            : <h3>{numberFormat.format(detail.price)}</h3>
+                    }
+
 
 
                     <h6>{detail.sort_description}</h6>
@@ -107,30 +124,37 @@ const SingleProduct = () => {
                 </div>
 
             </div>
-            <h3 style={{
-                textAlign: 'left',
-                padding: '10px'
-            }}>Chi tiết sản phẩm</h3>
-            <div className='box__description'>
-                <div className='d-flex mb-3'>
-                    <h5>Thể loại</h5>
-                    <p>{categories}</p>
-                </div>
-                <div className='d-flex'>
-                    <h5>Thể loại</h5>
-                    <p>{nameSupplier}</p>
-                </div>
-                <div className='d-flex flex-column'>
-                    <h5 className='text-left'>Mô tả sản phẩm</h5>
-                    <p style={{
+            <div className='d-flex'>
+
+
+                <div className='box__description'>
+                    <h3 style={{
                         textAlign: 'left',
+                        padding: '10px'
+                    }}>Chi tiết sản phẩm</h3>
+                    <div className='d-flex mb-3'>
+                        <h5>Thể loại</h5>
+                        <p>{categories}</p>
+                    </div>
+                    <div className='d-flex'>
+                        <h5>Thể loại</h5>
+                        <p>{nameSupplier}</p>
+                    </div>
+                    <div className='d-flex flex-column'>
+                        <h5 className='text-left'>Mô tả sản phẩm</h5>
+                        <p style={{
+                            textAlign: 'left',
 
-                    }}>{detail.detail_description}</p>
+                        }}>{detail.detail_description}</p>
+                    </div>
+
+
                 </div>
-
+                <div style={{
+                    width: "30%"
+                }}>Bán chạy</div>
 
             </div>
-
         </>
     )
 }

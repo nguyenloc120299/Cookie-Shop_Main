@@ -23,12 +23,11 @@ const Login = () => {
 
 
         if (res.data.token) {
-            const [user] = users.filter(item => {
-                return item.id === res.data.id
-            })
-            console.log(user);
-            if (user.status === 1) {
-                localStorage.setItem('login_admin_main', JSON.stringify(res.data))
+            const res1 = await axios.get(`/users/${res.data.id}`)
+
+
+            if (res1 && res1.data.status === 1) {
+                localStorage.setItem('login_admin_main', JSON.stringify(res1.data))
                 window.location.href = '/home'
             } else {
                 alert('Chưa xác thực email')
@@ -42,7 +41,7 @@ const Login = () => {
     return (
         <div className='login mt-5 col col-10 col-lg-4'>
             <h2 className='text-center' style={{
-                border: '1px solid white',
+
                 padding: '5px',
                 marginBottom: '2rem'
             }}>Cookies Shop</h2>
@@ -67,9 +66,9 @@ const Login = () => {
                 />
             </div>
 
-            <button className="btn btn-outline-light" onClick={() => onSubmitLogin()}>Đăng nhập</button>
+            <button className="btn btn-outline-info w-100" onClick={() => onSubmitLogin()}>Đăng nhập</button>
 
-            <div class="text-white mt-3">Bạn chưa có tài khoản ? <span><Link to='/register'>Đăng kí</Link></span> </div>
+            <div class=" mt-3 text-center">Bạn chưa có tài khoản ? <span><Link to='/register'>Đăng kí</Link></span> </div>
         </div>
     )
 }

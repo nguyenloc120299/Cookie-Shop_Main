@@ -11,12 +11,12 @@ export const ButtonAddCart = ({ id }) => {
             {
                 isLogin ?
 
-                    <button className='btn btn-outline-dark w-50 btn-buy-now' onClick={() => addCart(id)} >
-                        <AiOutlineShoppingCart /> Mua ngay
+                    <button className='btn btn-outline-dark w-100 btn-buy-now' onClick={() => addCart(id)} >
+                        Mua ngay
                     </button> :
 
-                    <Link to='/login' className='btn btn-outline-dark w-50 d-flex'  >
-                        <AiOutlineShoppingCart /> Mua ngay
+                    <Link to='/login' className='btn btn-outline-dark w-100 d-flex justify-content-center'  >
+                        Mua ngay
                     </Link>
             }
         </>
