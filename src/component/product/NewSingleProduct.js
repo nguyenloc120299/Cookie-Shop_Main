@@ -13,6 +13,7 @@ const SingleProduct = () => {
     const [products] = context.productsApi.products
     const [categories, setCategories] = useState('')
     const [nameSupplier, setNameSupplier] = useState('')
+    const [index, setInsex] = useState(0)
     const getCategorie = async (id) => {
         try {
             const res = await axios.get('/categories')
@@ -67,14 +68,15 @@ const SingleProduct = () => {
         <>
             <div className='detail' style={{ marginTop: '100px' }} >
                 <div>
-                    <div className='img-container' style={{ backgroundImage: `url(${detail.avartar})` }} onMouseMove={handleMouseMove}
+                    <div className='img-container' style={{ backgroundImage: `url(${detail.listPictureproduct ? detail.listPictureproduct[index].file : detail.avartar})` }} onMouseMove={handleMouseMove}
                         onMouseLeave={() => mouse.current.style.backgroundPosition = 'center'} ref={mouse} />
                     <div className='thumb'>
 
-                        <img src='' alt='' />
-                        <img src='' alt='' />
-                        <img src='' alt='' />
-                        <img src='' alt='' />
+                        {
+                            detail && detail.listPictureproduct.map((item, index) => (
+                                <img src={item.file} key={index} alt='' onClick={() => setInsex(index)} />
+                            ))
+                        }
 
 
                     </div>
