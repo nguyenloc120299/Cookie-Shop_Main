@@ -119,8 +119,8 @@ const MyAccount = () => {
                             name='address' onChange={handleOnchane} value={valueInput.address} />}
                     </div>
 
-                    {!isEdit ? <button className='btn btn-outline-dark mb-3' onClick={() => handleOnchangeEdit()}>Thay đổi</button> :
-                        <button className='btn btn-outline-dark btn_edit-info mb-3' onClick={() => onSubmitEdit()} >Lưu Thay đổi</button>
+                    {!isEdit ? <button className='btn btn-primary mb-3' onClick={() => handleOnchangeEdit()}>Thay đổi</button> :
+                        <button className='btn btn-primary btn_edit-info mb-3' onClick={() => onSubmitEdit()} >Lưu Thay đổi</button>
                     }
                 </div>
                 {!isEdit ? <img src={info && info.avartar} style={{

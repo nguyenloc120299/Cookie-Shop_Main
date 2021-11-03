@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 
 function CategoriesApi() {
     const [users, setUsers] = useState([])
-
     const [callBack, setCallBack] = useState(false)
 
     const getUsers = async () => {
@@ -13,6 +12,7 @@ function CategoriesApi() {
 
             setUsers(res.data)
         }
+
     }
     useEffect(() => {
         getUsers()

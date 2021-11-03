@@ -7,7 +7,9 @@ import CardSlide from '../langding/Slider/CardSlide'
 import Pagination from '../product/Pagination'
 import { ButtonAddCart } from '../view/ButtonAddCart'
 import Promotion from '../view/Promotion'
+
 import './home.css'
+
 const Product = () => {
     const context = useContext(GlobalContext)
     const [products] = context.productsApi.products
@@ -36,6 +38,7 @@ const Product = () => {
     const productsTotal = products.filter(item => {
         return item.status === 1
     })
+
     return (
         <>
 

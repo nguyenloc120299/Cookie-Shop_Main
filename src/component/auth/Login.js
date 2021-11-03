@@ -66,7 +66,7 @@ const Login = () => {
                 />
             </div>
 
-            <button className="btn btn-outline-info w-100" onClick={() => onSubmitLogin()}>Đăng nhập</button>
+            <button className="btn btn-primary w-100" onClick={() => onSubmitLogin()}>Đăng nhập</button>
 
             <div class=" mt-3 text-center">Bạn chưa có tài khoản ? <span><Link to='/register'>Đăng kí</Link></span> </div>
         </div>

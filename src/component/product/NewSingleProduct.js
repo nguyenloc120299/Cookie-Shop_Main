@@ -68,7 +68,7 @@ const SingleProduct = () => {
         <>
             <div className='detail' style={{ marginTop: '100px' }} >
                 <div>
-                    <div className='img-container' style={{ backgroundImage: `url(${detail && detail.listOrderDetail.length && detail.listPictureproduct[index].file})` }} onMouseMove={handleMouseMove}
+                    <div className='img-container' style={{ backgroundImage: `url(${detail && detail.listPictureproduct && detail.listPictureproduct[index].file})` }} onMouseMove={handleMouseMove}
                         onMouseLeave={() => mouse.current.style.backgroundPosition = 'center'} ref={mouse} />
                     <div className='thumb'>
 

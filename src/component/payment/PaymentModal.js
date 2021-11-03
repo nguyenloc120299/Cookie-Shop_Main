@@ -11,6 +11,8 @@ const PaymentModal = ({ setIsPayment, cart }) => {
     const context = useContext(GlobalContext)
     const [users] = context.usersApi.users
     const [isLoggin, setIsLoggin] = context.isLoggin
+    const [isChangeAdress, setIsChangeAddress] = useState(false)
+    const [newAddress, setNewAddress] = useState('')
     const [user] = users.filter(item => {
         if (isLoggin) {
             const { id } = JSON.parse(localStorage.getItem('login_admin_main'))
@@ -32,7 +34,10 @@ const PaymentModal = ({ setIsPayment, cart }) => {
 
                     <ProductPayMent cart={cart} />
                     <hr />
-                    <Address user={user} />
+                    <Address user={user} isChangeAddress={isChangeAdress} setIsChangeAddress={setIsChangeAddress}
+                        setAddress={setNewAddress}
+                        newAddress={newAddress}
+                    />
                     <hr />
 
                     <textarea className='form-control' placeholder='Thêm ghi chú'
@@ -40,10 +45,14 @@ const PaymentModal = ({ setIsPayment, cart }) => {
                         value={noteValue}
                         onChange={(e) => setNoteValue(e.target.value)}></textarea>
                     <br />
-                    <PaymentType setIsType={setIsType} />
+                    <PaymentType setIsType={setIsType} isChangeAddress={isChangeAdress} />
                     <br />
                 </div>
-                <PaymentFooter isType={isType} cart={cart} user={user} setIsPayment={setIsPayment} noteValue={noteValue} />
+                <PaymentFooter isType={isType} cart={cart} user={user} setIsPayment={setIsPayment}
+                    noteValue={noteValue}
+                    newAddress={newAddress}
+                    isChangeAddress={isChangeAdress}
+                />
             </div>
         </div>
     )

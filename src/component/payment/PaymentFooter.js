@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import PaypalExpressBtn from "react-paypal-express-checkout";
 import { GlobalContext } from '../../GlobalContext';
 import swal from 'sweetalert';
-const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue }) => {
+const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAddress, newAddress }) => {
     const [productDetailArr, setProductDetailArr] = useState([])
     const context = useContext(GlobalContext)
     const [callBack, setCallback] = context.callBackcart
@@ -49,8 +49,8 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue }) => {
     const handleSubmit = async e => {
         try {
             const res = await axios.post('/orders', {
-                payments: "1",
-                deliveryaddress: user && user.address,
+                payments: !isType ? '1' : '0',
+                deliveryaddress: isChangeAddress ? newAddress : (user && user.address),
                 transportfee: 30000.0,
                 namecustomer: user && user.name,
                 email: user && user.email,
@@ -80,7 +80,7 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue }) => {
                         <button className='btn btn-dark w-100 btn-payment' type='submit' style={{ height: '55px' }} onClick={() => handleSubmit()}>Đặt hàng</button>
                     </div>
                     :
-                    <PaypalExpressBtn client={client} currency={"USD"} total={total} style={style} onSuccess={handleSubmit} />
+                    <PaypalExpressBtn client={client} currency={"USD"} total={Math.round(total / 23000)} style={style} onSuccess={handleSubmit} />
 
             }
         </div>

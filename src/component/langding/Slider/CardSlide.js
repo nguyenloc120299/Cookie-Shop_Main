@@ -6,7 +6,7 @@ import { ButtonAddCart } from '../../view/ButtonAddCart'
 const CardSlide = ({ item }) => {
     const [isShow, setIsShow] = useState(false)
     return (
-        <ScrollAnimation animateIn='animate__fadeIn' className='card'>
+        <div className='card'>
             <div onMouseLeave={() => setIsShow(false)} onMouseMove={() => setIsShow(true)} >
 
                 <img src={item.avartar} alt="" />
@@ -19,7 +19,7 @@ const CardSlide = ({ item }) => {
                 </div>
 
             </div>
-        </ScrollAnimation>
+        </div>
     )
 }
 

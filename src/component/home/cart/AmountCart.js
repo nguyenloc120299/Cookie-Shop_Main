@@ -42,7 +42,7 @@ const AmountCart = ({ p, removeProduct }) => {
                 avartar: item.avartar,
                 quantity: quantity,
                 price: item.price,
-                totalCost: item.price * quantity
+                totalCost: item.price * (quantity + 1)
             } : item)
         ))
 
