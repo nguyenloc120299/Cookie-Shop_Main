@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { FaList, FaUserAlt } from 'react-icons/fa'
+import { FaList, FaUserAlt, BsSearch } from 'react-icons/all'
 import { NavLink, Link } from 'react-router-dom'
 import { BiShoppingBag } from 'react-icons/bi'
 import { GlobalContext } from '../../GlobalContext'
@@ -34,77 +34,98 @@ const Header = () => {
 
     return (
         <div className='header'>
-            <div className='menu' >
-                <FaList />
-            </div>
-            <div className='logo'>
-                <Link to='/'> <h3 style={{
-                    border: "1px solid",
-                    padding: "5px"
-                }}>Cookies</h3></Link>
-            </div>
 
-            <ul className='links' >
-                <li>
+            <div className='d-flex justify-content-around w-100 align-items-center p-3'>
+                <div className='menu' >
+                    <FaList />
+                </div>
+                <div className='logo'>
+                    <Link to='/'> <h3 style={{
+                        border: "1px solid",
+                        padding: "5px"
+                    }}>Cookies</h3></Link>
+                </div>
+
+                {/* <ul className='links' > */}
+                {/* <li>
                     <NavLink to='/' >Trang chủ</NavLink>
                 </li>
                 <li>
                     <NavLink to='/home'>Cửa hàng</NavLink>
-                </li>
+                </li> */}
 
-                <li style={{ position: 'absolute', right: '20%', display: 'flex', top: '38%' }} className='li-info'
-                >
-                </li>
-                <li>
-                    <div className="input-group mb-3 ">
-                        <input type="text" className="form-control" placeholder="Tìm kiếm" />
-                        <button className="btn btn-outline-primary" type="button" style={{
-                            color: 'white',
-                            borderColor: 'white'
-                        }}>Button</button>
+                {/* <li style={{ position: 'absolute', right: '20%', display: 'flex', top: '38%' }} className='li-info'
+                    >
+                    </li>
+                    <li> */}
+                <div className="input-group w-50">
+                    <input type="text" className="form-control" placeholder="Tìm kiếm" />
+                    <button className="btn btn-outline-primary" type="button" style={{
+                        color: 'white',
+                        borderColor: 'white',
+                        background: 'rgb(13, 92, 182)'
+                    }}> <BsSearch style={{
+                        marginRight: '5px'
+                    }} />Tìm kiếm</button>
+                </div>
+                {/* </li>
+                </ul> */}
+
+                <div className='shop-cart'>
+                    <div className='user-profile' >
+                        {
+                            isLoggin ?
+                                <>
+                                    <Link to='#' style={{
+                                        fontWeight: 'bold',
+                                        color: 'white',
+                                        textDecoration: 'none'
+                                    }} className='dropdown'>
+                                        <img src={user && user.avartar} alt='' style={{
+                                            width: '40px',
+                                            height: '40px',
+                                            borderRadius: '50%',
+                                            objectFit: 'cover'
+                                        }} className='dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false" />
+                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown p-5">
+                                            <li><Link to='/profile' className="dropdown-item dropdown_item" href="#">Trang cá nhân</Link></li>
+                                            <li><Link to='#' className="dropdown-item  dropdown_item" href="#" onClick={() => Logout()}>Đăng xuất</Link></li>
+                                        </ul>
+                                    </Link>
+                                </>
+                                :
+                                <Link to={'/login'}>    <FaUserAlt style={{
+                                    fontSize: '20px',
+                                    color: 'white'
+                                }} /></Link>
+                        }
                     </div>
-                </li>
-            </ul>
 
-            <div className='shop-cart'>
-                <div className='user-profile' >
-                    {
-                        isLoggin ?
-                            <>
-                                <Link to='#' style={{
-                                    fontWeight: 'bold',
-                                    color: 'white',
-                                    textDecoration: 'none'
-                                }} className='dropdown'>
-                                    <img src={user && user.avartar} alt='' style={{
-                                        width: '40px',
-                                        height: '40px',
-                                        borderRadius: '50%',
-                                        objectFit: 'cover'
-                                    }} className='dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false" />
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown p-5">
-                                        <li><Link to='/profile' className="dropdown-item dropdown_item" href="#">Trang cá nhân</Link></li>
-                                        <li><Link to='#' className="dropdown-item  dropdown_item" href="#" onClick={() => Logout()}>Đăng xuất</Link></li>
-                                    </ul>
-                                </Link>
-                            </>
-                            :
-                            <Link to={'/login'}>    <FaUserAlt style={{
-                                fontSize: '20px',
-                                color: 'white'
-                            }} /></Link>
-                    }
+                    <div className='icon-cart' style={{ marginLeft: '30px' }} />
+                    <Link to='/cart' id='cart-shop'>  <BiShoppingBag style={{
+                        fontSize: '27px',
+                        color: 'white',
+
+                    }} /></Link>
+                    <span>{cart.length}</span>
                 </div>
 
-                <div className='icon-cart' style={{ marginLeft: '30px' }} />
-                <Link to='/cart' id='cart-shop'>  <BiShoppingBag style={{
-                    fontSize: '27px',
-                    color: 'white'
-                }} /></Link>
-                <span>{cart.length}</span>
             </div>
+            <div className='text-white d-flex justify-content-end w-100' style={{
+                padding: '0 7rem'
+            }}>
+                <a href='#' style={{
+                    textDecoration: 'none',
+                    color: 'white',
+                    // padding: '0 10rem',
+                    fontSize: "12px",
 
-
+                    padding: '2px 8px',
+                    borderRadius: '10px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.25)',
+                    alignItems: 'center'
+                }}>Bán hàng cùng Cookies</a>
+            </div>
         </div >
     )
 }

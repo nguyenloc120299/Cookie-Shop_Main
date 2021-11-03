@@ -24,8 +24,8 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route path='/' component={Langding} exact />
-          <Route path='/home' component={Product} exact />
+          {/* <Route path='/' component={Langding} exact /> */}
+          <Route path='/' component={Product} exact />
           <Route path='/cart' component={Cart} />
           <Route path='/detail/:id' component={SingleProduct} />
           <Route path='/login' component={isLogin ? Product : Login} />

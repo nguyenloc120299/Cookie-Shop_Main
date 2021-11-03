@@ -1,14 +1,14 @@
 .header {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-    height: 70px;
+    /* justify-content: space-around;
+    flex-wrap: wrap; */
+    flex-direction: column;
+    height: 110px;
     top: 0;
     z-index: 999;
     width: 100%;
     align-items: center;
-    background: black;
+    background: rgb(26, 148, 255);
     position: fixed;
 }
 .logo a {
