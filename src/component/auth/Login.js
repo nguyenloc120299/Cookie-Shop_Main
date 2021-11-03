@@ -66,7 +66,11 @@ const Login = () => {
                 />
             </div>
 
-            <button className="btn btn-primary w-100" onClick={() => onSubmitLogin()}>Đăng nhập</button>
+            <button className="btn text-white w-100" onClick={() => onSubmitLogin()}
+                style={{
+                    background: 'rgb(255, 15, 30)'
+                }}
+            >Đăng nhập</button>
 
             <div class=" mt-3 text-center">Bạn chưa có tài khoản ? <span><Link to='/register'>Đăng kí</Link></span> </div>
         </div>

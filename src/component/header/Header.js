@@ -34,42 +34,42 @@ const Header = () => {
 
     return (
         <div className='header'>
-
-            <div className='d-flex justify-content-around w-100 align-items-center p-3'>
+            <div className='d-flex justify-content-around align-items-center w-100 p-2'>
                 <div className='menu' >
                     <FaList />
                 </div>
                 <div className='logo'>
                     <Link to='/'> <h3 style={{
-                        border: "1px solid",
+
                         padding: "5px"
                     }}>Cookies</h3></Link>
                 </div>
 
-                {/* <ul className='links' > */}
-                {/* <li>
+                {/* <ul className='links' >
+                <li>
                     <NavLink to='/' >Trang chủ</NavLink>
                 </li>
                 <li>
                     <NavLink to='/home'>Cửa hàng</NavLink>
-                </li> */}
+                </li>
 
-                {/* <li style={{ position: 'absolute', right: '20%', display: 'flex', top: '38%' }} className='li-info'
-                    >
-                    </li>
-                    <li> */}
-                <div className="input-group w-50">
+                <li style={{ position: 'absolute', right: '20%', display: 'flex', top: '38%' }} className='li-info'
+                >
+                </li>
+                <li> */}
+                <div className="input-group w-50 ">
                     <input type="text" className="form-control" placeholder="Tìm kiếm" />
                     <button className="btn btn-outline-primary" type="button" style={{
                         color: 'white',
-                        borderColor: 'white',
+
                         background: 'rgb(13, 92, 182)'
-                    }}> <BsSearch style={{
-                        marginRight: '5px'
-                    }} />Tìm kiếm</button>
+                    }}><BsSearch style={{
+                        marginRight: '3px',
+
+                    }} /> Tìm kiếm</button>
                 </div>
                 {/* </li>
-                </ul> */}
+            </ul> */}
 
                 <div className='shop-cart'>
                     <div className='user-profile' >
@@ -104,27 +104,24 @@ const Header = () => {
                     <div className='icon-cart' style={{ marginLeft: '30px' }} />
                     <Link to='/cart' id='cart-shop'>  <BiShoppingBag style={{
                         fontSize: '27px',
-                        color: 'white',
-
+                        color: 'white'
                     }} /></Link>
                     <span>{cart.length}</span>
                 </div>
-
             </div>
-            <div className='text-white d-flex justify-content-end w-100' style={{
-                padding: '0 7rem'
+            <div className='w-100 d-flex justify-content-end align-items-center' style={{
+                padding: '0 4rem'
             }}>
                 <a href='#' style={{
-                    textDecoration: 'none',
                     color: 'white',
-                    // padding: '0 10rem',
-                    fontSize: "12px",
-
-                    padding: '2px 8px',
-                    borderRadius: '10px',
+                    fontSize: '12px',
+                    textDecoration: 'none',
                     backgroundColor: 'rgba(255, 255, 255, 0.25)',
-                    alignItems: 'center'
-                }}>Bán hàng cùng Cookies</a>
+                    padding: '5px 10px',
+                    borderRadius: '10px'
+                }}>
+                    Bán hàng cùng Cookies
+                </a>
             </div>
         </div >
     )

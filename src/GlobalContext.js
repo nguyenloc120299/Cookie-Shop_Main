@@ -12,6 +12,7 @@ export const DataProvider = ({ children }) => {
     const [isLoggin, setIsLoggin] = useState(false)
     const [isBuyer, setIsBuyer] = useState(false)
     const [callBackcart, setCallBackCart] = useState(false)
+    const res = JSON.parse(localStorage.getItem('login_admin_main'))
     const getProducts = async () => {
         let arr = []
         const res = await axios.get("/products")
@@ -23,7 +24,7 @@ export const DataProvider = ({ children }) => {
         }
     }
     useEffect(() => {
-        const res = JSON.parse(localStorage.getItem('login_admin_main'))
+
 
         if (res) {
             if (res.listroles[0].role === 'Admin' || res.listroles[0].role === 'user') setIsLoggin(true)

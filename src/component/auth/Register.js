@@ -89,7 +89,11 @@ const Register = () => {
                 />
 
             </div>
-            <button className="btn btn-primary w-100" onClick={() => submitRegister()}>Đăng kí</button>
+            <button className="btn w-100 text-white" onClick={() => submitRegister()}
+                style={{
+                    background: 'rgb(255, 15, 30)'
+                }}
+            >Đăng kí</button>
 
             <div className="mt-3 text-center">Bạn đã có tài khoản ? <span><Link to='/login'>Đăng nhập</Link></span> </div>
         </div>

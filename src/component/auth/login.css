@@ -5,8 +5,7 @@
     transform: translate(-50%, -50%);
     font-family: "Koh Santepheap", cursive;
     border-radius: 5px;
-    border: 1px solid #aaa;
-
+    margin-top: 5rem;
     padding: 15px;
 }
 .my__account {
