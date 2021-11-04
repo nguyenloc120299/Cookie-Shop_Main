@@ -17,7 +17,7 @@ const Profile = ({ optionRoute }) => {
         </>
     )
     return (
-        <div style style={{ marginTop: '60px', width: '100%', padding: '10px', height: '95vh' }}>
+        <div style style={{ paddingTop: '8rem', width: '100%', height: '95vh' }}>
             <div className='row ' style={{
                 height: '100%',
                 padding: '0 7rem'

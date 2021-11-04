@@ -54,9 +54,9 @@ ul li a:hover {
     color: white;
     background: crimson;
     border-radius: 50%;
-    padding: 0px 5px;
+    padding: 0px 6px;
     position: absolute;
-    top: -15px;
+    top: -8px;
     right: -15px;
 }
 .shop-cart a:hover {

@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
 import './login.css'
-const Login = () => {
+const Login = ({ setIsChange }) => {
     const context = useContext(GlobalContext)
     const [users] = context.usersApi.users
     const [callback, setCallback] = context.usersApi.callBack
@@ -28,7 +28,7 @@ const Login = () => {
 
             if (res1 && res1.data.status === 1) {
                 localStorage.setItem('login_admin_main', JSON.stringify(res1.data))
-                window.location.href = '/home'
+                window.location.href = '/'
             } else {
                 alert('Chưa xác thực email')
             }
@@ -39,7 +39,7 @@ const Login = () => {
 
     }
     return (
-        <div className='login mt-5 col col-10 col-lg-4'>
+        <div className='login'>
             <h2 className='text-center' style={{
 
                 padding: '5px',
@@ -68,11 +68,12 @@ const Login = () => {
 
             <button className="btn text-white w-100" onClick={() => onSubmitLogin()}
                 style={{
-                    background: 'rgb(255, 15, 30)'
+                    background: 'rgb(255, 15, 30)',
+                    height: '4rem'
                 }}
             >Đăng nhập</button>
 
-            <div class=" mt-3 text-center">Bạn chưa có tài khoản ? <span><Link to='/register'>Đăng kí</Link></span> </div>
+            <div class=" mt-3 text-center">Bạn chưa có tài khoản ? <span><Link to='#' onClick={() => setIsChange(true)}>Đăng kí</Link></span> </div>
         </div>
     )
 }

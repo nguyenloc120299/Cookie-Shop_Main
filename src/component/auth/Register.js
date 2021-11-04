@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-const Register = () => {
+const Register = ({ setIsChange }) => {
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: '',
@@ -23,7 +23,7 @@ const Register = () => {
         //window.location.href = '/login'
     }
     return (
-        <div className='login mt-5 col col-10 col-lg-4'>
+        <div className='login'>
             <h2 className='text-center' style={{
 
                 padding: '5px',
@@ -95,7 +95,7 @@ const Register = () => {
                 }}
             >Đăng kí</button>
 
-            <div className="mt-3 text-center">Bạn đã có tài khoản ? <span><Link to='/login'>Đăng nhập</Link></span> </div>
+            <div className="mt-3 text-center">Bạn đã có tài khoản ? <span><Link to='#' onClick={() => setIsChange(false)}>Đăng nhập</Link></span> </div>
         </div>
     )
 }

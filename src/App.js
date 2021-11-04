@@ -13,23 +13,26 @@ import { useContext, useEffect, useState } from 'react';
 import Profile from './component/auth/Profile';
 import MyAccount from './component/auth/MyAccount';
 import Payment from './component/payment/Payment';
+import ModalAuth from './component/auth/ModalAuth'
 import 'animate.css';
 function App() {
   const context = useContext(GlobalContext)
   const [isLogin] = context.isLoggin
+
+  const [isShowModalLoggin, setIsShowModalLoggin] = useState(false)
   const seller = true
 
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header setIsShow={setIsShowModalLoggin} />
         <Switch>
           {/* <Route path='/' component={Langding} exact /> */}
           <Route path='/' component={Product} exact />
           <Route path='/cart' component={Cart} />
           <Route path='/detail/:id' component={SingleProduct} />
-          <Route path='/login' component={isLogin ? Product : Login} />
-          <Route path='/register' component={isLogin ? Product : Register} />
+          {/* <Route path='/login' component={isLogin ? Product : Login} />
+          <Route path='/register' component={isLogin ? Product : Register} /> */}
           <Route path='/payment' component={isLogin ? Payment : Register} />
           <Route
             exact
@@ -52,7 +55,9 @@ function App() {
             render={props => isLogin ? <Profile {...props} optionRoute='addproduct' /> : <Register />}
           />
         </Switch>
-
+        {
+          isShowModalLoggin && <ModalAuth setIsShow={setIsShowModalLoggin} />
+        }
       </div>
 
     </Router>

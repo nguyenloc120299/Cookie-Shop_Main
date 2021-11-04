@@ -4,7 +4,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { BiShoppingBag } from 'react-icons/bi'
 import { GlobalContext } from '../../GlobalContext'
 import './header.css'
-const Header = () => {
+const Header = ({ setIsShow }) => {
     const context = useContext(GlobalContext)
     const [users] = context.usersApi.users
     // const [user, setUser] = useState([])
@@ -94,7 +94,7 @@ const Header = () => {
                                     </Link>
                                 </>
                                 :
-                                <Link to={'/login'}>    <FaUserAlt style={{
+                                <Link to={'#'} onClick={() => setIsShow(true)}>    <FaUserAlt style={{
                                     fontSize: '20px',
                                     color: 'white'
                                 }} /></Link>
