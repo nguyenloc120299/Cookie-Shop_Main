@@ -124,13 +124,40 @@ const MyAccount = () => {
                         <button className='btn btn-primary btn_edit-info mb-3' onClick={() => onSubmitEdit()} >Lưu Thay đổi</button>
                     }
                 </div>
-                {!isEdit ? <img src={info && info.avartar} style={{
-                    width: '250px',
-                    height: '250px',
-                    borderRadius: '50%',
-                    objectFit: 'cover'
-                }} />
-                    :
+
+                <div className='position-relative info_avt'>
+                    {
+                        img ?
+                            <img src={img.url}
+                                alt='avartar' style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    borderRadius: '50%',
+                                    objectFit: "cover"
+                                }} />
+                            :
+                            <img src={info && info.avartar} style={{
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: '50%',
+                                objectFit: 'cover'
+                            }} />
+                    }
+                    {
+                        isEdit &&
+
+                        <span className='d-flex justify-content-center'>
+                            <label htmlFor="fileInput">
+                                <i className="fas fa-camera" style={{
+                                    fontSize: '50px'
+                                }} />
+                                <input type='file' onChange={handleUploadImg} id='fileInput' style={{ display: 'none' }} />
+                            </label>
+                        </span>
+                    }
+                </div>
+
+                {/* :
                     <>
                         <div className='avt_info position-relative'>
 
@@ -166,7 +193,7 @@ const MyAccount = () => {
                         </div>
 
                     </>
-                }
+                } */}
             </div>
 
         </>

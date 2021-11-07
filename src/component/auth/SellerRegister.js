@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { dataImg } from '../../assets/img/imgData'
 import swal from 'sweetalert'
 const SellerRegister = ({ setIsChange }) => {
@@ -12,15 +12,17 @@ const SellerRegister = ({ setIsChange }) => {
         address: '',
         phone: ''
     })
+    const history = useHistory()
     const handleInput = e => {
         const { name, value } = e.target
 
         setUserLogin({ ...userLogin, [name]: value })
     }
     const submitRegister = async () => {
-        await axios.post('/seller/sigup', { ...userLogin });
 
-        swal(`Bạn đã đăng kí bán hàng thành công với tên shop ${userLogin.name} `, {
+        const res = await axios.post('/seller/sigup', { ...userLogin });
+
+        swal(` ${res.data.message} `, {
             icon: "success",
         });
         setUserLogin({
@@ -31,7 +33,7 @@ const SellerRegister = ({ setIsChange }) => {
             address: '',
             phone: ''
         })
-
+        history.push('create-store')
     }
     return (
         <div className='login' style={{
@@ -54,12 +56,12 @@ const SellerRegister = ({ setIsChange }) => {
                 </div>
                 <div style={{ width: "30%" }} className='seller_input'>
                     <div className="mb-3">
-                        <label>Tên Shop</label>
+                        <label>Tên chủ Shop</label>
                         <input type="text" className="form-control"
                             name='name'
                             value={userLogin.name}
                             onChange={handleInput}
-                            placeholder='Tên Shop'
+                            placeholder='Tên chủ Shop'
                         />
 
                     </div>
