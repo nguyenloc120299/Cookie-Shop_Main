@@ -15,6 +15,7 @@ import MyAccount from './component/auth/MyAccount';
 import Payment from './component/payment/Payment';
 import ModalAuth from './component/auth/ModalAuth'
 import 'animate.css';
+import SellerRegister from './component/auth/SellerRegister';
 function App() {
   const context = useContext(GlobalContext)
   const [isLogin] = context.isLoggin
@@ -27,10 +28,11 @@ function App() {
       <div className="App">
         <Header setIsShow={setIsShowModalLoggin} />
         <Switch>
-          {/* <Route path='/' component={Langding} exact /> */}
+          <Route path='/home' component={Product} exact />
           <Route path='/' component={Product} exact />
           <Route path='/cart' component={Cart} />
           <Route path='/detail/:id' component={SingleProduct} />
+          <Route path='/register-seller' component={SellerRegister} />
           {/* <Route path='/login' component={isLogin ? Product : Login} />
           <Route path='/register' component={isLogin ? Product : Register} /> */}
           <Route path='/payment' component={isLogin ? Payment : Register} />
@@ -55,6 +57,8 @@ function App() {
             render={props => isLogin ? <Profile {...props} optionRoute='addproduct' /> : <Register />}
           />
         </Switch>
+        <div className='footer'>
+        </div>
         {
           isShowModalLoggin && <ModalAuth setIsShow={setIsShowModalLoggin} />
         }

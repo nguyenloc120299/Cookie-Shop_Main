@@ -5,7 +5,7 @@
     flex-direction: column;
     height: 110px;
     top: 0;
-    z-index: 999;
+    z-index: 9;
     width: 100%;
     align-items: center;
     background: rgb(26, 148, 255);
@@ -22,14 +22,16 @@
 }
 .header ul li {
     list-style: none;
-    display: inline-block;
-    margin-left: 25px;
+    display: flex;
 }
 .header ul li a {
     text-decoration: none;
     font-size: 16px;
     color: white;
     font-family: "Sigmar One", cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 ul li a:hover {
     color: rgb(43, 123, 254);
@@ -54,10 +56,11 @@ ul li a:hover {
     color: white;
     background: crimson;
     border-radius: 50%;
-    padding: 0px 6px;
+    padding: 0px 7px;
     position: absolute;
-    top: -8px;
-    right: -15px;
+    top: -15px;
+    right: -12px;
+    font-weight: 500;
 }
 .shop-cart a:hover {
     color: rgb(43, 123, 254);
@@ -74,6 +77,9 @@ ul li a:hover {
 .header .li-info p {
     text-transform: capitalize;
     cursor: pointer;
+}
+.search_mobile {
+    display: none;
 }
 .header .li-info .option-header {
     position: absolute;

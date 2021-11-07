@@ -3,10 +3,11 @@ import React, { useContext, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
 import './login.css'
-const Login = ({ setIsChange }) => {
+const Login = ({ setIsChange, setIsShow }) => {
     const context = useContext(GlobalContext)
     const [users] = context.usersApi.users
     const [callback, setCallback] = context.usersApi.callBack
+    const [isLoggin, setIsLoggin] = context.isLoggin
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: ''
@@ -28,7 +29,9 @@ const Login = ({ setIsChange }) => {
 
             if (res1 && res1.data.status === 1) {
                 localStorage.setItem('login_admin_main', JSON.stringify(res1.data))
-                window.location.href = '/'
+                setIsLoggin(!isLoggin)
+                setCallback(!callback)
+                setIsShow(false)
             } else {
                 alert('Chưa xác thực email')
             }
@@ -40,11 +43,14 @@ const Login = ({ setIsChange }) => {
     }
     return (
         <div className='login'>
-            <h2 className='text-center' style={{
+            <div className='logo'>
+                <Link to='/'> <h2 style={{
 
-                padding: '5px',
-                marginBottom: '2rem'
-            }}>Cookies Shop</h2>
+                    padding: "5px",
+                    color: ' rgb(26, 148, 255)'
+
+                }}>Cookies Shop</h2></Link>
+            </div>
 
             <div className="mb-3">
 

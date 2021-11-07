@@ -3,6 +3,9 @@
   "proxy": "http://localhost:8080/api",
   "version": "0.1.0",
   "private": true,
+  "tags": [
+    "swiper"
+  ],
   "dependencies": {
     "@paypal/react-paypal-js": "^7.3.3",
     "@sweetalert/with-react": "^0.1.1",

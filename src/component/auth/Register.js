@@ -24,11 +24,14 @@ const Register = ({ setIsChange }) => {
     }
     return (
         <div className='login'>
-            <h2 className='text-center' style={{
+            <div className='logo'>
+                <Link to='/'> <h2 style={{
 
-                padding: '5px',
-                marginBottom: '10px'
-            }}>Cookies Shop</h2>
+                    padding: "5px",
+                    color: ' rgb(26, 148, 255)'
+
+                }}>Cookies Shop</h2></Link>
+            </div>
 
             <div className="mb-3">
 
@@ -91,7 +94,8 @@ const Register = ({ setIsChange }) => {
             </div>
             <button className="btn w-100 text-white" onClick={() => submitRegister()}
                 style={{
-                    background: 'rgb(255, 15, 30)'
+                    background: 'rgb(255, 15, 30)',
+                    height: '4rem'
                 }}
             >Đăng kí</button>
 

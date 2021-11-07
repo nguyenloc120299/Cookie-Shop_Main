@@ -76,6 +76,8 @@ const Product = () => {
 
 
                         }}>Tất cả sản phẩm</h4>
+
+
                         <div className='products '>
 
 
@@ -116,6 +118,7 @@ const Product = () => {
                     transform: 'translate(-50%,-50%)'
                 }}>Chưa có sản phẩm</h1>
             }
+
         </>
     )
 }

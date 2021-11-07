@@ -11,6 +11,7 @@ const Cart = () => {
     const [cart, setCart] = context.cart
     const [total, setTotal] = useState(0)
     const [isPayment, setIsPayment] = useState(false)
+    const [isLoggin, setIsLoggin] = context.isLoggin
     useEffect(() => {
         const getTotal = () => {
             const total = cart.reduce((prev, item) => {
@@ -57,6 +58,12 @@ const Cart = () => {
         style: 'currency',
         currency: 'VND',
     });
+    const showModalPayment = () => {
+        if (isLoggin) setIsPayment(true)
+        else swal("Vui lòng đăng nhập để thanh toán", {
+            icon: "warning",
+        });
+    }
     let body = (
         <>
 
@@ -78,7 +85,7 @@ const Cart = () => {
                     <tbody>
                         {
                             cart.map(p => (
-                                <tr key={p.id}>
+                                <tr key={p.id} >
                                     <td><img src={p.avartar} alt=''
                                         style={{
                                             width: '70px',
@@ -110,16 +117,14 @@ const Cart = () => {
                     <h5>Số lượng sản phẩm: {cart.length} </h5>
 
                     <h5>Phí vận chuyển: 1000 đ </h5>
-                    <Link to="#" className='btn btn-outline-dark d-flex justify-content-start w-50 m-4' style={{
+                    <Link to="#" className='btn btn-primary color-white d-flex justify-content-center w-50 m-4' style={{
                         fontWeight: 'bold',
                         textAlign: 'center'
 
-                    }} onClick={() => setIsPayment(true)}>Thanh toán </Link>
+                    }} onClick={() => showModalPayment()}>Thanh toán </Link>
 
                 </div>
-                {
-                    isPayment && <PaymentModal setIsPayment={setIsPayment} cart={cart} />
-                }
+
             </div>
 
         </>
@@ -141,7 +146,7 @@ const Cart = () => {
 
                             <h1>Không có sản phẩm</h1>
                             <div className='w-100 d-flex justify-content-center align-item-center'>
-                                <button className='btn btn-outline-dark mt-5 ' style={{
+                                <button className='btn btn-primary mt-5 ' style={{
                                     fontWeight: 'bold'
                                 }}>Mua ngay</button>
                             </div>
@@ -149,6 +154,10 @@ const Cart = () => {
                         </div>
 
                     </div>
+            }
+            {
+                (isPayment && isLoggin) && <PaymentModal setIsPayment={setIsPayment} cart={cart} />
+
             }
         </>
 

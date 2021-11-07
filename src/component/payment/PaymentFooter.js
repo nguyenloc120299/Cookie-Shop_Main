@@ -8,6 +8,7 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
     const context = useContext(GlobalContext)
     const [callBack, setCallback] = context.callBackcart
     const [total, setTotal] = useState(0)
+    const [totalUSD, setToTalUSD] = useState(0)
     const client = {
         sandbox:
             "AXMUBOcaszqCzfEOC-r--Rn7rMVoEbH9c6XbmyKb04nURqcLhpFxWwwnaUytaMR9UTaE2vwLfi5tqKbT",
@@ -21,7 +22,7 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
     }
     let style = {
         size: 'small',
-        color: 'black',
+        color: 'blue',
 
         shape: 'rect',
         label: 'checkout',
@@ -38,10 +39,14 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
                 totalmoney: element.totalCost,
                 quantity: element.quantity,
                 discount: element.competitive_price,
-                productId: element.id
+                productId: element.id,
+                name: element.name,
+                avartar: element.avartar
             })
 
         });
+        let usd = Math.round(t / 22000)
+        setToTalUSD(usd)
         setTotal(t)
         setProductDetailArr(cartPaymment)
     }, [cart])
@@ -77,10 +82,10 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
             {
                 !isType ?
                     <div>
-                        <button className='btn btn-dark w-100 btn-payment' type='submit' style={{ height: '55px' }} onClick={() => handleSubmit()}>Đặt hàng</button>
+                        <button className='btn btn-primary w-100 btn-payment' type='submit' style={{ height: '55px' }} onClick={() => handleSubmit()}>Đặt hàng</button>
                     </div>
                     :
-                    <PaypalExpressBtn client={client} currency={"USD"} total={Math.round(total / 23000)} style={style} onSuccess={handleSubmit} />
+                    <PaypalExpressBtn client={client} currency={"USD"} total={total} style={style} onSuccess={handleSubmit} />
 
             }
         </div>

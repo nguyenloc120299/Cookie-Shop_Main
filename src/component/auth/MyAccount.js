@@ -36,6 +36,7 @@ const MyAccount = () => {
             email: info.email,
             phone: info.phone,
             address: info.address,
+            status: 1
 
         })
         setIsEdit(!isEdit)
@@ -69,9 +70,9 @@ const MyAccount = () => {
         }
     }
     const onSubmitEdit = async () => {
-        console.log({ ...valueInput, avartar: img.url });
+
         if (img) {
-            console.log(1);
+
             await axios.put('/users', {
                 ...valueInput, avartar: img.url
             })

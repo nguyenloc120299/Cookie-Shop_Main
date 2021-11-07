@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { FaList, FaUserAlt, BsSearch } from 'react-icons/all'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useHistory } from 'react-router-dom'
 import { BiShoppingBag } from 'react-icons/bi'
 import { GlobalContext } from '../../GlobalContext'
 import './header.css'
@@ -8,8 +8,11 @@ const Header = ({ setIsShow }) => {
     const context = useContext(GlobalContext)
     const [users] = context.usersApi.users
     // const [user, setUser] = useState([])
-    const [cart] = context.cart
+    const history = useHistory()
+
     const [isLoggin, setIsLoggin] = context.isLoggin
+
+    const [cart, setCart] = context.cart
     const [nameUser, setNameUser] = useState(null)
     // useEffect(() => {
     //     if (isLoggin) {
@@ -27,8 +30,10 @@ const Header = ({ setIsShow }) => {
 
     const Logout = () => {
         localStorage.setItem('login_admin_main', false)
-        localStorage.setItem('cart', [])
+
         setIsLoggin(false)
+
+        history.push('/')
         //window.location.href = '/home'
     }
 
@@ -57,7 +62,7 @@ const Header = ({ setIsShow }) => {
                 >
                 </li>
                 <li> */}
-                <div className="input-group w-50 ">
+                <div className="input-group w-50 search_desktop ">
                     <input type="text" className="form-control" placeholder="Tìm kiếm" />
                     <button className="btn btn-outline-primary" type="button" style={{
                         color: 'white',
@@ -67,6 +72,12 @@ const Header = ({ setIsShow }) => {
                         marginRight: '3px',
 
                     }} /> Tìm kiếm</button>
+                </div>
+                <div className='search_mobile'>
+                    <BsSearch style={{
+                        marginRight: '3px',
+
+                    }} />
                 </div>
                 {/* </li>
             </ul> */}
@@ -112,7 +123,7 @@ const Header = ({ setIsShow }) => {
             <div className='w-100 d-flex justify-content-end align-items-center' style={{
                 padding: '0 4rem'
             }}>
-                <a href='#' style={{
+                <Link to='register-seller' style={{
                     color: 'white',
                     fontSize: '12px',
                     textDecoration: 'none',
@@ -121,7 +132,7 @@ const Header = ({ setIsShow }) => {
                     borderRadius: '10px'
                 }}>
                     Bán hàng cùng Cookies
-                </a>
+                </Link>
             </div>
         </div >
     )

@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
-import { AiOutlineShoppingCart } from 'react-icons/all'
+import ModalAuth from '../auth/ModalAuth'
 export const ButtonAddCart = ({ id }) => {
     const context = useContext(GlobalContext)
     const addCart = context.addCart
     const [isLogin] = context.isLoggin
+
+    const [isShowModal, setIsShowModal] = useState(false)
     return (
         <>
             {
@@ -15,10 +17,14 @@ export const ButtonAddCart = ({ id }) => {
                         Mua ngay
                     </button> :
 
-                    <Link to='/login' className='btn btn-primary w-100 d-flex justify-content-center'  >
+                    <Link to='#' onClick={() => setIsShowModal(true)} className='btn btn-primary w-100 d-flex justify-content-center'  >
                         Mua ngay
                     </Link>
             }
+            {
+                isShowModal && <ModalAuth setIsShow={setIsShowModal} />
+            }
         </>
+
     )
 }

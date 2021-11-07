@@ -17,7 +17,7 @@ const Profile = ({ optionRoute }) => {
         </>
     )
     return (
-        <div style style={{ paddingTop: '8rem', width: '100%', height: '95vh' }}>
+        <div style style={{ paddingTop: '8rem', width: '100%', height: '100vh', overflow: 'scroll' }}>
             <div className='row ' style={{
                 height: '100%',
                 padding: '0 7rem'

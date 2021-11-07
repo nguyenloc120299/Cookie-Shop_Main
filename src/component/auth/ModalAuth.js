@@ -10,12 +10,15 @@ const ModalAuth = ({ setIsShow }) => {
 
 
             <div className='modal_auth'>
-                <div className='position-relative'>
-                    <div className='close_auth' onClick={() => setIsShow(false)}>x</div>
+                <div className='position-relative w-100 h-100'>
+                    <div className='close_auth' onClick={() => setIsShow(false)}>
+                        <span>X</span>
+                    </div>
+                    {
+                        isChange ? <Register setIsChange={setIsChange} /> : <Login setIsChange={setIsChange} setIsShow={setIsShow} />
+                    }
                 </div>
-                {
-                    isChange ? <Register setIsChange={setIsChange} /> : <Login setIsChange={setIsChange} />
-                }
+
 
             </div>
         </div>

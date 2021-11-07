@@ -14,3 +14,27 @@
   background: #aaa;
   height: 30vh;
 }
+.form-control {
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+@media (max-width: 775px) {
+  .search_desktop {
+    display: none;
+  }
+  .search_mobile {
+    display: unset !important;
+    color: white;
+    font-weight: 700;
+  }
+  .login {
+    padding: 25rem 0 0 0 !important;
+  }
+  .seller_form {
+    flex-direction: column;
+  }
+  .seller_input {
+    width: 100% !important;
+  }
+}
