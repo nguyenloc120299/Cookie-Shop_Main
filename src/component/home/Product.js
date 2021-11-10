@@ -7,6 +7,7 @@ import CardSlide from '../langding/Slider/CardSlide'
 import Pagination from '../product/Pagination'
 import { ButtonAddCart } from '../view/ButtonAddCart'
 import Promotion from '../view/Promotion'
+import Banner from './banner/Banner'
 
 import './home.css'
 
@@ -40,15 +41,13 @@ const Product = () => {
     })
 
     return (
-        <>
+        <div className='product_page'>
+            <Banner />
 
             {
                 products.length > 0 ? <>
 
-                    <div className='w-100 abount home-slider' style={{
-                        marginTop: '100px',
-
-                    }}>
+                    <div className='w-100 abount home-slider'>
 
                         {/* <h4 style={{
                             textAlign: 'left',
@@ -71,13 +70,30 @@ const Product = () => {
                         </div> */}
 
                     </div>
+
                     <div className='product_main'>
-                        <h4 style={{
+                        {/* <h4 style={{
 
 
-                        }}>Tất cả sản phẩm</h4>
+                        }}>Tất cả sản phẩm</h4> */}
 
-
+                        <div className='sort_product d-flex justify-content-around align-items-center'>
+                            <div>Sắp xếp theo</div>
+                            <button>Tất cả</button>
+                            <button>Mới nhât</button>
+                            <button>Bán chạy</button>
+                            <button className='dropdown' style={{
+                                width: '10rem'
+                            }}>
+                                <div className='dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false">
+                                    Giá
+                                </div>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown p-5">
+                                    <li><Link to='#' className="dropdown-item dropdown_item" href="#">Từ thấp tới cao</Link></li>
+                                    <li><Link to='#' className="dropdown-item  dropdown_item" href="#">Từ cao tới thâp</Link></li>
+                                </ul>
+                            </button>
+                        </div>
                         <div className='products '>
 
 
@@ -119,7 +135,7 @@ const Product = () => {
                 }}>Chưa có sản phẩm</h1>
             }
 
-        </>
+        </div>
     )
 }
 

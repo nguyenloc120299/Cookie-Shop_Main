@@ -15,6 +15,9 @@ import MyAccount from './component/auth/MyAccount';
 import Payment from './component/payment/Payment';
 import ModalAuth from './component/auth/ModalAuth'
 import 'animate.css';
+// import SwipperCore, { Autoplay } from 'swiper'
+// import { Swiper, SwiperSlide } from 'swiper/react';
+
 import SellerRegister from './component/auth/SellerRegister';
 function App() {
   const context = useContext(GlobalContext)
@@ -22,7 +25,7 @@ function App() {
 
   const [isShowModalLoggin, setIsShowModalLoggin] = useState(false)
   const seller = true
-
+  // SwipperCore.use([Autoplay])
   return (
     <Router>
       <div className="App">
@@ -58,6 +61,23 @@ function App() {
           />
         </Switch>
         <div className='footer'>
+          {/* <Swiper
+            spaceBetween={30}
+            slidesPerView={1}
+            autoplay={{
+              delay: 500,
+              disableOnInteraction: false
+            }}
+            loop={true}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+          >
+            <SwiperSlide>Slide 1</SwiperSlide>
+            <SwiperSlide>Slide 2</SwiperSlide>
+            <SwiperSlide>Slide 3</SwiperSlide>
+            <SwiperSlide>Slide 4</SwiperSlide>
+
+          </Swiper> */}
         </div>
         {
           isShowModalLoggin && <ModalAuth setIsShow={setIsShowModalLoggin} />
