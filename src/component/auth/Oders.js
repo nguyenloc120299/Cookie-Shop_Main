@@ -15,7 +15,7 @@ const Oders = () => {
                         name: element.name,
                         dateOrder: item.dateorder,
                         quantity: element.quantity,
-                        total: element.discount,
+                        total: element.totalmoney,
                         avartar: element.avartar,
                         payments: item.payments,
                         status: element.status
