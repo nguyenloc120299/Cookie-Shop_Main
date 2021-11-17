@@ -132,9 +132,8 @@
 .sort_product {
     width: 100%;
     height: 3rem;
-    background: #ddd;
+    background: whitesmoke;
     padding: 1rem 4rem;
-    margin-top: 1rem;
 }
 .sort_product button {
     background: white;
@@ -144,6 +143,23 @@
     height: 2rem;
     border-radius: 2px;
     text-align: center;
+}
+.filter_product {
+    height: 100%;
+    width: 17rem;
+    padding-top: 3rem;
+    background: whitesmoke;
+    /* padding-top: 3rem
+; */
+    margin-top: 2rem;
+    padding: 1rem 1rem;
+}
+.filter_product .item_filter:hover {
+    color: rgb(26, 148, 255);
+    font-weight: bold;
+}
+.filter_product .item_filter:focus {
+    color: rgb(26, 148, 255);
 }
 /* -----------------------------------pagination---------------------------------- */
 .pagination {

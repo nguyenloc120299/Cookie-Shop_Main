@@ -7,6 +7,9 @@ export const GlobalContext = createContext()
 
 export const DataProvider = ({ children }) => {
     const [products, setProducts] = useState([])
+    const [categories, setCategories] = useState([])
+
+    const [supplier, setSupplier] = useState([])
     const [callBack, setCallBack] = useState(false)
     const [cart, setCart] = useState([])
     const [isLoggin, setIsLoggin] = useState(false)
@@ -23,6 +26,15 @@ export const DataProvider = ({ children }) => {
             setProducts(arr)
         }
     }
+
+    const getCategories = async () => {
+        const res = await axios.get("/categories")
+        if (res && res.data) setCategories(res.data)
+    }
+    const getSuplliers = async () => {
+        const res = await axios.get("/suppliers")
+        if (res && res.data) setSupplier(res.data)
+    }
     useEffect(() => {
 
 
@@ -34,6 +46,8 @@ export const DataProvider = ({ children }) => {
     }, [])
     useEffect(() => {
         getProducts()
+        getCategories()
+        getSuplliers()
     }, [callBack])
 
     const addCart = (id) => {
@@ -89,7 +103,9 @@ export const DataProvider = ({ children }) => {
         isLoggin: [isLoggin, setIsLoggin],
         usersApi: UsersApi(),
         untillApi: UntillApi(),
-        callBackcart: [callBackcart, setCallBackCart]
+        callBackcart: [callBackcart, setCallBackCart],
+        categories: [categories, setCategories],
+        suppliers: [supplier, setSupplier]
     }
     useEffect(() => {
         const dataCart = JSON.parse(localStorage.getItem('cart'))
