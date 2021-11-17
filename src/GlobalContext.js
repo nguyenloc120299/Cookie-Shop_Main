@@ -118,7 +118,7 @@ export const DataProvider = ({ children }) => {
                 id: element.id,
                 name: element.name,
                 avartar: element.avartar,
-                quantity: 0,
+                quantity: 1,
                 price: element.price,
                 totalCost: element.price,
                 competitive_price: element.competitive_price

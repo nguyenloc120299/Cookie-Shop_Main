@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react'
-import { GlobalContext } from '../../GlobalContext'
+import React from 'react'
+
 
 const ProductPayMent = ({ cart }) => {
 
-
+    console.log(cart);
     return (
         <div className='product_payment'>
 

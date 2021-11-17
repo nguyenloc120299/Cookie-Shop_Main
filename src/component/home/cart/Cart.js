@@ -65,16 +65,16 @@ const Cart = () => {
         });
     }
     let body = (
-        <>
 
 
-            <div class="cart">
 
+        <div class="cart">
 
-                <table class="table table-hover table-condensed table__cart">
+            <div className='w-100'>
+                <table class="table  table__cart">
                     <thead>
                         <tr>
-                            <th ></th>
+
                             <th >Tên sản phẩm</th>
                             <th >Giá</th>
                             <th >Số lượng</th>
@@ -86,13 +86,16 @@ const Cart = () => {
                         {
                             cart.map(p => (
                                 <tr key={p.id} >
-                                    <td><img src={p.avartar} alt=''
-                                        style={{
-                                            width: '70px',
-                                            height: '80px'
-                                        }}
-                                    /></td>
-                                    <td className='td__cart'>{p.name}</td>
+                                    <td className='d-flex flex-column '>
+                                        {p.name}
+                                        <img src={p.avartar} alt=''
+                                            style={{
+                                                width: '70px',
+                                                height: '80px',
+                                                marginTop: '2px'
+                                            }}
+                                        /></td>
+
                                     <td className='td__cart'>{numberFormat.format(p.price)}</td>
                                     <td className='td__cart'>
                                         <AmountCart p={p} removeProduct={removeProduct} />
@@ -110,24 +113,28 @@ const Cart = () => {
                         }
                     </tbody>
                 </table>
-                <div className="total">
-                    <h5>Chi tiết hóa đơn</h5>
-                    <hr />
-                    <h5>Tổng cộng: {numberFormat.format(total)} </h5>
-                    <h5>Số lượng sản phẩm: {cart.length} </h5>
+            </div>
+            <div className="total">
+                <h4 style={{
+                    textAlign: 'center'
+                }}>Chi tiết hóa đơn</h4>
 
-                    <h5>Phí vận chuyển: 1000 đ </h5>
+                <h5>Tổng cộng: {numberFormat.format(total)} </h5>
+                <h5>Số lượng sản phẩm: {cart.length} </h5>
+
+                <h5>Phí vận chuyển: 1000 đ </h5>
+                <div className='d-flex justify-content-center align-items-center'>
                     <Link to="#" className='btn btn-primary color-white d-flex justify-content-center w-50 m-4' style={{
                         fontWeight: 'bold',
                         textAlign: 'center'
 
                     }} onClick={() => showModalPayment()}>Thanh toán </Link>
-
                 </div>
-
             </div>
 
-        </>
+        </div>
+
+
     )
     return (
         <>
@@ -145,11 +152,11 @@ const Cart = () => {
                         }}>
 
                             <h1>Không có sản phẩm</h1>
-                            <div className='w-100 d-flex justify-content-center align-item-center'>
+                            <Link to='/' className='w-100 d-flex justify-content-center align-item-center'>
                                 <button className='btn btn-primary mt-5 ' style={{
                                     fontWeight: 'bold'
                                 }}>Mua ngay</button>
-                            </div>
+                            </Link>
 
                         </div>
 

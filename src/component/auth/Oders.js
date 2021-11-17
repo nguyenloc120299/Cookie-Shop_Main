@@ -8,6 +8,7 @@ const Oders = () => {
         let data = []
         const res = await axios.get(`/orders/users/${id}`)
         if (res && res.data) {
+            console.log(res);
             res.data.forEach(item => {
                 item.listOrderDetail.forEach(element => {
                     data.push({

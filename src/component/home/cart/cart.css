@@ -1,15 +1,16 @@
 .cart {
     position: relative;
-    transform: scaleY(0.98);
+
     display: flex;
     /* margin-top: 20px
 ; */
-    margin-right: 10px;
-    margin-left: 10px;
+
     font-family: "Koh Santepheap", cursive;
     height: 100vh;
     width: 100%;
-    padding-top: 9rem;
+    margin-top: 9rem;
+    justify-content: space-around;
+    padding: 0 2rem;
 }
 .table__cart {
     width: 100%;
@@ -26,12 +27,18 @@
     /* display: flex; */
     margin: 5px;
     font-weight: bold;
-    width: 25%;
+    width: 30rem;
+    height: 40vh;
+    background: whitesmoke;
+    border-radius: 16px;
+    /* align-items: center; */
+    padding: 3rem;
+    margin-left: 5rem;
 }
 .cart table td {
     font-size: 12px;
 }
 .total h5 {
     font-size: 14px;
-    text-align: left;
+    text-align: center;
 }

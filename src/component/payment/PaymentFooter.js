@@ -9,6 +9,8 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
     const [callBack, setCallback] = context.callBackcart
     const [total, setTotal] = useState(0)
     const [totalUSD, setToTalUSD] = useState(0)
+
+
     const client = {
         sandbox:
             "AXMUBOcaszqCzfEOC-r--Rn7rMVoEbH9c6XbmyKb04nURqcLhpFxWwwnaUytaMR9UTaE2vwLfi5tqKbT",
