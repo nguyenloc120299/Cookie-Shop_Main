@@ -48,7 +48,7 @@ $(document).on('click', '.btn-buy-now', function (e) {
             });
             $(document).find('.btn-buy-now').removeClass('disable');
 
-        }, 1000);
-    }, 500);
+        }, 0);
+    }, 0);
 });
 

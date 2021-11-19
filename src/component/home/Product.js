@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import ScrollAnimation from 'react-animate-on-scroll'
 import { Link } from 'react-router-dom'
@@ -13,7 +14,7 @@ import './home.css'
 
 const Product = () => {
     const context = useContext(GlobalContext)
-    const [products] = context.productsApi.products
+    const [products, setProducts] = context.productsApi.products
     const [categories] = context.categories
     const [suppliers] = context.suppliers
 
@@ -25,6 +26,15 @@ const Product = () => {
     const pageCount = Math.ceil(products.length / totalItem);
     const changePage = ({ selected }) => {
         setPageNumber(selected)
+    }
+
+    const getProductByCategories = async (id) => {
+        const res = await axios.get(`/products/categories/${id}`)
+        if (res && res.data) setProducts(res.data);
+    }
+    const getProductBySupplier = async (id) => {
+        const res = await axios.get(`/products/supplier/${id}`)
+        if (res && res.data) setProducts(res.data);
     }
     const numberFormat = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
@@ -75,7 +85,9 @@ const Product = () => {
 
                                             paddingTop: '2px',
                                             cursor: 'pointer'
-                                        }} className='item_filter'> {item.name} ({item.totalproduct})</div>
+                                        }} className='item_filter'
+                                            onClick={() => getProductByCategories(item.id)}
+                                        > {item.name} ({item.totalproduct})</div>
                                     ))
                                 }
 
@@ -95,7 +107,9 @@ const Product = () => {
 
                                             paddingTop: '2px',
                                             cursor: "pointer"
-                                        }} className='item_filter'> {item.name} ({item.products && item.products.length})</div>
+                                        }} className='item_filter'
+                                            onClick={() => getProductBySupplier(item.id)}
+                                        > {item.name} ({item.products && item.products.length})</div>
                                     ))
                                 }
                             </div>

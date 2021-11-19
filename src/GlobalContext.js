@@ -90,7 +90,7 @@ export const DataProvider = ({ children }) => {
                 //     html: true
                 // })
             }
-        }, 1500);
+        }, 0);
 
 
     }

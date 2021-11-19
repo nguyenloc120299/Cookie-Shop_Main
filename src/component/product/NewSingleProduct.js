@@ -120,7 +120,7 @@ const SingleProduct = () => {
                     }
                 </div> */}
                     <div className='d-flex justify-content-start'>
-                        <ButtonAddCart />
+                        <ButtonAddCart id={detail.id} />
                     </div>
 
                 </div>
