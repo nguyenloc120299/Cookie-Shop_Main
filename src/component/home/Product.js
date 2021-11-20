@@ -15,9 +15,11 @@ import './home.css'
 const Product = () => {
     const context = useContext(GlobalContext)
     const [products, setProducts] = context.productsApi.products
+    const [callBack, setCallback] = context.productsApi.callBack
     const [categories] = context.categories
     const [suppliers] = context.suppliers
-
+    const [type, setType] = useState('')
+    const [idCategory, setCategory] = useState('')
     const [listSlide, setListSlide] = useState([])
     const listRef = useRef()
     const totalItem = 14;
@@ -29,12 +31,87 @@ const Product = () => {
     }
 
     const getProductByCategories = async (id) => {
+        setCategory(id)
+        setType('categories')
         const res = await axios.get(`/products/categories/${id}`)
         if (res && res.data) setProducts(res.data);
     }
     const getProductBySupplier = async (id) => {
+        setCategory(id)
+        setType('suppliers')
         const res = await axios.get(`/products/supplier/${id}`)
         if (res && res.data) setProducts(res.data);
+    }
+    const sortProductBanChay = async (id, type) => {
+        if (id) {
+            if (type === 'categories') {
+                const res = await axios.get(`/products/sellfast/categories/${id}`)
+
+                if (res && res.data) {
+                    setProducts(res.data)
+                }
+            } else if (type === 'suppliers') {
+                const res = await axios.get(`/products/sellfast/supplier/${id}`)
+
+                if (res && res.data) {
+                    setProducts(res.data)
+                }
+            }
+        }
+        else {
+            const res = await axios.get(`/products/sellfast`)
+
+            if (res && res.data) {
+                setProducts(res.data)
+            }
+        }
+    }
+    const sortProductByPriceIncrease = async (id, type) => {
+
+        if (id) {
+            if (type === 'categories') {
+                const res = await axios.get(` /products/increase/categories/${id}`)
+
+                if (res && res.data) {
+                    setProducts(res.data)
+                }
+            } else if (type === 'suppliers') {
+                const res = await axios.get(`/products/increase/supplier/${id}`)
+
+                if (res && res.data) {
+                    setProducts(res.data)
+                }
+            }
+        } else {
+            const res = await axios.get(`/products/increase`)
+
+            if (res && res.data) {
+                setProducts(res.data)
+            }
+        }
+    }
+    const sortProductByPriceReduced = async (id, type) => {
+        if (id) {
+            if (type === 'categories') {
+                const res = await axios.get(`  /products/reduced/categories/${id}`)
+
+                if (res && res.data) {
+                    setProducts(res.data)
+                }
+            } else if (type === 'suppliers') {
+                const res = await axios.get(`  /products/reduced/supplier/${id}`)
+
+                if (res && res.data) {
+                    setProducts(res.data)
+                }
+            }
+        } else {
+            const res = await axios.get(`  /products/reduced/`)
+
+            if (res && res.data) {
+                setProducts(res.data)
+            }
+        }
     }
     const numberFormat = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
@@ -54,6 +131,7 @@ const Product = () => {
 
     return (
         <div className='product_page'>
+
             <Banner />
 
             {
@@ -115,10 +193,10 @@ const Product = () => {
                             </div>
                             <div className='products '>
                                 <div className='sort_product d-flex justify-content-around align-items-center'>
-                                    <div>Sắp xếp theo</div>
-                                    <button>Tất cả</button>
+                                    <h6>Sắp xếp theo</h6>
+                                    <button onClick={() => setCallback(!callBack)}>Tất cả</button>
                                     <button>Mới nhât</button>
-                                    <button>Bán chạy</button>
+                                    <button onClick={() => sortProductBanChay(idCategory, type)}>Bán chạy</button>
                                     <button className='dropdown' style={{
                                         width: '10rem'
                                     }}>
@@ -126,8 +204,8 @@ const Product = () => {
                                             Giá
                                         </div>
                                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown p-5">
-                                            <li><Link to='#' className="dropdown-item dropdown_item" href="#">Từ thấp tới cao</Link></li>
-                                            <li><Link to='#' className="dropdown-item  dropdown_item" href="#">Từ cao tới thâp</Link></li>
+                                            <li><Link to='#' className="dropdown-item dropdown_item" href="#" onClick={() => sortProductByPriceIncrease(idCategory, type)}>Từ thấp tới cao</Link></li>
+                                            <li><Link to='#' className="dropdown-item  dropdown_item" href="#" onClick={() => sortProductByPriceReduced(idCategory, type)}>Từ cao tới thâp</Link></li>
                                         </ul>
                                     </button>
                                 </div>
@@ -138,16 +216,18 @@ const Product = () => {
 
                                         <div className='card__product' key={product.id}>
 
-                                            <Link className='card__product__img' to={`/detail/${product.id}`}>
-                                                <img src={product.avartar} alt='' />
-                                            </Link>
+                                            {/* <Link className='card__product__img' to={`/detail/${product.id}`}> */}
+                                            <img src={product.avartar} alt='' />
+                                            {/* </Link> */}
                                             <div className='box'>
                                                 {product.promotion > 0 && <Promotion value={product.promotion} />}
-                                                <Link to={`/detail/${product.id}`}><h4>{product.name}</h4></Link>
+                                                <Link to={`/detail/${product.id}`}><h5>{product.name}</h5></Link>
                                                 <p>{product.sort_description}</p>
                                                 <div className='d-flex justify-content-around'>
                                                     <h5>{numberFormat.format(product.competitive_price)}</h5>
-                                                    <p className='text-dark'>Đã bán {product.ban_nhanh}</p>
+                                                    <p className='text-dark' style={{
+                                                        color: 'rgb(120, 120, 120)'
+                                                    }}>Đã bán {product.ban_nhanh}</p>
                                                 </div>
                                                 <ButtonAddCart id={product.id} />
 

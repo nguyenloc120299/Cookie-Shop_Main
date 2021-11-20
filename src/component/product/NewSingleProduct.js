@@ -122,6 +122,9 @@ const SingleProduct = () => {
                     <div className='d-flex justify-content-start'>
                         <ButtonAddCart id={detail.id} />
                     </div>
+                    <div className='info_store'>
+                        aaaa
+                    </div>
 
                 </div>
 

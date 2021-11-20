@@ -131,6 +131,7 @@ const Header = ({ setIsShow }) => {
                     padding: '5px 10px',
                     borderRadius: '10px'
                 }}>
+                    <img className="icon m-1" src="https://frontend.tikicdn.com/_desktop-next/static/img/icon-seller.svg" alt='' />
                     Bán hàng cùng Cookies
                 </Link>
             </div>

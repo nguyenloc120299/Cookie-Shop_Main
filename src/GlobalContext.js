@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import UsersApi from './api/UserApi'
 import ProductApi from './api/ProductApi'
 import UntillApi from './api/untill'
+import swal from "sweetalert";
 export const GlobalContext = createContext()
 
 export const DataProvider = ({ children }) => {
@@ -79,6 +80,10 @@ export const DataProvider = ({ children }) => {
                     avartar: item.avartar,
                     competitive_price: item.competitive_price
                 }])
+                swal({
+                    title: "Thêm thành công!",
+                    icon: "success",
+                });
             }
             else {
                 // swal({
@@ -89,8 +94,12 @@ export const DataProvider = ({ children }) => {
                 //     dangerMode: false,
                 //     html: true
                 // })
+                swal({
+                    title: "Sản phẩm này đã được thêm vào giỏ!",
+                    icon: "warning",
+                });
             }
-        }, 0);
+        }, 1200);
 
 
     }

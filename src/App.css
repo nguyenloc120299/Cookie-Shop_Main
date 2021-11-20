@@ -11,8 +11,11 @@
 }
 .footer {
   width: 100%;
-  background: #aaa;
-  height: 30vh;
+  background: rgb(26, 148, 255);
+  height: 20vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .form-control {
   border-radius: 10px;

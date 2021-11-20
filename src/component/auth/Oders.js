@@ -1,9 +1,17 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { BiDetail } from 'react-icons/all'
+import { GrStatusUnknown } from 'react-icons/all'
+import ProCessStep from '../home/cart/ProCessStep'
 const Oders = () => {
     const [myOrders, setMyOrder] = useState([])
     const { id } = JSON.parse(localStorage.getItem('login_admin_main'))
+    const [statusValue, setStatusValue] = useState('')
+    const [isShowModal, setIsShowModal] = useState(false)
+
+    const handleClickStatus = (item) => {
+        setIsShowModal(true)
+        setStatusValue(item)
+    }
     const getOrders = async () => {
         let data = []
         const res = await axios.get(`/orders/users/${id}`)
@@ -35,15 +43,15 @@ const Oders = () => {
         <div className='my_order w-100'>
             <table class="table table-borderless">
                 <thead>
-                    <tr>
+                    <tr className='text-center'>
                         <th scope="col">#</th>
                         <th scope="col">Sản phẩm</th>
 
-                        <th scope="col">Số lượng sản phẩm</th>
+                        <th scope="col">Số lượng</th>
                         <th scope="col">Ngày đặt</th>
-                        <th scope="col">Hình thức thanh toán</th>
+                        <th scope="col">Thanh toán</th>
                         <th scope="col">Tổng tiền</th>
-                        <th scope="col">Trạng thái</th>
+                        <th scope="col" >Trạng thái</th>
 
                     </tr>
                 </thead>
@@ -73,11 +81,9 @@ const Oders = () => {
 
                                 >{item.payments === 1 ? 'Trực tiếp' : 'Online'}</td>
                                 <td>{item.total}</td>
-                                <td
-                                    style={item.status === 0
-                                        ? { color: 'green', fontWeight: 'bold' }
-                                        : { color: 'blue', fontWeight: "bold" }}
-                                >{item.status === 0 ? 'Chưa xác nhận' : 'Đã giao hàng'}</td>
+                                <td>
+                                    <ProCessStep status={item.status} />
+                                </td>
 
                             </tr>
                         ))
@@ -87,6 +93,8 @@ const Oders = () => {
 
                 </tbody>
             </table>
+
+
         </div >
     )
 }

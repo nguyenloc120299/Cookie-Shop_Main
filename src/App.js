@@ -61,23 +61,21 @@ function App() {
           />
         </Switch>
         <div className='footer'>
-          {/* <Swiper
-            spaceBetween={30}
-            slidesPerView={1}
-            autoplay={{
-              delay: 500,
-              disableOnInteraction: false
-            }}
-            loop={true}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-          >
-            <SwiperSlide>Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
+          <div>
+            <div className='logo'>
+              <a href="/"> <h3 style={{
+                padding: '5px'
+              }}>Cookies</h3></a>
+            </div>
+            <div className="copyright text-white text-center mb-5">Copyright @CookiesShop 2021
+            </div>
+          </div>
+          <div>
+            <h5>Liên hệ</h5>
+            <div className='d-flex flex-column'>
 
-          </Swiper> */}
+            </div>
+          </div>
         </div>
         {
           isShowModalLoggin && <ModalAuth setIsShow={setIsShowModalLoggin} />
