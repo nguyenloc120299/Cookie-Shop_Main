@@ -35,7 +35,6 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
         let cartPaymment = []
         let t = 0
         cart && cart.forEach(element => {
-
             t += element.totalCost
             if (element) cartPaymment.push({
                 totalmoney: element.totalCost,
@@ -57,17 +56,16 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
         try {
             const res = await axios.post('/orders', {
                 payments: !isType ? '1' : '0',
-                deliveryaddress: isChangeAddress ? newAddress : (user && user.address),
+                deliveryaddress: isChangeAddress ? newAddress.newAddress : (user && user.address),
                 transportfee: 30000.0,
-                namecustomer: user && user.name,
+                namecustomer: isChangeAddress ? newAddress.newName : (user && user.name),
                 email: user && user.email,
-                phone: user && user.phone,
+                phone: isChangeAddress ? newAddress.newPhone : (user && user.phone),
                 note: noteValue,
                 userId: user && user.id,
                 listOrderdetail: productDetailArr
             })
             setIsPayment(false)
-
             localStorage.removeItem('cart')
             setCallback(!callBack)
             swal("Bạn đã thanh toán thành công", "Tiếp tục mua hàng", "success")

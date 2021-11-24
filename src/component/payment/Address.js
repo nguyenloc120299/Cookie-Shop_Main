@@ -2,28 +2,47 @@ import React from 'react'
 import { IoLocationOutline } from 'react-icons/all'
 import { Link } from 'react-router-dom'
 
-const Address = ({ user, isChangeAddress, setIsChangeAddress, setAddress, newAddress }) => {
+const Address = ({ user, isChangeAddress, setIsChangeAddress, setAddress, newAddress, handleOnchangeAddress }) => {
 
     return (
         <div className='address'>
-            <div>
+            <div className='d-flex justify-content-between'>
                 <h5 style={{ textAlign: 'left' }}><IoLocationOutline />Địa chỉ nhận hàng</h5>
+                {
 
+                    isChangeAddress && <small style={{
+
+                        cursor: 'pointer',
+                        fontSize: '17px',
+                        fontWeight: 'bold',
+
+                    }} onClick={() => setIsChangeAddress(false)}>Hủy</small>
+                }
             </div>
             {
                 isChangeAddress ?
                     <div className='position-relative'>
-                        <textarea class="form-control"
-                            value={newAddress}
-                            onChange={e => setAddress(e.target.value)}
+                        <input class="form-control mb-3"
+                            placeholder='Họ và tên'
+                            value={newAddress.newName}
+                            name='newName'
+                            onChange={handleOnchangeAddress}
                         />
-                        <small className='position-absolute' style={{
-                            right: '5px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            cursor: 'pointer',
-                            fontSize: '1.5rem'
-                        }} onClick={() => setIsChangeAddress(false)}>x</small>
+                        <input class="form-control mb-3"
+                            placeholder='Địa chỉ'
+                            name='newAddress'
+                            value={newAddress.newAddress}
+                            onChange={handleOnchangeAddress}
+
+                        />
+                        <input class="form-control mb-3 "
+                            placeholder='Số điện thoại'
+                            name='newPhone'
+                            onChange={handleOnchangeAddress}
+                            value={newAddress.newPhone}
+
+                        />
+
 
                     </div>
 

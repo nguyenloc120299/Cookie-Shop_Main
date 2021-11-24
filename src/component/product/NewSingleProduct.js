@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
@@ -14,6 +15,7 @@ const SingleProduct = () => {
     const [categories, setCategories] = useState('')
     const [nameSupplier, setNameSupplier] = useState('')
     const [index, setInsex] = useState(0)
+    const [infoStore, setInfoStore] = useState('')
     const getCategorie = async (id) => {
         try {
             const res = await axios.get('/categories')
@@ -28,9 +30,21 @@ const SingleProduct = () => {
         }
 
     }
+    const getStore = async (id) => {
+        try {
+            const res = await axios.get(`/store/product/${id}`)
+            if (res && res.data) setInfoStore(res.data)
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
     const getProduct = async (id) => {
-        const res = await axios.get(`/products/${id}`)
-        if (res && res.data) setDetail(res.data)
+        products && products.forEach(p => {
+            if (p.id == id) setDetail(p)
+        });
+        //const res = await axios.get(`/products/${id}`)
+        //      if (res && res.data) setDetail(res.data)
     }
     const numberFormat = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
@@ -54,6 +68,7 @@ const SingleProduct = () => {
             getProduct(id)
             getCategorie(id)
             getSupplier(id)
+            getStore(id)
         }
     }, [id, products])
     const mouse = useRef()
@@ -122,10 +137,27 @@ const SingleProduct = () => {
                     <div className='d-flex justify-content-start'>
                         <ButtonAddCart id={detail.id} />
                     </div>
-                    <div className='info_store'>
-                        aaaa
-                    </div>
+                    {
+                        infoStore &&
 
+                        <div className='info_store mt-3'>
+                            <div className='d-flex justify-content-around align-items-center'>
+                                <img src={infoStore.logo}
+                                    alt='' />
+
+
+
+                                <div className='d-flex justify-content-around flex-column'>
+                                    <span style={{
+                                        textAlign: 'center',
+                                        fontWeight: 'bold'
+                                    }}>{infoStore.name}</span>
+                                    <Link to={`/store/${infoStore.id}`} className='action_store'><img src="https://salt.tikicdn.com/ts/upload/49/27/ff/d735c33edfdc6cf6aeb6e183bec28869.png" alt='' />
+                                        <span>Xem Shop</span></Link>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
 
             </div>

@@ -4,6 +4,8 @@ import UsersApi from './api/UserApi'
 import ProductApi from './api/ProductApi'
 import UntillApi from './api/untill'
 import swal from "sweetalert";
+import OrderApi from "./api/OrderApi";
+import StoreApi from './api/StoreApi'
 export const GlobalContext = createContext()
 
 export const DataProvider = ({ children }) => {
@@ -105,8 +107,9 @@ export const DataProvider = ({ children }) => {
     }
 
     const data = {
-
+        storesApi: StoreApi(),
         productsApi: ProductApi(),
+        ordersApi: OrderApi(),
         addCart: addCart,
         cart: [cart, setCart],
         isLoggin: [isLoggin, setIsLoggin],

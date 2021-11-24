@@ -12,7 +12,11 @@ const PaymentModal = ({ setIsPayment, cart }) => {
     const [users] = context.usersApi.users
     const [isLoggin, setIsLoggin] = context.isLoggin
     const [isChangeAdress, setIsChangeAddress] = useState(false)
-    const [newAddress, setNewAddress] = useState('')
+    const [newAddress, setNewAddress] = useState({
+        newName: '',
+        newAddress: '',
+        newPhone: ''
+    })
     const [user] = users.filter(item => {
         if (isLoggin) {
             const { id } = JSON.parse(localStorage.getItem('login_admin_main'))
@@ -20,9 +24,13 @@ const PaymentModal = ({ setIsPayment, cart }) => {
             return item.id === id
         }
     })
+
     const [isType, setIsType] = useState(false)
     const [noteValue, setNoteValue] = useState('')
-
+    const handleOnchangeAddress = e => {
+        const { name, value } = e.target
+        setNewAddress({ ...newAddress, [name]: value })
+    }
     return (
         <div className='paymentModal'>
             <div className='form_modal'>
@@ -37,6 +45,7 @@ const PaymentModal = ({ setIsPayment, cart }) => {
                     <Address user={user} isChangeAddress={isChangeAdress} setIsChangeAddress={setIsChangeAddress}
                         setAddress={setNewAddress}
                         newAddress={newAddress}
+                        handleOnchangeAddress={handleOnchangeAddress}
                     />
                     <hr />
 
