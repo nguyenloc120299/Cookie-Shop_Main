@@ -34,7 +34,10 @@ function App() {
       {
         isLoading ? <LoadingPage />
           :
-          <div className="App">
+          <div className="App position-relative">
+            {
+              isShowModalLoggin && <ModalAuth setIsShow={setIsShowModalLoggin} />
+            }
             <Header setIsShow={setIsShowModalLoggin} />
             <Switch>
               <Route path='/home' component={Product} exact />
@@ -55,6 +58,11 @@ function App() {
                 exact
                 path='/oders'
                 render={props => isLogin ? <Profile {...props} optionRoute='oders' /> : <Register />}
+              />
+              <Route
+                exact
+                path='/history'
+                render={props => isLogin ? <Profile {...props} optionRoute='history' /> : <Register />}
               />
               <Route
                 exact
@@ -84,9 +92,7 @@ function App() {
                 </div>
               </div>
             </div>
-            {
-              isShowModalLoggin && <ModalAuth setIsShow={setIsShowModalLoggin} />
-            }
+
           </div>
       }
     </Router>

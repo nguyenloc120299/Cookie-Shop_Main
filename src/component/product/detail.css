@@ -6,11 +6,11 @@
     padding: 50px;
 }
 .img-container {
-    max-width: 400px;
+    max-width: 486px;
     width: 100%;
     margin: 20px;
-    min-width: 250px;
-    height: 500px;
+    min-width: 246px;
+    height: 344px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -40,7 +40,7 @@
     justify-content: start !important;
 }
 .promotion_detail {
-    background: orange;
+    background: rgb(26, 148, 255);
     padding: 0.5rem;
     border-radius: 9px;
     color: white;
@@ -113,4 +113,11 @@ a {
 .action_store img {
     width: 15px;
     height: 15px;
+}
+.box__description {
+    max-width: 1240px;
+    width: 100%;
+    background: whitesmoke;
+    border-radius: 5px;
+    padding: 1rem 3rem;
 }

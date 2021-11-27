@@ -20,7 +20,7 @@ const Store = () => {
     useEffect(() => {
         getProductStore(id)
     }, [id, callBack])
-    console.log(productStore);
+    // console.log(productStore);
     return (
         <div className='store_page'>
             <div className='row'>
@@ -30,7 +30,11 @@ const Store = () => {
                         height: '10rem',
                         borderRadius: '50%'
                     }} />
-                    <div className='d-flex flex-column'>
+                    <div className='d-flex flex-column' style={{
+                        fontSize: "27px",
+                        fontWeight: '700',
+                        alignItems: 'center'
+                    }}>
                         <div className='name_store mb-2'>{store && store.name}</div>
                         <div className='date_create'>{store && store.dateStore}</div>
                     </div>
@@ -56,7 +60,10 @@ const Store = () => {
                 </div>
             </div>
             <div className='row'>
-                <div className='col col-12 col-lg-3'>
+                <div className='col col-12 col-lg-3' style={{
+                    height: '100%',
+                    overflow: 'hidden'
+                }}>
                     <div className='filter_product'>
                         <h5 tyle={{
                             fontWeight: 'bold'

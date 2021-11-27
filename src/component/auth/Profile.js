@@ -4,7 +4,7 @@ import AddProducts from './AddProducts'
 import MyAccount from './MyAccount'
 import MyShop from './MyShop'
 import Oders from './Oders'
-
+import History from './History'
 const Profile = ({ optionRoute }) => {
     let body = (
         <>
@@ -12,6 +12,7 @@ const Profile = ({ optionRoute }) => {
             {optionRoute === 'myaccount' && <MyAccount />}
             {optionRoute === 'oders' && <Oders />}
             {optionRoute === 'myshop' && <MyShop />}
+            {optionRoute === 'history' && <History />}
 
 
         </>
@@ -36,6 +37,12 @@ const Profile = ({ optionRoute }) => {
                         fontSize: '22px',
                         margin: '4px'
                     }} />Đơn mua</Link>
+                    <Link to='/history' className='mt-3 text-dark text-decoration-none' style={{
+                        fontWeight: 'bold'
+                    }}><i className="fas fa-history" style={{
+                        fontSize: '22px',
+                        margin: '4px'
+                    }} />Lịch sử giao hàng</Link>
                     {/* <div className='mt-3 dropdown'>
                         <Link to='#' className='text-dark text-decoration-none dropdown-toggle' id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style={{
                             fontWeight: 'bold'

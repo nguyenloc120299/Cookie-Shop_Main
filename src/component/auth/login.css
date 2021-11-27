@@ -136,6 +136,12 @@ rem
 .info_avt:hover span {
     bottom: -15%;
 }
+table thead tr th {
+    text-align: center;
+}
+table tbody tr td {
+    text-align: center;
+}
 @media (max-width: 992px) {
     .my__account {
         flex-direction: column;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { ButtonAddCart } from '../view/ButtonAddCart';
 import Promotion from '../view/Promotion'
 
-const CardProduct = ({ product }) => {
+const CardProduct = ({ product, isShowBtn }) => {
     const numberFormat = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
         currency: 'VND',
@@ -12,7 +12,9 @@ const CardProduct = ({ product }) => {
         <div className='card__product' key={product.id}>
 
             {/* <Link className='card__product__img' to={`/detail/${product.id}`}> */}
-            <img src={product.avartar} alt='' />
+            <Link to={`/detail/${product.id}`}>
+                <img src={product.avartar} alt='' />
+            </Link>
             {/* </Link> */}
             <div className='box'>
                 {product.promotion > 0 && <Promotion value={product.promotion} />}
@@ -24,7 +26,10 @@ const CardProduct = ({ product }) => {
                         color: 'rgb(120, 120, 120)'
                     }}>Đã bán {product.ban_nhanh}</p>
                 </div>
-                <ButtonAddCart id={product.id} />
+                {
+                    !isShowBtn && <ButtonAddCart id={product.id} />
+                }
+
 
             </div>
 

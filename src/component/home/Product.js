@@ -9,6 +9,7 @@ import Pagination from '../product/Pagination'
 import { ButtonAddCart } from '../view/ButtonAddCart'
 import Promotion from '../view/Promotion'
 import Banner from './banner/Banner'
+import FeatureProduct from './banner/FeatureProduct'
 import CardProduct from './CardProduct'
 
 import './home.css'
@@ -25,7 +26,7 @@ const Product = () => {
     const listRef = useRef()
     const totalItem = 14;
     const [pageNumber, setPageNumber] = useState(0)
-    // const PageVisited = pageNumber * totalItem
+    const PageVisited = pageNumber * totalItem
     const pageCount = Math.ceil(products.length / totalItem);
     const changePage = ({ selected }) => {
         setPageNumber(selected)
@@ -131,18 +132,18 @@ const Product = () => {
         <div className='product_page'>
 
             <Banner />
+            <FeatureProduct />
 
             {
                 products.length > 0 ? <>
 
-                    <div className='w-100 abount home-slider'>
 
-
-                    </div>
 
                     <div className='product_main'>
 
-
+                        <h3 style={{
+                            textAlign: 'left'
+                        }}>Tất cả sản phẩm</h3>
 
                         <div className='d-flex'>
                             <div className='filter_product'>
@@ -189,7 +190,9 @@ const Product = () => {
                                     ))
                                 }
                             </div>
+
                             <div className='products '>
+
                                 <div className='sort_product d-flex justify-content-around align-items-center'>
                                     <h6>Sắp xếp theo</h6>
                                     <button onClick={() => setCallback(!callBack)}>Tất cả</button>
@@ -210,7 +213,7 @@ const Product = () => {
 
 
                                 {
-                                    productsTotal.map(product => (
+                                    productsTotal.slice(PageVisited, PageVisited + totalItem).map(product => (
 
                                         <CardProduct key={product.id} product={product} />
                                     ))
