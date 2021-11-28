@@ -34,6 +34,11 @@ const Banner = () => {
                         <img src={dataImg.imgbaner2}
                             alt='' />
                     </SwiperSlide>
+                    <SwiperSlide>
+
+                        <img src={dataImg.imgbaner3}
+                            alt='' />
+                    </SwiperSlide>
 
 
                 </Swiper>

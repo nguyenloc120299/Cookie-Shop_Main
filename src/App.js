@@ -21,6 +21,7 @@ import 'animate.css';
 import SellerRegister from './component/auth/SellerRegister';
 import LoadingPage from './component/view/LoadingPage';
 import Store from './component/store/Store';
+import Footer from './component/Footer';
 function App() {
   const context = useContext(GlobalContext)
   const [isLogin] = context.isLoggin
@@ -28,7 +29,10 @@ function App() {
 
   const [isShowModalLoggin, setIsShowModalLoggin] = useState(false)
   const seller = true
+
   // SwipperCore.use([Autoplay])
+
+
   return (
     <Router>
       {
@@ -75,24 +79,8 @@ function App() {
                 render={props => isLogin ? <Profile {...props} optionRoute='addproduct' /> : <Register />}
               />
             </Switch>
-            <div className='footer'>
-              <div>
-                <div className='logo'>
-                  <a href="/"> <h3 style={{
-                    padding: '5px'
-                  }}>Cookies</h3></a>
-                </div>
-                <div className="copyright text-white text-center mb-5">Copyright @CookiesShop 2021
-                </div>
-              </div>
-              <div>
-                <h5>Liên hệ</h5>
-                <div className='d-flex flex-column'>
 
-                </div>
-              </div>
-            </div>
-
+            <Footer />
           </div>
       }
     </Router>

@@ -121,3 +121,13 @@ a {
     border-radius: 5px;
     padding: 1rem 3rem;
 }
+
+.des_cmt {
+    margin-left: 2rem;
+    background: #eee;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+}
+.text-cmt::placeholder {
+    font-size: 15px;
+}

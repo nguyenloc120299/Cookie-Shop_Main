@@ -10,6 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwipperCore, { Autoplay, Navigation } from 'swiper'
 
 import './detail.css'
+import Feedback from './Feedback'
 const SingleProduct = () => {
     SwipperCore.use([Autoplay, Navigation])
     const [detail, setDetail] = useState('')
@@ -85,6 +86,7 @@ const SingleProduct = () => {
         const y = (e.pageY - top) / height * 100
         mouse.current.style.backgroundPosition = `${x}% ${y}%`
     }
+    console.log(productByCategory);
     return (
 
         <>
@@ -184,7 +186,8 @@ const SingleProduct = () => {
                         "clickable": true
                     }} navigation={true} className="mySwiper1">
                         {
-                            productByCategory.slice(0, 10).map(item => (
+                            categories && categories.products.slice(0, 10).map(item => (
+
                                 <SwiperSlide key={item.id}>
                                     <ProductCard product={item} isShowBtn={true} />
                                 </SwiperSlide>
@@ -203,8 +206,8 @@ const SingleProduct = () => {
                             marginLeft: '1rem'
                         }}>{categories && categories.name}</p>
                     </div>
-                    <div className='d-flex'>
-                        <h5>Thể loại</h5>
+                    <div className='d-flex mb-3'>
+                        <h5>Nhà cung cấp</h5>
                         <p style={{
                             marginLeft: '1rem'
                         }}>{nameSupplier}</p>
@@ -219,7 +222,7 @@ const SingleProduct = () => {
 
 
                 </div>
-
+                <Feedback id={id} />
 
             </div>
         </>

@@ -38,7 +38,7 @@ const SellerRegister = ({ setIsChange }) => {
     return (
         <div className='login' style={{
             background: 'rgb(246, 246, 246)',
-            paddingTop: "12rem"
+            marginTop: "25rem"
         }}>
             <h1 className='text-center' style={{
 
