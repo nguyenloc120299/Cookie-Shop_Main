@@ -1,6 +1,7 @@
-import axios from 'axios'
+
 import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
+import { apiInstance } from '../../baseApi'
 
 const Register = ({ setIsChange }) => {
     const [userLogin, setUserLogin] = useState({
@@ -17,7 +18,7 @@ const Register = ({ setIsChange }) => {
         setUserLogin({ ...userLogin, [name]: value })
     }
     const submitRegister = async () => {
-        const res = await axios.post('/sigup', { ...userLogin });
+        const res = await apiInstance.post('/sigup', { ...userLogin });
 
         alert(res.data);
         //window.location.href = '/login'

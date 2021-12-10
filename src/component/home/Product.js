@@ -68,6 +68,24 @@ const Product = () => {
             }
         }
     }
+
+    const newProduct = async (id, type) => {
+        if (id) {
+            if (type === 'categories') {
+                const res = await axios.get(`/products/product-new/categories/${id}`)
+                if (res && res.data) {
+                    setProducts(res.data)
+                }
+            }
+        } else {
+            const res = await axios.get(`/products/product-new`)
+
+            if (res && res.data) {
+                setProducts(res.data)
+            }
+        }
+
+    }
     const sortProductByPriceIncrease = async (id, type) => {
 
         if (id) {
@@ -196,7 +214,7 @@ const Product = () => {
                                 <div className='sort_product d-flex justify-content-around align-items-center'>
                                     <h6>Sắp xếp theo</h6>
                                     <button onClick={() => setCallback(!callBack)}>Tất cả</button>
-                                    <button>Mới nhât</button>
+                                    <button onClick={() => newProduct(idCategory, type)}>Mới nhât</button>
                                     <button onClick={() => sortProductBanChay(idCategory, type)}>Bán chạy</button>
                                     <button className='dropdown' style={{
                                         width: '10rem'

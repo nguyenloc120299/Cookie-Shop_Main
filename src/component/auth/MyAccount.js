@@ -1,5 +1,6 @@
-import axios from 'axios'
+
 import React, { useContext, useState } from 'react'
+import { apiInstance } from '../../baseApi'
 // import { Link } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalContext'
 
@@ -51,7 +52,7 @@ const MyAccount = () => {
             formData.append('file', file)
             setIsLoading(true)
 
-            const res = await axios.post('https://polar-woodland-25756.herokuapp.com/upload', formData, { headers: { 'content-type': 'multipart/form-data' } })
+            const res = await apiInstance.post('https://polar-woodland-25756.herokuapp.com/upload', formData, { headers: { 'content-type': 'multipart/form-data' } })
             setIsLoading(false)
             setImg(res.data)
         } catch (err) {
@@ -62,7 +63,7 @@ const MyAccount = () => {
 
         try {
             setIsLoading(true)
-            await axios.post('https://polar-woodland-25756.herokuapp.com/destroy', { public_id: img.public_id })
+            await apiInstance.post('https://polar-woodland-25756.herokuapp.com/destroy', { public_id: img.public_id })
             setIsLoading(false)
             setImg(false)
         } catch (err) {
@@ -73,14 +74,14 @@ const MyAccount = () => {
 
         if (img) {
 
-            await axios.put('/users', {
+            await apiInstance.put('/users', {
                 ...valueInput, avartar: img.url
             })
             setCallback(!callback)
         }
         else {
             console.log({ ...valueInput, avartar: info.avartar });
-            await axios.put('/users', {
+            await apiInstance.put('/users', {
                 ...valueInput, avartar: info.avartar
             })
             setCallback(!callback)

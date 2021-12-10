@@ -1,5 +1,5 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+
+import { useEffect, useState } from 'react'
 import { apiInstance } from '../baseApi'
 function OrderApi() {
     const [orders, setOrders] = useState([])
@@ -11,7 +11,7 @@ function OrderApi() {
         setIsLoading(true)
         let data = []
         let history = []
-        const res = await axios.get(`${apiInstance}/orders/users/${id}`)
+        const res = await apiInstance.get(`${apiInstance}/orders/users/${id}`)
         if (res && res.data) {
 
             res.data.forEach(item => {

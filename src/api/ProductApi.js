@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import { useEffect, useState } from 'react'
 import { apiInstance } from '../baseApi'
 function CategoriesApi() {
@@ -8,7 +8,7 @@ function CategoriesApi() {
     const getCategories = async () => {
         //  let arr = []
         setIsLoading(true)
-        const res = await apiInstance.get(`/products`)
+        const res = await apiInstance.get("https://webbanhangserver.herokuapp.com/api/products")
         if (res && res.data) {
             // res.data.forEach(data => {
             //     if (data.status === 1) arr.push(data)

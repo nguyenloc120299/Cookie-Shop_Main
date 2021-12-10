@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { apiInstance } from '../baseApi'
 
 function CategoriesApi() {
     const [users, setUsers] = useState([])
@@ -7,7 +7,7 @@ function CategoriesApi() {
 
     const getUsers = async () => {
         let arr = []
-        const res = await axios.get("/users")
+        const res = await apiInstance.get("/users")
         if (res && res.data) {
 
             setUsers(res.data)

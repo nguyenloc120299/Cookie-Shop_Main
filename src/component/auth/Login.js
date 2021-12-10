@@ -1,6 +1,7 @@
-import axios from 'axios'
+
 import React, { useContext, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { apiInstance } from '../../baseApi'
 import { GlobalContext } from '../../GlobalContext'
 import './login.css'
 const Login = ({ setIsChange, setIsShow }) => {
@@ -19,12 +20,12 @@ const Login = ({ setIsChange, setIsShow }) => {
         setUserLogin({ ...userLogin, [name]: value })
     }
     const onSubmitLogin = async () => {
-        const res = await axios.post('/signin', { ...userLogin })
+        const res = await apiInstance.post('/signin', { ...userLogin })
         //  localStorage.setItem('login_admin', true)
 
 
         if (res.data.token) {
-            const res1 = await axios.get(`/users/${res.data.id}`)
+            const res1 = await apiInstance.get(`/users/${res.data.id}`)
 
 
             if (res1 && res1.data.status === 1) {

@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import { createContext, useEffect, useState } from "react";
 import UsersApi from './api/UserApi'
 import ProductApi from './api/ProductApi'
@@ -22,7 +22,7 @@ export const DataProvider = ({ children }) => {
     const res = JSON.parse(localStorage.getItem('login_admin_main'))
     const getProducts = async () => {
         let arr = []
-        const res = await axios.get(`${apiInstance}/products`)
+        const res = await apiInstance.get("/products")
         if (res && res.data) {
             res.data.forEach(data => {
                 if (data.status === 1) arr.push(data)
@@ -32,11 +32,11 @@ export const DataProvider = ({ children }) => {
     }
 
     const getCategories = async () => {
-        const res = await axios.get(`${apiInstance}/categories`)
+        const res = await apiInstance.get("/categories")
         if (res && res.data) setCategories(res.data)
     }
     const getSuplliers = async () => {
-        const res = await axios.get(`${apiInstance}/suppliers`)
+        const res = await apiInstance.get("/suppliers")
         if (res && res.data) setSupplier(res.data)
     }
     useEffect(() => {
@@ -49,7 +49,6 @@ export const DataProvider = ({ children }) => {
 
     }, [])
     useEffect(() => {
-
         getProducts()
         getCategories()
         getSuplliers()

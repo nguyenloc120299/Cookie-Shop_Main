@@ -1,6 +1,7 @@
-import axios from 'axios'
+
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { apiInstance } from '../../baseApi'
 import { GlobalContext } from '../../GlobalContext'
 import valid from '../../valid/ProductsValid'
 const AddProducts = () => {
@@ -41,7 +42,7 @@ const AddProducts = () => {
             formData.append('file', file)
             setIsLoading(true)
 
-            const res = await axios.post('https://polar-woodland-25756.herokuapp.com/upload', formData, { headers: { 'content-type': 'multipart/form-data' } })
+            const res = await apiInstance.post('https://polar-woodland-25756.herokuapp.com/upload', formData, { headers: { 'content-type': 'multipart/form-data' } })
             setIsLoading(false)
             setImg(res.data)
         } catch (err) {
@@ -53,7 +54,7 @@ const AddProducts = () => {
 
         try {
             setIsLoading(true)
-            await axios.post('https://polar-woodland-25756.herokuapp.com/destroy', { public_id: img.public_id })
+            await apiInstance.post('https://polar-woodland-25756.herokuapp.com/destroy', { public_id: img.public_id })
             setIsLoading(false)
             setImg(false)
         } catch (err) {
@@ -70,7 +71,7 @@ const AddProducts = () => {
             if (check.errLength > 0) return setErr(check.errMsg)
             else {
                 setIsLoading(true)
-                await axios.post(`/products/categories/${productValue.category}/suppliers/${productValue.supplier}/users/${id} `, {
+                await apiInstance.post(`/products/categories/${productValue.category}/suppliers/${productValue.supplier}/users/${id} `, {
                     ...productValue,
                     avartar: img.url,
                     featured: 0,

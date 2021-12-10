@@ -1,5 +1,5 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
+import { apiInstance } from "../baseApi"
 
 
 function StoreApi() {
@@ -9,7 +9,7 @@ function StoreApi() {
 
     const getStores = async () => {
 
-        const res = await axios.get("/stores")
+        const res = await apiInstance.get("/stores")
         if (res && res.data) {
 
             setStores(res.data)
