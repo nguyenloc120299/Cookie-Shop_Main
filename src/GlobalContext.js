@@ -6,6 +6,7 @@ import UntillApi from './api/untill'
 import swal from "sweetalert";
 import OrderApi from "./api/OrderApi";
 import StoreApi from './api/StoreApi'
+import { apiInstance } from "./baseApi";
 export const GlobalContext = createContext()
 
 export const DataProvider = ({ children }) => {
@@ -21,7 +22,7 @@ export const DataProvider = ({ children }) => {
     const res = JSON.parse(localStorage.getItem('login_admin_main'))
     const getProducts = async () => {
         let arr = []
-        const res = await axios.get("/products")
+        const res = await axios.get(`${apiInstance}/products`)
         if (res && res.data) {
             res.data.forEach(data => {
                 if (data.status === 1) arr.push(data)
@@ -31,11 +32,11 @@ export const DataProvider = ({ children }) => {
     }
 
     const getCategories = async () => {
-        const res = await axios.get("/categories")
+        const res = await axios.get(`${apiInstance}/categories`)
         if (res && res.data) setCategories(res.data)
     }
     const getSuplliers = async () => {
-        const res = await axios.get("/suppliers")
+        const res = await axios.get(`${apiInstance}/suppliers`)
         if (res && res.data) setSupplier(res.data)
     }
     useEffect(() => {
@@ -48,6 +49,7 @@ export const DataProvider = ({ children }) => {
 
     }, [])
     useEffect(() => {
+
         getProducts()
         getCategories()
         getSuplliers()
