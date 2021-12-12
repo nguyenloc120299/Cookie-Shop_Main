@@ -1,6 +1,7 @@
-import axios from 'axios'
+
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { apiInstance } from '../../baseApi'
 import { GlobalContext } from '../../GlobalContext'
 import { ButtonAddCart } from '../view/ButtonAddCart'
 const SingleProduct = () => {
@@ -9,7 +10,7 @@ const SingleProduct = () => {
     const context = useContext(GlobalContext)
     const [products] = context.productsApi.products
     const getProduct = async (id) => {
-        const res = await axios.get(`/products/${id}`)
+        const res = await apiInstance.get(`/products/${id}`)
         if (res && res.data) setDetail(res.data)
     }
     useEffect(() => {

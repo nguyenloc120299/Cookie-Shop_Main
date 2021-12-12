@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import { Link } from 'react-router-dom'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -11,6 +11,7 @@ import SwipperCore, { Autoplay, Navigation } from 'swiper'
 
 import './detail.css'
 import Feedback from './Feedback'
+import { apiInstance } from '../../baseApi'
 const SingleProduct = () => {
     SwipperCore.use([Autoplay, Navigation])
     const [detail, setDetail] = useState('')
@@ -25,7 +26,7 @@ const SingleProduct = () => {
     const [infoStore, setInfoStore] = useState('')
     const getCategorie = async (id) => {
         try {
-            const res = await axios.get('/categories')
+            const res = await apiInstance.get('/categories')
             setProductByCategory(res.data)
             res.data.forEach(element => {
                 element.products && element.products.forEach(item => {
@@ -39,7 +40,7 @@ const SingleProduct = () => {
     }
     const getStore = async (id) => {
         try {
-            const res = await axios.get(`/store/product/${id}`)
+            const res = await apiInstance.get(`/store/product/${id}`)
             if (res && res.data) setInfoStore(res.data)
         } catch (error) {
             console.log(error);
@@ -50,7 +51,7 @@ const SingleProduct = () => {
         products && products.forEach(p => {
             if (p.id == id) setDetail(p)
         });
-        //const res = await axios.get(`/products/${id}`)
+        //const res = await apiInstance.get(`/products/${id}`)
         //      if (res && res.data) setDetail(res.data)
     }
     const numberFormat = new Intl.NumberFormat('vi-VN', {
@@ -59,7 +60,7 @@ const SingleProduct = () => {
     });
     const getSupplier = async (id) => {
         try {
-            const res = await axios.get('/suppliers')
+            const res = await apiInstance.get('/suppliers')
 
             res.data.forEach(element => {
                 element.products && element.products.forEach(item => {
@@ -128,7 +129,7 @@ const SingleProduct = () => {
 
 
                     <h6>{detail.sort_description}</h6>
-                    <AmountCart p={detail} />
+                    {/* <AmountCart p={detail} /> */}
                     <div className='d-flex justify-content-start'>
                         <h6 >Đã bán được {detail && detail.listOrderDetail.length > 0 ? detail.listOrderDetail.length : 0} sản phẩm</h6>
                         <h6 style={{

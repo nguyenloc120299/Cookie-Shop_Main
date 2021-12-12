@@ -1,9 +1,10 @@
 
 import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
+import swal from 'sweetalert'
 import { apiInstance } from '../../baseApi'
 
-const Register = ({ setIsChange }) => {
+const Register = ({ setIsChange, setIsShow }) => {
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: '',
@@ -18,9 +19,15 @@ const Register = ({ setIsChange }) => {
         setUserLogin({ ...userLogin, [name]: value })
     }
     const submitRegister = async () => {
-        const res = await apiInstance.post('/sigup', { ...userLogin });
+        try {
+            const res = await apiInstance.post('/sigup', { ...userLogin });
+            swal('Đăng kí tài khoản thành công', '', 'success')
+        } catch (error) {
+            setIsShow(false)
+            // swal(`${error.reponse.data}`, '', 'warning')
+            swal(`${error.response.data.message}`, '', 'error');
+        }
 
-        alert(res.data);
         //window.location.href = '/login'
     }
     return (

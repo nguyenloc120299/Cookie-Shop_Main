@@ -1,8 +1,9 @@
-import axios from 'axios'
+
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { dataImg } from '../../assets/img/imgData'
 import swal from 'sweetalert'
+import { apiInstance } from '../../baseApi'
 const SellerRegister = ({ setIsChange }) => {
     const [userLogin, setUserLogin] = useState({
         username: '',
@@ -20,7 +21,7 @@ const SellerRegister = ({ setIsChange }) => {
     }
     const submitRegister = async () => {
 
-        const res = await axios.post('/seller/sigup', { ...userLogin });
+        const res = await apiInstance.post('/seller/sigup', { ...userLogin });
 
         swal(` ${res.data.message} `, {
             icon: "success",

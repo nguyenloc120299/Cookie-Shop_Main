@@ -15,8 +15,8 @@ import MyAccount from './component/auth/MyAccount';
 import Payment from './component/payment/Payment';
 import ModalAuth from './component/auth/ModalAuth'
 import 'animate.css';
-// import SwipperCore, { Autoplay } from 'swiper'
-// import { Swiper, SwiperSlide } from 'swiper/react';
+import SwipperCore, { Autoplay } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import SellerRegister from './component/auth/SellerRegister';
 import LoadingPage from './component/view/LoadingPage';
@@ -30,7 +30,7 @@ function App() {
   const [isShowModalLoggin, setIsShowModalLoggin] = useState(false)
   const seller = true
 
-  // SwipperCore.use([Autoplay])
+  SwipperCore.use([Autoplay])
 
 
   return (
@@ -84,9 +84,9 @@ function App() {
           </div>
       }
     </Router>
-    // <h1>aaaaaaaaaaaaaaa</h1>
 
-  );
+  )
 }
+
 
 export default App;

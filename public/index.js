@@ -23,7 +23,6 @@ $(document).on('click', '.btn-buy-now', function (e) {
 
     var parTop = parent.offset().top;
     var parLeft = parent.offset().left;
-
     $('<img />', {
         class: 'img-product-fly',
         src: src

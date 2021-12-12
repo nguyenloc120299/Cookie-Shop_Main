@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+@import url("./assets/font/font.css");
 .App {
   margin: 0;
   padding: 0;

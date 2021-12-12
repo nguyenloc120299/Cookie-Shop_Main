@@ -15,7 +15,7 @@ const ModalAuth = ({ setIsShow }) => {
                         <span>X</span>
                     </div>
                     {
-                        isChange ? <Register setIsChange={setIsChange} /> : <Login setIsChange={setIsChange} setIsShow={setIsShow} />
+                        isChange ? <Register setIsChange={setIsChange} setIsShow={setIsShow} /> : <Login setIsChange={setIsChange} setIsShow={setIsShow} />
                     }
                 </div>
 

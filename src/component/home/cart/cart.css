@@ -53,6 +53,7 @@
     position: relative;
     text-align: center;
     width: calc(100% / 5);
+    font-size: 10px;
 }
 .progressbar li:before {
     background: #fff;
@@ -68,6 +69,7 @@
     margin: 0 auto 10px;
     text-align: center;
     width: 30px;
+    font-size: 10px;
 }
 .progressbar li:after {
     background: #979797;
@@ -78,6 +80,7 @@
     top: 15px;
     width: 100%;
     z-index: -1;
+    font-size: 10px;
 }
 .progressbar li:first-child:after {
     content: none;
@@ -97,6 +100,7 @@
 .progressbar li.active {
     color: #3aac5d;
     font-weight: 700;
+    font-size: 10px;
 }
 
 .progressbar li.complete {

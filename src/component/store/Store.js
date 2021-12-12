@@ -1,6 +1,7 @@
-import axios from 'axios'
+
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { apiInstance } from '../../baseApi'
 import { GlobalContext } from '../../GlobalContext'
 import CardProduct from '../home/CardProduct'
 import './store.css'
@@ -14,7 +15,7 @@ const Store = () => {
     const [callBack, setCallBack] = useState(false)
     const [categories] = context.categories
     const getProductStore = async (id) => {
-        const res = await axios.get(`/products/store/${id}`)
+        const res = await apiInstance.get(`/products/store/${id}`)
         if (res && res.data) setProductStore(res.data)
     }
     useEffect(() => {

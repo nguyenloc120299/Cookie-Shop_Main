@@ -15,7 +15,7 @@ const LoadingPage = () => {
                 }}>Cookies web</h3></Link>
             </div>
 
-            <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            <div className="lds-ellipsis1"><div></div><div></div><div></div><div></div></div>
         </div>
     )
 }

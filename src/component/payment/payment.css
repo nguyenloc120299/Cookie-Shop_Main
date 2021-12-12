@@ -43,3 +43,11 @@
 .product_payment table {
     margin: 0 !important;
 }
+.form-check-label:hover {
+    color: rgb(26, 148, 255);
+    font-weight: bold;
+}
+.form-check-label:focus {
+    color: rgb(26, 148, 255);
+    font-weight: bold;
+}

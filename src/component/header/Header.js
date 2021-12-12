@@ -63,7 +63,9 @@ const Header = ({ setIsShow }) => {
                 </li>
                 <li> */}
                 <div className="input-group w-50 search_desktop ">
-                    <input type="text" className="form-control" placeholder="Tìm kiếm" />
+                    <input type="text" className="form-control" placeholder="Tìm kiếm" style={{
+                        borderRadius: 'none'
+                    }} />
                     <button className="btn btn-outline-primary" type="button" style={{
                         color: 'white',
 

@@ -1,15 +1,17 @@
-import axios from 'axios';
+
 import React, { useContext, useEffect, useState } from 'react'
 import PaypalExpressBtn from "react-paypal-express-checkout";
 import { GlobalContext } from '../../GlobalContext';
 import swal from 'sweetalert';
+import { apiInstance } from '../../baseApi';
+import Loading from '../view/Loading';
 const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAddress, newAddress }) => {
     const [productDetailArr, setProductDetailArr] = useState([])
     const context = useContext(GlobalContext)
     const [callBack, setCallback] = context.callBackcart
     const [total, setTotal] = useState(0)
     const [totalUSD, setToTalUSD] = useState(0)
-
+    const [isLoading, setIsLoading] = useState(false)
 
     const client = {
         sandbox:
@@ -54,7 +56,8 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
 
     const handleSubmit = async e => {
         try {
-            const res = await axios.post('/orders', {
+            setIsLoading(true)
+            const res = await apiInstance.post('/orders', {
                 payments: !isType ? '1' : '0',
                 deliveryaddress: isChangeAddress ? newAddress.newAddress : (user && user.address),
                 transportfee: 30000.0,
@@ -72,23 +75,31 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
                 .then(() => {
                     window.location.href = '/home'
                 });
+            setIsLoading(false)
         } catch (error) {
-            alert("Có lỗi xẩy ra vui lòng thử lại sau")
+            setIsLoading(false)
+            swal(`error.response.data.message`, '', 'error')
         }
 
     }
     return (
-        <div className='payment_footer'>
+        <>
             {
-                !isType ?
-                    <div>
-                        <button className='btn btn-primary w-100 btn-payment' type='submit' style={{ height: '55px' }} onClick={() => handleSubmit()}>Đặt hàng</button>
-                    </div>
-                    :
-                    <PaypalExpressBtn client={client} currency={"USD"} total={total} style={style} onSuccess={handleSubmit} />
-
+                isLoading && <Loading />
             }
-        </div>
+            <div className='payment_footer'>
+
+                {
+                    !isType ?
+                        <div>
+                            <button className='btn btn-primary w-100 btn-payment' type='submit' style={{ height: '55px' }} onClick={() => handleSubmit()}>Đặt hàng</button>
+                        </div>
+                        :
+                        <PaypalExpressBtn client={client} currency={"USD"} total={total} style={style} onSuccess={handleSubmit} />
+
+                }
+            </div>
+        </>
     )
 }
 

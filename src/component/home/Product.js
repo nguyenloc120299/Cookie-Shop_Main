@@ -1,7 +1,8 @@
-import axios from 'axios'
+
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import ScrollAnimation from 'react-animate-on-scroll'
 import { Link } from 'react-router-dom'
+import { apiInstance } from '../../baseApi'
 import { GlobalContext } from '../../GlobalContext'
 import ButtonSlide from '../langding/Slider/ButtonSlide'
 import CardSlide from '../langding/Slider/CardSlide'
@@ -35,25 +36,25 @@ const Product = () => {
     const getProductByCategories = async (id) => {
         setCategory(id)
         setType('categories')
-        const res = await axios.get(`/products/categories/${id}`)
+        const res = await apiInstance.get(`/products/categories/${id}`)
         if (res && res.data) setProducts(res.data);
     }
     const getProductBySupplier = async (id) => {
         setCategory(id)
         setType('suppliers')
-        const res = await axios.get(`/products/supplier/${id}`)
+        const res = await apiInstance.get(`/products/supplier/${id}`)
         if (res && res.data) setProducts(res.data);
     }
     const sortProductBanChay = async (id, type) => {
         if (id) {
             if (type === 'categories') {
-                const res = await axios.get(`/products/sellfast/categories/${id}`)
+                const res = await apiInstance.get(`/products/sellfast/categories/${id}`)
 
                 if (res && res.data) {
                     setProducts(res.data)
                 }
             } else if (type === 'suppliers') {
-                const res = await axios.get(`/products/sellfast/supplier/${id}`)
+                const res = await apiInstance.get(`/products/sellfast/supplier/${id}`)
 
                 if (res && res.data) {
                     setProducts(res.data)
@@ -61,7 +62,7 @@ const Product = () => {
             }
         }
         else {
-            const res = await axios.get(`/products/sellfast`)
+            const res = await apiInstance.get(`/products/sellfast`)
 
             if (res && res.data) {
                 setProducts(res.data)
@@ -72,13 +73,13 @@ const Product = () => {
     const newProduct = async (id, type) => {
         if (id) {
             if (type === 'categories') {
-                const res = await axios.get(`/products/product-new/categories/${id}`)
+                const res = await apiInstance.get(`/products/product-new/categories/${id}`)
                 if (res && res.data) {
                     setProducts(res.data)
                 }
             }
         } else {
-            const res = await axios.get(`/products/product-new`)
+            const res = await apiInstance.get(`/products/product-new`)
 
             if (res && res.data) {
                 setProducts(res.data)
@@ -90,20 +91,20 @@ const Product = () => {
 
         if (id) {
             if (type === 'categories') {
-                const res = await axios.get(` /products/increase/categories/${id}`)
+                const res = await apiInstance.get(` /products/increase/categories/${id}`)
 
                 if (res && res.data) {
                     setProducts(res.data)
                 }
             } else if (type === 'suppliers') {
-                const res = await axios.get(`/products/increase/supplier/${id}`)
+                const res = await apiInstance.get(`/products/increase/supplier/${id}`)
 
                 if (res && res.data) {
                     setProducts(res.data)
                 }
             }
         } else {
-            const res = await axios.get(`/products/increase`)
+            const res = await apiInstance.get(`/products/increase`)
 
             if (res && res.data) {
                 setProducts(res.data)
@@ -113,20 +114,20 @@ const Product = () => {
     const sortProductByPriceReduced = async (id, type) => {
         if (id) {
             if (type === 'categories') {
-                const res = await axios.get(`  /products/reduced/categories/${id}`)
+                const res = await apiInstance.get(`  /products/reduced/categories/${id}`)
 
                 if (res && res.data) {
                     setProducts(res.data)
                 }
             } else if (type === 'suppliers') {
-                const res = await axios.get(`  /products/reduced/supplier/${id}`)
+                const res = await apiInstance.get(`  /products/reduced/supplier/${id}`)
 
                 if (res && res.data) {
                     setProducts(res.data)
                 }
             }
         } else {
-            const res = await axios.get(`  /products/reduced/`)
+            const res = await apiInstance.get(`  /products/reduced/`)
 
             if (res && res.data) {
                 setProducts(res.data)

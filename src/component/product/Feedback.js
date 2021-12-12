@@ -1,7 +1,8 @@
-import axios from 'axios'
+
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { dataImg } from '../../assets/img/imgData'
+import { apiInstance } from '../../baseApi'
 import { GlobalContext } from '../../GlobalContext'
 
 const Feedback = ({ id }) => {
@@ -10,7 +11,7 @@ const Feedback = ({ id }) => {
     const [isLoggin, setIsLoggin] = context.isLoggin
     const [content, setContent] = useState('')
     const [callBack, setCallBack] = useState(false)
-    const [index, setIndex] = useState(2)
+    const [index, setIndex] = useState(5)
 
     const handleIndex = () => {
         setIndex(index + 2)
@@ -25,7 +26,7 @@ const Feedback = ({ id }) => {
     console.log(user);
     const [feedBack, setFeedback] = useState([])
     const getComment = async (id) => {
-        const res = await axios.get(`/comments/product/${id}`)
+        const res = await apiInstance.get(`/comments/product/${id}`)
         if (res && res.data) setFeedback(res.data)
     }
     useEffect(() => {
@@ -39,7 +40,7 @@ const Feedback = ({ id }) => {
             userId: user && user.id,
             productId: id
         }])
-        await axios.post('/comments', {
+        await apiInstance.post('/comments', {
             name: user && user.name,
             avatar: user && user.avartar,
             content: content,
@@ -78,7 +79,7 @@ const Feedback = ({ id }) => {
                 ))
             }
             {
-                feedBack.length > 0 &&
+                feedBack.length > 5 &&
                 <Link to='#' style={{
                     fontWeight: 'bold'
                 }} onClick={() => handleIndex()}>Xem thêm</Link>
@@ -90,13 +91,16 @@ const Feedback = ({ id }) => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <img src={dataImg.send} alt='' style={{
-                    width: "50px",
-                    height: '50px',
-                    marginLeft: "3rem",
-                    display: 'flex',
-                    alignItems: 'center'
-                }} onClick={() => onSubmitComment()} />
+                {
+                    isLoggin && <img src={dataImg.send} alt='' style={{
+                        width: "50px",
+                        height: '50px',
+                        marginLeft: "3rem",
+                        display: 'flex',
+                        alignItems: 'center'
+                    }} onClick={() => onSubmitComment()} />
+                }
+
             </div>
         </div>
     )

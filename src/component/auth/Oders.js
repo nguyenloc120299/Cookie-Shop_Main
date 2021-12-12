@@ -1,9 +1,11 @@
-import axios from 'axios'
+
 import React, { useContext, useEffect, useState } from 'react'
-import { GrStatusUnknown } from 'react-icons/all'
+
 import ProCessStep from '../home/cart/ProCessStep'
 import { GlobalContext } from '../../GlobalContext'
 import Loading from '../view/Loading'
+import { apiInstance } from '../../baseApi'
+import { Button } from 'bootstrap'
 const Oders = () => {
     const context = useContext(GlobalContext)
     const [myOrders] = context.ordersApi.orders
@@ -19,7 +21,7 @@ const Oders = () => {
     // const getOrders = async () => {
     //     setIsLoading(true)
     //     let data = []
-    //     const res = await axios.get(`/orders/users/${id}`)
+    //     const res = await apiInstance.get(`/orders/users/${id}`)
     //     if (res && res.data) {
 
     //         res.data.forEach(item => {
@@ -92,6 +94,9 @@ const Oders = () => {
                                         <td>
                                             <ProCessStep status={item.status} />
                                         </td>
+                                        {/* {
+                                            item.status === 0 && <Button variant="danger">Danger</Button>
+                                        } */}
 
                                     </tr>
                                 ))

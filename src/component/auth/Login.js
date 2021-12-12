@@ -1,6 +1,7 @@
 
 import React, { useContext, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import swal from 'sweetalert'
 import { apiInstance } from '../../baseApi'
 import { GlobalContext } from '../../GlobalContext'
 import './login.css'
@@ -20,25 +21,33 @@ const Login = ({ setIsChange, setIsShow }) => {
         setUserLogin({ ...userLogin, [name]: value })
     }
     const onSubmitLogin = async () => {
-        const res = await apiInstance.post('/signin', { ...userLogin })
-        //  localStorage.setItem('login_admin', true)
+        try {
+
+            const res = await apiInstance.post('/signin', { ...userLogin })
+            //  localStorage.setItem('login_admin', true)
 
 
-        if (res.data.token) {
-            const res1 = await apiInstance.get(`/users/${res.data.id}`)
+            if (res.data.token) {
+                const res1 = await apiInstance.get(`/users/${res.data.id}`)
 
 
-            if (res1 && res1.data.status === 1) {
-                localStorage.setItem('login_admin_main', JSON.stringify(res1.data))
-                setIsLoggin(!isLoggin)
-                setCallback(!callback)
-                setIsShow(false)
+                if (res1 && res1.data.status === 1) {
+                    localStorage.setItem('login_admin_main', JSON.stringify(res1.data))
+                    setIsLoggin(!isLoggin)
+                    setCallback(!callback)
+                    setIsShow(false)
+                } else {
+                    setIsShow(false)
+                    swal('Chưa xác thực email', '', 'error')
+                }
             } else {
-                alert('Chưa xác thực email')
-            }
-        } else {
-            alert('Đăng nhập không thành công')
+                setIsShow(false)
+                swal('Đăng nhập không thành công', '', 'error')
 
+            }
+
+        } catch (error) {
+            swal(`${error.response.data.message}`, '', 'error')
         }
 
     }

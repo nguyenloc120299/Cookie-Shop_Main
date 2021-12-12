@@ -11,7 +11,7 @@ const FeatureProduct = () => {
     const featureProduct = products.filter(item => {
         return item.featured === 0
     })
-    console.log(featureProduct);
+
     return (
         <div className='feture_products'>
             <h3>Sản phẩm nổi bật</h3>

@@ -42,7 +42,8 @@ export const DataProvider = ({ children }) => {
     useEffect(() => {
 
 
-        if (res) {
+
+        if (res !== null) {
             if (res.listroles[0].role === 'Admin' || res.listroles[0].role === 'user') setIsLoggin(true)
         }
         else setIsLoggin(false)
@@ -66,27 +67,31 @@ export const DataProvider = ({ children }) => {
                 const [item] = products.filter(p => {
                     return p.id === id
                 })
-                // cartArr.push({
-                //     id: item.id,
-                //     name: item.name,
-                //     price: item.price,
-                //     quantity: 0,
-                //     quality: item.price
-                // })
-                // console.log(item);
-                setCart([...cart, {
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    quantity: 1,
-                    totalCost: item.price,
-                    avartar: item.avartar,
-                    competitive_price: item.competitive_price
-                }])
-                swal({
-                    title: "Thêm thành công!",
-                    icon: "success",
-                });
+                if (item.quantity === 0) {
+                    swal('Sản phẩm đã hết', '', 'warning')
+                } else {
+                    // cartArr.push({
+                    //     id: item.id,
+                    //     name: item.name,
+                    //     price: item.price,
+                    //     quantity: 0,
+                    //     quality: item.price
+                    // })
+                    // console.log(item);
+                    setCart([...cart, {
+                        id: item.id,
+                        name: item.name,
+                        price: item.price,
+                        quantity: 1,
+                        totalCost: item.price,
+                        avartar: item.avartar,
+                        competitive_price: item.competitive_price
+                    }])
+                    swal({
+                        title: "Thêm thành công!",
+                        icon: "success",
+                    });
+                }
             }
             else {
                 // swal({
@@ -110,7 +115,7 @@ export const DataProvider = ({ children }) => {
     const data = {
         storesApi: StoreApi(),
         productsApi: ProductApi(),
-        ordersApi: OrderApi(),
+        ordersApi: OrderApi(res),
         addCart: addCart,
         cart: [cart, setCart],
         isLoggin: [isLoggin, setIsLoggin],
