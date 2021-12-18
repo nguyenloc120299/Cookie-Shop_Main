@@ -18,7 +18,11 @@ const CardProduct = ({ product, isShowBtn }) => {
             {/* </Link> */}
             <div className='box'>
                 {product.promotion > 0 && <Promotion value={product.promotion} />}
-                <Link to={`/detail/${product.id}`}><h5>{product.name}</h5></Link>
+                <Link to={`/detail/${product.id}`}>
+                    <div className='name_product'>
+                        <h5>{product.name}</h5>
+                    </div>
+                </Link>
                 <p>{product.sort_description}</p>
                 <div className='d-flex justify-content-around'>
                     <h5>{numberFormat.format(product.competitive_price)}</h5>

@@ -49,20 +49,21 @@
 .card__product .box {
     margin: 15px 0;
 }
-.card__product .box a h5 {
-    text-transform: uppercase;
+.name_product {
     overflow: hidden;
     /* white-space: nowrap; */
     text-overflow: ellipsis;
-    color: black;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    height: 65px;
+}
+.card__product .name_product h5 {
+    color: black !important;
     text-decoration: none;
     cursor: pointer;
     font-size: 1rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-    height: 50px;
+    text-transform: uppercase;
 }
 .card__product .box a {
     text-decoration: none;

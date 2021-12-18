@@ -14,7 +14,7 @@ const SearchPage = () => {
         const getProductSearch = async (valueSearch) => {
             setIsLoading(true)
             const res = await apiInstance.post('/products/searchtext', {
-                name: valueSearch
+                searchtext: valueSearch
             })
             setProduct(res.data)
             setIsLoading(false)
