@@ -17,10 +17,7 @@
   justify-content: space-around;
   align-items: center;
 }
-.form-control {
-  border-radius: 10px;
-  padding: 0.5rem;
-}
+
 .footer ul li {
   list-style: none;
   margin-right: 2rem;

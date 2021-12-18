@@ -1,5 +1,4 @@
 import React from 'react'
-
 const Loading = () => {
     return (
         <div className='d-flex justofy-content-center align-items-center position-absolute' style={{

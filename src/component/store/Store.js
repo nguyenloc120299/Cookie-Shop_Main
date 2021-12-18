@@ -21,7 +21,6 @@ const Store = () => {
     useEffect(() => {
         getProductStore(id)
     }, [id, callBack])
-    // console.log(productStore);
     return (
         <div className='store_page'>
             <div className='row'>
@@ -83,7 +82,7 @@ const Store = () => {
                                     cursor: 'pointer'
                                 }} className='item_filter'
 
-                                > {item.name} ({item.totalproduct})</div>
+                                > {item.name}</div>
                             ))
                         }
 
@@ -91,7 +90,7 @@ const Store = () => {
                         <hr />
                     </div>
                 </div>
-                <div className='col col-12 col-lg-9'>
+                <div className='col col-12 col-lg-9 d-flex'>
 
 
                     {

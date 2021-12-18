@@ -185,6 +185,33 @@
 .filter_product .item_filter:focus {
     color: rgb(26, 148, 255);
 }
+.img_feture {
+    width: 18px;
+    animation: glowing 1s infinite;
+    transform: scale(2);
+}
+@keyframes glowing {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    /* 0% {
+        opacity: 0.4;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(2);
+    } */
+}
 /* -----------------------------------pagination---------------------------------- */
 .pagination {
     margin-top: 20px;

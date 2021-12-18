@@ -13,11 +13,11 @@ export const ButtonAddCart = ({ id }) => {
             {
                 isLogin ?
 
-                    <button className='btn btn-primary w-100 btn-buy-now' onClick={() => addCart(id)} >
+                    <button className='btn btn-danger w-100 btn-buy-now font-weight-bold' onClick={() => addCart(id)} >
                         Mua ngay
                     </button> :
 
-                    <Link to='#' onClick={() => setIsShowModal(true)} className='btn btn-primary w-100 d-flex justify-content-center'  >
+                    <Link to='#' onClick={() => setIsShowModal(true)} className='btn btn-danger font-weight-bold w-100 d-flex justify-content-center'  >
                         Mua ngay
                     </Link>
             }

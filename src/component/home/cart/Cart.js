@@ -154,7 +154,8 @@ const Cart = () => {
                             <h1>Không có sản phẩm</h1>
                             <Link to='/' className='w-100 d-flex justify-content-center align-item-center'>
                                 <button className='btn btn-primary mt-5 ' style={{
-                                    fontWeight: 'bold'
+                                    fontWeight: 'bold',
+                                    backgroundColor: 'rgb(255, 57, 69);'
                                 }}>Mua ngay</button>
                             </Link>
 

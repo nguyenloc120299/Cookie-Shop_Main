@@ -4,7 +4,7 @@ const ProCessStep = ({ status }) => {
 
     return (
 
-        <div class="modal-body">
+        <div className="modal-body" >
             <ul className="progressbar">
                 <li className={status === 0 ? 'active' : 'complete'}>Chờ xác nhận</li>
                 <li className={status === 1 ? 'active' : (status === 0 ? '' : 'complete')}>Chuyển cho người bán</li>
@@ -12,7 +12,7 @@ const ProCessStep = ({ status }) => {
                 <li className={status === 3 ? 'active' : ((status === 0 || status === 1 || status === 2) ? '' : 'complete')} >Đã giao</li>
 
             </ul>
-        </div>
+        </div >
 
     )
 }

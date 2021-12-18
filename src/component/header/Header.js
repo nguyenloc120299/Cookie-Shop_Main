@@ -4,12 +4,16 @@ import { NavLink, Link, useHistory } from 'react-router-dom'
 import { BiShoppingBag } from 'react-icons/bi'
 import { GlobalContext } from '../../GlobalContext'
 import './header.css'
+import axios from 'axios'
 const Header = ({ setIsShow }) => {
     const context = useContext(GlobalContext)
     const [users] = context.usersApi.users
+    const [products] = context.productsApi.products
+    const [isLoading, setIsLoading] = context.isLoading
+    const [product, setProduct] = context.productSearch
     // const [user, setUser] = useState([])
     const history = useHistory()
-
+    const [valueSearch, setValueSearch] = useState('')
     const [isLoggin, setIsLoggin] = context.isLoggin
 
     const [cart, setCart] = context.cart
@@ -27,7 +31,52 @@ const Header = ({ setIsShow }) => {
             return item.id === id
         }
     })
+    const removeAccents = (str) => {
+        let AccentsMap = [
+            "aàảãáạăằẳẵắặâầẩẫấậ",
+            "AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬ",
+            "dđ", "DĐ",
+            "eèẻẽéẹêềểễếệ",
+            "EÈẺẼÉẸÊỀỂỄẾỆ",
+            "iìỉĩíị",
+            "IÌỈĨÍỊ",
+            "oòỏõóọôồổỗốộơờởỡớợ",
+            "OÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢ",
+            "uùủũúụưừửữứự",
+            "UÙỦŨÚỤƯỪỬỮỨỰ",
+            "yỳỷỹýỵ",
+            "YỲỶỸÝỴ"
+        ];
+        for (let i = 0; i < AccentsMap.length; i++) {
+            let re = new RegExp('[' + AccentsMap[i].substr(1) + ']', 'g');
+            let char = AccentsMap[i][0];
+            str = str.replace(re, char);
+        }
+        return str;
+    }
+    const getProductSearch = () => {
+        let data = []
+        alert(1)
+        products.forEach(p => {
+            // if (p.name.toLowerCase().search(valueSearch.toLowerCase()) !== -1 || removeAccents(p.sort_description.toLowerCase()).search(valueSearch.toLowerCase()) !== -1
+            // ) {
 
+            //     // data.push(p)
+            //     console.log(p);
+            // }
+            console.log(removeAccents(p.name.toLowerCase()).search(valueSearch.toLowerCase()) !== -1);
+
+        });
+        // setIsLoggin(true)
+        // const res = await axios.post('/products/searchtext', {
+        //     searchtext: valueSearch
+        // })
+        setProduct(data)
+        // setIsLoading(false)
+        // history.push('/search')
+
+    }
+    // console.log(product);
     const Logout = () => {
         localStorage.setItem('login_admin_main', false)
 
@@ -36,7 +85,6 @@ const Header = ({ setIsShow }) => {
         history.push('/')
         //window.location.href = '/home'
     }
-
     return (
         <div className='header'>
             <div className='d-flex justify-content-around align-items-center w-100 p-2'>
@@ -65,15 +113,23 @@ const Header = ({ setIsShow }) => {
                 <div className="input-group w-50 search_desktop ">
                     <input type="text" className="form-control" placeholder="Tìm kiếm" style={{
                         borderRadius: 'none'
-                    }} />
-                    <button className="btn btn-outline-primary" type="button" style={{
-                        color: 'white',
+                    }}
+                        value={valueSearch}
+                        onChange={e => setValueSearch(e.target.value)}
+                    />
+                    <Link className="btn btn-outline-primary" type="button"
+                        to={{
+                            pathname: '/search',
+                            search: `${valueSearch}`
+                        }}
+                        style={{
+                            color: 'white',
 
-                        background: 'rgb(13, 92, 182)'
-                    }}><BsSearch style={{
-                        marginRight: '3px',
+                            background: 'rgb(13, 92, 182)'
+                        }}><BsSearch style={{
+                            marginRight: '3px',
 
-                    }} /> Tìm kiếm</button>
+                        }} onClick={() => getProductSearch()} /> Tìm kiếm</Link>
                 </div>
                 <div className='search_mobile'>
                     <BsSearch style={{
@@ -101,8 +157,8 @@ const Header = ({ setIsShow }) => {
                                             objectFit: 'cover'
                                         }} className='dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false" />
                                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown p-5">
-                                            <li><Link to='/profile' className="dropdown-item dropdown_item" href="#">Trang cá nhân</Link></li>
-                                            <li><Link to='#' className="dropdown-item  dropdown_item" href="#" onClick={() => Logout()}>Đăng xuất</Link></li>
+                                            <li><Link to='/profile' className="dropdown-item dropdown_item" >Trang cá nhân</Link></li>
+                                            <li><Link to='#' className="dropdown-item  dropdown_item" onClick={() => Logout()}>Đăng xuất</Link></li>
                                         </ul>
                                     </Link>
                                 </>

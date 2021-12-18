@@ -12,7 +12,7 @@ export const GlobalContext = createContext()
 export const DataProvider = ({ children }) => {
     const [products, setProducts] = useState([])
     const [categories, setCategories] = useState([])
-
+    const [productSearch, setProductSearch] = useState([])
     const [supplier, setSupplier] = useState([])
     const [callBack, setCallBack] = useState(false)
     const [cart, setCart] = useState([])
@@ -20,6 +20,7 @@ export const DataProvider = ({ children }) => {
     const [isBuyer, setIsBuyer] = useState(false)
     const [callBackcart, setCallBackCart] = useState(false)
     const res = JSON.parse(localStorage.getItem('login_admin_main'))
+    const [isLoading, setIsLoading] = useState(false)
     const getProducts = async () => {
         let arr = []
         const res = await apiInstance.get("/products")
@@ -40,10 +41,7 @@ export const DataProvider = ({ children }) => {
         if (res && res.data) setSupplier(res.data)
     }
     useEffect(() => {
-
-
-
-        if (res !== null) {
+        if (res) {
             if (res.listroles[0].role === 'Admin' || res.listroles[0].role === 'user') setIsLoggin(true)
         }
         else setIsLoggin(false)
@@ -123,7 +121,9 @@ export const DataProvider = ({ children }) => {
         untillApi: UntillApi(),
         callBackcart: [callBackcart, setCallBackCart],
         categories: [categories, setCategories],
-        suppliers: [supplier, setSupplier]
+        suppliers: [supplier, setSupplier],
+        productSearch: [productSearch, setProductSearch],
+        isLoading: [isLoading, setIsLoggin]
     }
     useEffect(() => {
         const dataCart = JSON.parse(localStorage.getItem('cart'))

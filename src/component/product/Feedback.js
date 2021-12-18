@@ -84,24 +84,26 @@ const Feedback = ({ id }) => {
                     fontWeight: 'bold'
                 }} onClick={() => handleIndex()}>Xem thêm</Link>
             }
-            <div className='form_cmt d-flex mt-3'>
+            {
+                isLoggin &&
+                <div className='form_cmt d-flex mt-3'>
 
-                <textarea className='form-control w-50 text-cmt'
-                    rows={3} placeholder='Thêm bình luận sản phẩm này...'
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                />
-                {
-                    isLoggin && <img src={dataImg.send} alt='' style={{
+                    <textarea className='form-control w-50 text-cmt'
+                        rows={3} placeholder='Thêm bình luận sản phẩm này...'
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                    />
+                    <img src={dataImg.send} alt='' style={{
                         width: "50px",
                         height: '50px',
                         marginLeft: "3rem",
                         display: 'flex',
                         alignItems: 'center'
                     }} onClick={() => onSubmitComment()} />
-                }
 
-            </div>
+
+                </div>
+            }
         </div>
     )
 }

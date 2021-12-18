@@ -17,7 +17,7 @@ import ModalAuth from './component/auth/ModalAuth'
 import 'animate.css';
 import SwipperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import SearchProduct from './component/home/searchPage'
 import SellerRegister from './component/auth/SellerRegister';
 import LoadingPage from './component/view/LoadingPage';
 import Store from './component/store/Store';
@@ -45,6 +45,7 @@ function App() {
             <Header setIsShow={setIsShowModalLoggin} />
             <Switch>
               <Route path='/home' component={Product} exact />
+              <Route path='/search' component={SearchProduct} exact />
               <Route path='/' component={Product} exact />
               <Route path='/cart' component={Cart} />
               <Route path='/detail/:id' component={SingleProduct} />

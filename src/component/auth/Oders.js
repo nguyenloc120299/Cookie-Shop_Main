@@ -84,13 +84,13 @@ const Oders = () => {
 
                                         </td>
                                         <td>{item.quantity}</td>
-                                        <td>{item.dateOrder}</td>
+                                        <td>{new Date(item.dateOrder).toLocaleDateString()}</td>
                                         <td style={item.payments === 1
                                             ? { color: 'green', fontWeight: 'bold' }
                                             : { color: 'blue', fontWeight: "bold" }}
 
                                         >{item.payments === 1 ? 'Trực tiếp' : 'Online'}</td>
-                                        <td>{item.total}</td>
+                                        <td>{(item.total).toLocaleString()}</td>
                                         <td>
                                             <ProCessStep status={item.status} />
                                         </td>
