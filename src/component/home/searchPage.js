@@ -25,21 +25,28 @@ const SearchPage = () => {
     return (
         <div className='container' style={{
             minHeight: '100vh',
-            paddingTop: '7rem'
+            paddingTop: '7rem',
+            paddingBottom: '5rem'
         }}>
-            <h3 className='py-5'>Kết quả tìm kiếm cho {valueSearch}</h3>
+            <h3 className='py-5'>Kết quả tìm kiếm cho `{valueSearch}`</h3>
             {
                 isLoading ? <Loading /> :
-                    <div className='row'>
-
+                    <div className='row justify-content-center'>
                         {
-                            product.length > 0 ? product.map(item => (
-                                <CardProduct product={item} />
-                            ))
-                                :
-                                <div className='d-flex justify-content-center'>
-                                    <h3>Không có sản phẩm cần tìm</h3>
+                            product.length > 0 ?
+                                <div className='d-flex flex-wrap'>
+                                    {
+                                        product.map(item => (
+                                            <CardProduct product={item} />
+                                        ))
+                                    }
+
+
+
+
                                 </div>
+                                :
+                                <h3 className='text-center'>Không có sản phẩm cần tìm</h3>
                         }
 
                     </div>

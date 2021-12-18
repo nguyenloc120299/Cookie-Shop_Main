@@ -3,8 +3,10 @@ import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import swal from 'sweetalert'
 import { apiInstance } from '../../baseApi'
+import Loading from '../view/Loading'
 
 const Register = ({ setIsChange, setIsShow }) => {
+    const [isLoading, setIsLoading] = useState(false)
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: '',
@@ -20,18 +22,25 @@ const Register = ({ setIsChange, setIsShow }) => {
     }
     const submitRegister = async () => {
         try {
+
+            setIsLoading(true)
             const res = await apiInstance.post('/sigup', { ...userLogin });
             swal('Đăng kí tài khoản thành công', '', 'success')
+            setIsLoading(false)
         } catch (error) {
             setIsShow(false)
+            setIsLoading(false)
             // swal(`${error.reponse.data}`, '', 'warning')
-            swal(`${error.response.data.message}`, '', 'error');
+            swal(`Có lỗi xảy ra`, 'Thử lại sau', 'error');
         }
 
         //window.location.href = '/login'
     }
     return (
         <div className='login'>
+            {
+                isLoading && <Loading />
+            }
             <div className='logo'>
                 <Link to='/'> <h2 style={{
 
@@ -42,7 +51,7 @@ const Register = ({ setIsChange, setIsShow }) => {
             </div>
 
             <div className="mb-3">
-
+                <label>Họ và tên</label>
                 <input type="text" className="form-control"
                     name='name'
                     value={userLogin.name}
@@ -51,6 +60,7 @@ const Register = ({ setIsChange, setIsShow }) => {
                 />
 
             </div>
+            <label>Tên người dùng</label>
             <div className="mb-3">
 
                 <input type="text" className="form-control"
@@ -62,16 +72,17 @@ const Register = ({ setIsChange, setIsShow }) => {
 
             </div>
             <div className="mb-3">
-
+                <label>Mật khẩu</label>
                 <input type="password" className="form-control"
                     name='password'
                     value={userLogin.password}
                     onChange={handleInput}
                     placeholder='Mật khẩu'
                 />
+
             </div>
             <div className="mb-3">
-
+                <label>Địa chỉ</label>
                 <input type="text" className="form-control"
                     name='address'
                     value={userLogin.address}
@@ -81,7 +92,7 @@ const Register = ({ setIsChange, setIsShow }) => {
 
             </div>
             <div className="mb-3">
-
+                <label>Số điện thoại</label>
                 <input type="text" className="form-control"
                     name='phone'
                     value={userLogin.phone}
@@ -91,7 +102,7 @@ const Register = ({ setIsChange, setIsShow }) => {
 
             </div>
             <div className="mb-3">
-
+                <label>Email</label>
                 <input type="email" className="form-control"
                     name='email'
                     value={userLogin.email}

@@ -4,12 +4,14 @@ import { Link, useHistory } from 'react-router-dom'
 import swal from 'sweetalert'
 import { apiInstance } from '../../baseApi'
 import { GlobalContext } from '../../GlobalContext'
+import Loading from '../view/Loading'
 import './login.css'
 const Login = ({ setIsChange, setIsShow }) => {
     const context = useContext(GlobalContext)
     const [users] = context.usersApi.users
     const [callback, setCallback] = context.usersApi.callBack
     const [isLoggin, setIsLoggin] = context.isLoggin
+    const [isLoading, setIsLoading] = useState(false)
     const [userLogin, setUserLogin] = useState({
         username: '',
         password: ''
@@ -22,7 +24,7 @@ const Login = ({ setIsChange, setIsShow }) => {
     }
     const onSubmitLogin = async () => {
         try {
-
+            setIsLoading(true)
             const res = await apiInstance.post('/signin', { ...userLogin })
             //  localStorage.setItem('login_admin', true)
 
@@ -38,21 +40,28 @@ const Login = ({ setIsChange, setIsShow }) => {
                     setIsShow(false)
                 } else {
                     setIsShow(false)
+                    setIsLoading(false)
                     swal('Chưa xác thực email', '', 'error')
                 }
             } else {
                 setIsShow(false)
+                setIsLoading(false)
                 swal('Đăng nhập không thành công', '', 'error')
 
             }
-
+            setIsLoading(false)
         } catch (error) {
+            setIsLoggin(false)
+            setIsShow(false)
             swal(`${error.response.data.message}`, '', 'error')
         }
 
     }
     return (
         <div className='login'>
+            {
+                isLoading && <Loading />
+            }
             <div className='logo'>
                 <Link to='/'> <h2 style={{
 

@@ -1,17 +1,24 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwipperCore, { Autoplay, Navigation } from 'swiper'
 import { GlobalContext } from '../../../GlobalContext';
+import { apiInstance } from '../../../baseApi'
 import CardProduct from '../CardProduct';
 const FeatureProduct = () => {
     SwipperCore.use([Autoplay, Navigation])
-    const context = useContext(GlobalContext)
-
-    const [products] = context.productsApi.products
-    const featureProduct = products.filter(item => {
-        return item.featured === 1
-    })
-
+    // const context = useContext(GlobalContext)
+    const [featureProduct, setFeatureProduct] = useState([])
+    // const [products] = context.productsApi.products
+    useEffect(() => {
+        const getFeature = async () => {
+            const res = await apiInstance.get('/products')
+            setFeatureProduct(res.data.filter(item => {
+                return item.featured === 1
+            })
+            )
+        }
+        getFeature()
+    }, [])
     return (
         <div className='feture_products'>
             <h3>Sản phẩm nổi bật <img src='https://frontend.tikicdn.com/_desktop-next/static/img/dealFlashIcon.svg' alt='' className='img_feture' /></h3>

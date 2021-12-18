@@ -94,7 +94,8 @@ const Header = ({ setIsShow }) => {
                 <div className='logo'>
                     <Link to='/'> <h3 style={{
 
-                        padding: "5px"
+                        padding: "5px",
+                        fontWeight: '900'
                     }}>Cookies</h3></Link>
                 </div>
 

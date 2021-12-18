@@ -22,21 +22,26 @@ const Store = () => {
         getProductStore(id)
     }, [id, callBack])
     return (
-        <div className='store_page'>
+        <div className='store_page' style={{
+            paddingTop: '6rem',
+            paddingBottom: '6rem'
+        }}>
             <div className='row'>
-                <div className='d-flex justify-content-around flex-wrap'>
-                    <img src={store && store.logo} alt='' style={{
-                        width: '10rem',
-                        height: '10rem',
-                        borderRadius: '50%'
-                    }} />
-                    <div className='d-flex flex-column' style={{
-                        fontSize: "27px",
-                        fontWeight: '700',
-                        alignItems: 'center'
-                    }}>
-                        <div className='name_store mb-2'>{store && store.name}</div>
-                        <div className='date_create'>{store && store.dateStore}</div>
+                <div className='py-5'>
+                    <div className='d-flex justify-content-around flex-wrap'>
+                        <img src={store && store.logo} alt='' style={{
+                            width: '10rem',
+                            height: '10rem',
+                            borderRadius: '50%'
+                        }} />
+                        <div className='d-flex flex-column' style={{
+                            fontSize: "27px",
+                            fontWeight: '700',
+                            alignItems: 'center'
+                        }}>
+                            <div className='name_store mb-2'>{store && store.name}</div>
+                            <div className='date_create'>{store && store.dateStore}</div>
+                        </div>
                     </div>
                 </div>
             </div>

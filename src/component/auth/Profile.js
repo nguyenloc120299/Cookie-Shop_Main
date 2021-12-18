@@ -26,22 +26,22 @@ const Profile = ({ optionRoute }) => {
                 <div className='col-12 col-lg-2 d-flex flex-column  align-items-start'>
                     <Link to='/profile' className='mt-3 text-dark text-decoration-none' style={{
                         fontWeight: 'bold'
-                    }}><i className="fa fa-user" style={{
-                        fontSize: '22px',
-                        margin: '4px',
-
-                    }} />Tài khoản của tôi</Link>
+                    }}>
+                        <img src='./user.png' style={{
+                            width: "1.3rem",
+                            marginRight: '5px'
+                        }} />Tài khoản của tôi</Link>
                     <Link to='/oders' className='mt-3 text-dark text-decoration-none' style={{
                         fontWeight: 'bold'
-                    }}><i className="fa fa-clipboard" style={{
-                        fontSize: '22px',
-                        margin: '4px'
+                    }}><img src='./order.png' style={{
+                        width: "1.3rem",
+                        marginRight: '5px'
                     }} />Đơn mua</Link>
                     <Link to='/history' className='mt-3 text-dark text-decoration-none' style={{
                         fontWeight: 'bold'
-                    }}><i className="fas fa-history" style={{
-                        fontSize: '22px',
-                        margin: '4px'
+                    }}><img src='./medical-checkup.png' style={{
+                        width: "1.3rem",
+                        marginRight: '5px'
                     }} />Lịch sử giao hàng</Link>
                     {/* <div className='mt-3 dropdown'>
                         <Link to='#' className='text-dark text-decoration-none dropdown-toggle' id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style={{
