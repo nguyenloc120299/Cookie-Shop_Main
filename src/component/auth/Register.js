@@ -24,8 +24,9 @@ const Register = ({ setIsChange, setIsShow }) => {
         try {
 
             setIsLoading(true)
-            const res = await apiInstance.post('/sigup', { ...userLogin });
-            swal('Đăng kí tài khoản thành công', '', 'success')
+            await apiInstance.post('/sigup', { ...userLogin });
+            setIsShow(false)
+            swal('Đăng kí tài khoản thành công', 'Vui lòng xác nhận mail để kích hoạt tài khoản', 'success')
             setIsLoading(false)
         } catch (error) {
             setIsShow(false)

@@ -125,7 +125,7 @@ const SellerRegister = ({ setIsChange }) => {
                         }}
                     >Đăng kí</button>
 
-                    <div className="mt-3 text-center">Bạn đã có tài khoản ? <span><a href='https://cookiesshop-manager.netlify.app' >Đăng nhập</a></span> </div>
+                    <div className="mt-3 text-center">Bạn đã có tài khoản ? <span><a href='https://cookiesshop-manager.netlify.app' target='_blank' >Đăng nhập</a></span> </div>
                 </div>
             </div>
         </div>
