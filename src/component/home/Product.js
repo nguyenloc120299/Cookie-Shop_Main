@@ -146,7 +146,9 @@ const Product = () => {
     const productsTotal = products.filter(item => {
         return item.status === 1
     })
-
+    const getAll = async () => {
+        await apiInstance.get('/products')
+    }
     return (
         <div className='product_page'>
 
@@ -228,7 +230,7 @@ const Product = () => {
 
                             <div className='sort_product d-flex justify-content-around align-items-center'>
                                 <h6>Sắp xếp theo</h6>
-                                <button onClick={() => setCallback(!callBack)}>Tất cả</button>
+                                <button onClick={() => getAll()}>Tất cả</button>
                                 <button onClick={() => newProduct(idCategory, type)}>Mới nhât</button>
                                 <button onClick={() => sortProductBanChay(idCategory, type)}>Bán chạy</button>
                                 <button className='dropdown' style={{
