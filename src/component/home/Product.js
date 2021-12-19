@@ -114,20 +114,20 @@ const Product = () => {
     const sortProductByPriceReduced = async (id, type) => {
         if (id) {
             if (type === 'categories') {
-                const res = await apiInstance.get(`  /products/reduced/categories/${id}`)
+                const res = await apiInstance.get(`/products/reduced/categories/${id}`)
 
                 if (res && res.data) {
                     setProducts(res.data)
                 }
             } else if (type === 'suppliers') {
-                const res = await apiInstance.get(`  /products/reduced/supplier/${id}`)
+                const res = await apiInstance.get(`/products/reduced/supplier/${id}`)
 
                 if (res && res.data) {
                     setProducts(res.data)
                 }
             }
         } else {
-            const res = await apiInstance.get(`  /products/reduced/`)
+            const res = await apiInstance.get(`/products/reduced`)
 
             if (res && res.data) {
                 setProducts(res.data)

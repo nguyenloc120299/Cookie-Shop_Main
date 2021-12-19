@@ -135,23 +135,14 @@ const MyAccount = () => {
                 </div>
 
                 <div className='position-relative info_avt'>
-                    {/* {
-                        img ?
-                            <img src={img.url}
-                                alt='avartar' style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    borderRadius: '50%',
-                                    objectFit: "cover"
-                                }} />
-                            : */}
+
                     <img src={img ? URL.createObjectURL(img) : info?.avartar} style={{
                         width: '100%',
                         height: '100%',
                         borderRadius: '50%',
                         objectFit: 'cover'
                     }} />
-                    {/* } */}
+
                     {
                         isEdit &&
 
@@ -166,43 +157,7 @@ const MyAccount = () => {
                     }
                 </div>
 
-                {/* :
-                    <>
-                        <div className='avt_info position-relative'>
 
-                            {
-                                img ?
-                                    <>
-                                        <img src={img.url}
-                                            alt='avartar' style={{
-                                                width: '300px',
-                                                height: '250px'
-                                            }} />
-                                        <div className='destroy position-absolute' style={{
-                                            top: '0',
-                                            right: '10px',
-                                            color: 'red',
-                                            fontWeight: 'bold',
-                                            fontSize: '30px',
-                                            cursor: 'pointer'
-                                        }} onClick={() => handleDestroy(img.public_id)}>X</div>
-
-                                    </>
-                                    :
-                                    <label htmlFor="fileInput">
-                                        <i className="fas fa-camera" style={{
-                                            fontSize: '50px'
-                                        }} />
-                                        <input type='file' onChange={handleUploadImg} id='fileInput' style={{ display: 'none' }} />
-                                    </label>
-                            }
-
-
-
-                        </div>
-
-                    </>
-                } */}
             </div>
 
         </>
