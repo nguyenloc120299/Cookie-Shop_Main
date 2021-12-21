@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Button } from 'react-bootstrap'
 import { GlobalContext } from '../../GlobalContext'
 
 const History = () => {
@@ -31,11 +32,13 @@ const History = () => {
                                     </td>
                                     <td>
                                         <div className='d-flex flex-column justify-content-center'>
-                                            <div>{item.name}</div>
-                                            <img src={item.avartar} alt='' style={{
-                                                width: '5rem',
-                                                objectFit: "cover"
-                                            }} />
+                                            <div className='d-flex justify-content-center'>{item.name}</div>
+                                            <div className='d-flex justify-content-center'>
+                                                <img src={item.avartar} alt='' style={{
+                                                    width: '5rem',
+                                                    objectFit: "cover"
+                                                }} />
+                                            </div>
 
                                         </div>
 
@@ -49,9 +52,11 @@ const History = () => {
                                     >{item.payments === 1 ? 'Trực tiếp' : 'Online'}</td>
                                     <td>{item.total}</td>
 
-                                    {/* {
-                                            item.status === 0 && <Button variant="danger">Danger</Button>
-                                        } */}
+                                    {
+                                        item.status === 3 && <p className='text-success' style={{
+                                            fontWeight: 'bold'
+                                        }}>Đã giao</p>
+                                    }
 
                                 </tr>
                             ))

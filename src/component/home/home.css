@@ -169,6 +169,11 @@
     color: white;
     font-weight: bold;
 }
+.sort_product button:focus {
+    background: rgb(26, 148, 255);
+    color: white;
+    font-weight: bold;
+}
 .filter_product {
     height: 100%;
     width: 17rem;

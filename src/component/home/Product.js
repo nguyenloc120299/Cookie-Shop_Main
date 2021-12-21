@@ -193,7 +193,7 @@ const Product = () => {
                                     cursor: 'pointer'
                                 }} className='item_filter'
                                     onClick={() => getProductByCategories(item.id)}
-                                > {item.name} ({item.totalproduct})</div>
+                                > {item.name}</div>
                             ))
                         }
 
@@ -221,7 +221,7 @@ const Product = () => {
                                     cursor: "pointer"
                                 }} className='item_filter'
                                     onClick={() => getProductBySupplier(item.id)}
-                                > {item.name} ({item.products && item.products.length})</div>
+                                > {item.name}</div>
                             ))
                         }
                     </div>

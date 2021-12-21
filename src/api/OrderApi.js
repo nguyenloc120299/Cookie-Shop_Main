@@ -21,8 +21,9 @@ function OrderApi(res1) {
 
                 res.data.forEach(item => {
                     item.listOrderDetail.forEach(element => {
-                        if (element.status != 5 && element.status != 4) {
+                        if (element.status != 3 && element.status != 4) {
                             data.push({
+                                id: element.id,
                                 name: element.name,
                                 dateOrder: item.dateorder,
                                 quantity: element.quantity,
@@ -32,9 +33,10 @@ function OrderApi(res1) {
                                 status: element.status
                             })
                         }
-                        if (element.status == 4) {
+                        if (element.status == 3) {
 
                             history.push({
+                                id: element.id,
                                 name: element.name,
                                 dateOrder: item.dateorder,
                                 quantity: element.quantity,
