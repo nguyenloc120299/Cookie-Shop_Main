@@ -20,21 +20,25 @@ const SellerRegister = ({ setIsChange }) => {
         setUserLogin({ ...userLogin, [name]: value })
     }
     const submitRegister = async () => {
+        try {
+            const res = await apiInstance.post('/seller/sigup', { ...userLogin });
 
-        const res = await apiInstance.post('/seller/sigup', { ...userLogin });
+            swal(` ${res.data.message} `, {
+                icon: "success",
+            });
+            setUserLogin({
+                username: '',
+                password: '',
+                name: '',
+                email: '',
+                address: '',
+                phone: ''
+            })
+        } catch (error) {
+            console.log(error);
+        }
 
-        swal(` ${res.data.message} `, {
-            icon: "success",
-        });
-        setUserLogin({
-            username: '',
-            password: '',
-            name: '',
-            email: '',
-            address: '',
-            phone: ''
-        })
-        history.push('create-store')
+
     }
     return (
         <div className='login' style={{
