@@ -20,13 +20,19 @@ const FeatureProduct = () => {
         getFeature()
     }, [])
     return (
-        <div className='feture_products'>
-            <h3>Sản phẩm nổi bật <img src='https://frontend.tikicdn.com/_desktop-next/static/img/dealFlashIcon.svg' alt='' className='img_feture' /></h3>
+        <div className='feture_products container-fluid'>
+            <h3 style={{
+                color: 'rgb(255, 128, 29)',
+                fontWeight: 'bold',
+                fontStyle: 'italic',
+                padding: '0 4rem'
+            }}>Sản phẩm nổi bật <img src='https://frontend.tikicdn.com/_desktop-next/static/img/dealFlashIcon.svg' alt='' className='img_feture'
+
+                /></h3>
             {
                 featureProduct.length > 0 ?
                     <Swiper Swiper
                         slidesPerView={5}
-                        spaceBetween={30}
                         slidesPerGroup={5}
                         loop={true}
                         loopFillGroupWithBlank={true}

@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import ScrollAnimation from 'react-animate-on-scroll'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { apiInstance } from '../../baseApi'
 import { GlobalContext } from '../../GlobalContext'
 import ButtonSlide from '../langding/Slider/ButtonSlide'
@@ -25,7 +25,7 @@ const Product = () => {
     const [idCategory, setCategory] = useState('')
     const [listSlide, setListSlide] = useState([])
     const listRef = useRef()
-    const totalItem = 14;
+    const totalItem = 12;
     const [pageNumber, setPageNumber] = useState(0)
     const PageVisited = pageNumber * totalItem
     const pageCount = Math.ceil(products.length / totalItem);
@@ -163,16 +163,21 @@ const Product = () => {
             <div className='product_main'>
 
                 <h3 style={{
-                    textAlign: 'left'
+                    textAlign: 'left',
+                    fontWeight: 'bold',
+                    fontStyle: 'italic'
                 }}>Tất cả sản phẩm</h3>
 
                 <div className='d-flex'>
                     <div className='filter_product'>
-                        <h5 tyle={{
-                            fontWeight: 'bold'
+                        <h5 style={{
+                            fontWeight: 'bold',
+                            color: 'rgb(26, 148, 255);',
+                            fontStyle: "italic"
+
                         }}>Danh mục sản phẩm </h5>
                         <br />
-                        <h6 tyle={{
+                        <h6 style={{
                             fontWeight: 'bold'
                         }}><img
                                 src='https://salt.tikicdn.com/ts/upload/33/0f/67/de89fab36546a63a8f3a8b7d038bff81.png' alt=''
@@ -191,7 +196,7 @@ const Product = () => {
 
                                     paddingTop: '2px',
                                     cursor: 'pointer'
-                                }} className='item_filter'
+                                }} className='item_filter active'
                                     onClick={() => getProductByCategories(item.id)}
                                 > {item.name}</div>
                             ))

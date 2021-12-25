@@ -12,7 +12,7 @@ const MyAccount = () => {
     const [isEdit, setIsEdit] = useState(false)
     const { id } = JSON.parse(localStorage.getItem('login_admin_main'))
     const [isLoading, setIsLoading] = useState(false)
-
+    const [err, setErr] = useState('')
     const [valueInput, setValueInput] = useState({
         name: '',
         email: '',
@@ -24,7 +24,29 @@ const MyAccount = () => {
 
         setValueInput({ ...valueInput, [name]: value })
     }
-
+    const validPhone = (phone) => {
+        let vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+        return vnf_regex.test(phone)
+    }
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+    const valid = ({
+        name, email, phone
+    }) => {
+        const err = {}
+        if (name.length > 20) err.name = 'Họ tên nhỏ hơn 20 kí tự'
+        if (!validPhone(phone)) err.phone = 'Số điện thoại không hợp lệ'
+        if (!validateEmail(email)) err.email = 'Email không hợp lệ'
+        return {
+            errMsg: err,
+            errLength: Object.keys(err).length
+        }
+    }
 
     const context = useContext(GlobalContext)
     const [users] = context.usersApi.users
@@ -65,8 +87,8 @@ const MyAccount = () => {
 
     const onSubmitEdit = async () => {
         try {
-
-            if (valueInput.phone.length > 10) return swal('Số điện thoại có 10 chữ số', '', 'info')
+            const check = valid(valueInput)
+            if (check.errLength > 0) return setErr(check.errMsg)
             else {
                 if (img) {
                     setIsLoading(true)
@@ -103,26 +125,41 @@ const MyAccount = () => {
                 }
 
                 <div className='input-profile-account'>
-                    <h2 className='mb-3'>Hồ sơ của tôi</h2>
+                    <h2 className='mb-3' style={{
+                        fontWeight: "bold",
+                        fontStyle: "italic"
+                    }}>Hồ sơ của tôi</h2>
                     <div className='info_account mb-3'>
                         <h5>Tên đăng nhập:  {info && info.username} </h5>
                     </div>
                     <div className='info_account mb-3'>
-                        {!isEdit ? <span> Họ và tên : {info && info.name} </span> : <input className='form-control' type='text'
-                            name='name' onChange={handleOnchane} value={valueInput.name} />
-
-
+                        {!isEdit ? <span> Họ và tên : {info && info.name} </span> :
+                            <>
+                                <input className='form-control' type='text'
+                                    name='name' onChange={handleOnchane} value={valueInput.name} />
+                                {err.name && <small>{err.name}</small>}
+                            </>
                         }
 
                     </div>
                     <div className='info_account mb-3'>
-                        {!isEdit ? <span>Email :  {info && info.email}</span> : <input className='form-control' type='text'
-                            name='email' onChange={handleOnchane} value={valueInput.email} />}
+                        {!isEdit ? <span>Email :  {info && info.email}</span> :
+                            <>                        <input className='form-control' type='text'
+                                name='email' onChange={handleOnchane} value={valueInput.email} />
+                                {err.email && <small>{err.email}</small>}
+                            </>
+                        }
 
                     </div>
                     <div className='info_account mb-3'>
-                        {!isEdit ? <span> Số điện thoại :  {info && info.phone}</span> : <input className='form-control ' type='text'
-                            name='phone' onChange={handleOnchane} value={valueInput.phone} />}
+                        {!isEdit ? <span> Số điện thoại :  {info && info.phone}</span> :
+                            <>
+                                <input className='form-control ' type='text'
+                                    name='phone' onChange={handleOnchane} value={valueInput.phone} />
+
+                                {err.phone && <small>{err.phone}</small>}
+                            </>
+                        }
                     </div>
                     <div className='info_account mb-3'>
                         {!isEdit ? <span> Địa chỉ :  {info && info.address}</span> : <input className='form-control ' type='text'

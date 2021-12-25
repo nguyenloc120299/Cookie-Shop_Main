@@ -27,6 +27,10 @@
   border-radius: 5px;
   margin-left: 5px;
 }
+small {
+  color: red;
+  font-weight: 500;
+}
 @media (max-width: 775px) {
   .search_desktop {
     display: none;

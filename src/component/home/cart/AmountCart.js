@@ -46,12 +46,12 @@ const AmountCart = ({ p, removeProduct }) => {
     console.log(quantity);
     return (
         <div className="amount" >
-            <button className="btn btn-outline-dark" onClick={() => reduction(p.id)}> - </button>
+            <button className="btn btn-primary" onClick={() => reduction(p.id)}> - </button>
             <span style={{
                 marginLeft: '20px',
                 marginRight: '20px'
             }}>{quantity}</span>
-            <button className="btn btn-outline-dark" onClick={() => increase(p.id)}> + </button>
+            <button className="btn btn-primary" onClick={() => increase(p.id)}> + </button>
         </div>
     )
 }

@@ -48,7 +48,7 @@ function App() {
               <Route path='/search' component={SearchProduct} exact />
               <Route path='/' component={Product} exact />
               <Route path='/cart' component={Cart} />
-              <Route path='/detail/:id' component={SingleProduct} />
+              <Route path='/detail/:id' component={SingleProduct} exact />
               <Route path='/store/:id' component={Store} />
               <Route path='/register-seller' component={SellerRegister} />
               {/* <Route path='/login' component={isLogin ? Product : Login} />

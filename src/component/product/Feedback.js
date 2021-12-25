@@ -23,7 +23,6 @@ const Feedback = ({ id }) => {
             return item.id === id
         }
     })
-    console.log(user);
     const [feedBack, setFeedback] = useState([])
     const getComment = async (id) => {
         const res = await apiInstance.get(`/comments/product/${id}`)
@@ -51,10 +50,16 @@ const Feedback = ({ id }) => {
         setContent('')
     }
     return (
-        <div className='feedback mb-3'>
-            <h3>Đánh giá - Nhận xét từ khách hàng</h3>
+        <div className='feedback mb-3' style={{
+            padding: '1rem 3rem'
+        }}>
+            <h3 style={{
+                fontWeight: 'bold',
+                fontStyle: 'italic'
+            }}>Đánh giá - Nhận xét từ khách hàng</h3>
+
             {
-                feedBack && feedBack.slice(0, index).map(item => (
+                feedBack.length > 0 ? feedBack.slice(0, index).map(item => (
                     <div className='content mt-3 mb-3' key={item.id}>
                         <div className='des_content d-flex'>
                             <img src={item.avatar} alt='' style={{
@@ -76,7 +81,7 @@ const Feedback = ({ id }) => {
                             </div>
                         </div>
                     </div>
-                ))
+                )) : <p className='text-center'>Chưa có đánh giá</p>
             }
             {
                 feedBack.length > 5 &&

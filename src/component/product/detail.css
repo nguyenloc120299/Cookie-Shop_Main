@@ -6,15 +6,11 @@
     padding: 50px;
 }
 .img-container {
-    max-width: 486px;
-    width: 100%;
-    margin: 20px;
-    min-width: 246px;
-    height: 344px;
+    min-width: 450px;
+    height: 570px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 20px;
 }
 .img-container:hover {
     background-size: 150%;
@@ -86,13 +82,13 @@
 .thumb {
     display: flex;
     cursor: pointer;
+    padding-top: 2rem;
 }
 .thumb img {
     width: 100px;
     height: 130px;
     margin-right: 20px;
     overflow: hidden;
-    border-radius: 20px;
     object-fit: cover;
 }
 .detail p {

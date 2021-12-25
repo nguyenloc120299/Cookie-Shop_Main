@@ -46,7 +46,7 @@ const Login = ({ setIsChange, setIsShow }) => {
             } else {
                 setIsShow(false)
                 setIsLoading(false)
-                swal('Đăng nhập không thành công', '', 'error')
+                swal('Đăng nhập không thành công', 'Sai tài khoản hoặc mật khẩu', 'error')
 
             }
             setIsLoading(false)
@@ -66,7 +66,8 @@ const Login = ({ setIsChange, setIsShow }) => {
                 <Link to='/'> <h2 style={{
 
                     padding: "5px",
-                    color: ' rgb(26, 148, 255)'
+                    color: ' rgb(26, 148, 255)',
+                    fontWeight: '600'
 
                 }}>Cookies Shop</h2></Link>
             </div>

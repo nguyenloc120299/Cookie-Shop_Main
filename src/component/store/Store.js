@@ -1,4 +1,5 @@
 
+import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { apiInstance } from '../../baseApi'
@@ -14,13 +15,57 @@ const Store = () => {
     const [store] = stores.filter(item => item.id == id)
     const [callBack, setCallBack] = useState(false)
     const [categories] = context.categories
+    const [id_Cate, setId_Cate] = useState(null)
     const getProductStore = async (id) => {
         const res = await apiInstance.get(`/products/store/${id}`)
         if (res && res.data) setProductStore(res.data)
+        setId_Cate(null)
     }
+
     useEffect(() => {
         getProductStore(id)
     }, [id, callBack])
+
+    const getProductByCategorie = async (id_Cate) => {
+        setId_Cate(id)
+        const res = await apiInstance.get(`/products/categories/${id_Cate}/store/${id}`)
+        setProductStore(res.data)
+    }
+    const getProductStoreFilter = async (idCate, type) => {
+        // if (idCate) {
+        //     if (type === 1) {
+        //         const res = await apiInstance.get(`/products/sellfast/categories/${idCate}/store/${id}`)
+        //         setProductStore(res.data)
+        //     }
+        //     if (type === 2) {
+        //         const res = await apiInstance.get(`/products/increase/categories/${idCate}/store/${id}`)
+        //         setProductStore(res.data)
+        //     }
+        //     if (type === 3) {
+        //         const res = await apiInstance.get(`/products/reduced/categories/${idCate}/store/${id}`)
+        //         setProductStore(res.data)
+        //     }
+
+        // }
+        //  else {
+        if (type == 1) {
+            const res = await apiInstance.get(`/products/sellfast/store/${id}`)
+            setProductStore(res.data)
+        }
+        if (type == 2) {
+            const res = await apiInstance.get(`/products/increase/store/${id}`)
+            setProductStore(res.data)
+        }
+        if (type == 3) {
+            const res = await apiInstance.get(`/products/reduced/store/${id}`)
+            setProductStore(res.data)
+        }
+        //}
+    }
+    useEffect(() => {
+        getProductStore(id_Cate)
+    }, [id_Cate])
+
     return (
         <div className='store_page' style={{
             paddingTop: '6rem',
@@ -28,7 +73,7 @@ const Store = () => {
         }}>
             <div className='row'>
                 <div className='py-5'>
-                    <div className='d-flex justify-content-around flex-wrap'>
+                    <div className='d-flex justify-content-around flex-wrap store_header align-items-center'>
                         <img src={store && store.logo} alt='' style={{
                             width: '10rem',
                             height: '10rem',
@@ -39,8 +84,8 @@ const Store = () => {
                             fontWeight: '700',
                             alignItems: 'center'
                         }}>
-                            <div className='name_store mb-2'>{store && store.name}</div>
-                            <div className='date_create'>{store && store.dateStore}</div>
+                            <div className='name_store mb-2 text-white'>{store && store.name}</div>
+                            <div className='date_create text-white'>{store && store.dateStore}</div>
                         </div>
                     </div>
                 </div>
@@ -48,9 +93,9 @@ const Store = () => {
             <div className='row '>
                 <div className='sort_product d-flex justify-content-around align-items-center'>
                     <h6>Sắp xếp theo</h6>
-                    <button>Tất cả</button>
-                    <button>Mới nhât</button>
-                    <button >Bán chạy</button>
+                    <button onClick={() => getProductStore(id)}>Tất cả</button>
+                    {/* <button>Mới nhât</button> */}
+                    <button onClick={() => getProductStoreFilter(id_Cate, 1)} >Bán chạy</button>
                     <button className='dropdown' style={{
                         width: '10rem'
                     }}>
@@ -58,23 +103,25 @@ const Store = () => {
                             Giá
                         </div>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown p-5">
-                            <li><Link to='#' className="dropdown-item dropdown_item" href="#" >Từ thấp tới cao</Link></li>
-                            <li><Link to='#' className="dropdown-item  dropdown_item" href="#" >Từ cao tới thâp</Link></li>
+                            <li><Link to='#' className="dropdown-item dropdown_item" href="#" onClick={() => getProductStoreFilter(id_Cate, 2)}>Từ thấp tới cao</Link></li>
+                            <li><Link to='#' className="dropdown-item  dropdown_item" href="#" onClick={() => getProductStoreFilter(id_Cate, 3)}>Từ cao tới thâp</Link></li>
                         </ul>
                     </button>
                 </div>
             </div>
             <div className='row'>
-                <div className='col col-12 col-lg-3' style={{
+                {/* <div className='col col-12 col-lg-2' style={{
                     height: '100%',
                     overflow: 'hidden'
                 }}>
                     <div className='filter_product'>
-                        <h5 tyle={{
-                            fontWeight: 'bold'
+                        <h5 style={{
+                            fontWeight: 'bold',
+                            fontStyle: 'italic',
+                            maxWidth: '12rem'
                         }}>Danh mục sản phẩm </h5>
                         <br />
-                        <h6 tyle={{
+                        <h6 style={{
                             fontWeight: 'bold'
                         }}>Thể loại </h6>
 
@@ -87,15 +134,15 @@ const Store = () => {
                                     cursor: 'pointer'
                                 }} className='item_filter'
 
-                                > {item.name}</div>
+                                    onClick={() => getProductByCategorie(item.id)} > {item.name}</div>
                             ))
                         }
 
 
                         <hr />
                     </div>
-                </div>
-                <div className='col col-12 col-lg-9 d-flex'>
+                </div> */}
+                <div className=' d-flex justify-content-center flex-wrap'>
 
 
                     {
@@ -106,7 +153,7 @@ const Store = () => {
 
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

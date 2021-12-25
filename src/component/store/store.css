@@ -6,3 +6,10 @@
     padding-top: 110px;
     margin: auto;
 }
+.store_header {
+    background-image: url("https://salt.tikicdn.com/ts/sellercenterFE/2d/24/dc/8b6b6c4ef997c6ad31f5ab7bed44e850.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 1rem;
+}

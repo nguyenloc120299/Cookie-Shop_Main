@@ -35,7 +35,10 @@ const PaymentModal = ({ setIsPayment, cart }) => {
         <div className='paymentModal'>
             <div className='form_modal'>
                 <div className='payment_header'>
-                    <h3>Thanh toán</h3>
+                    <h3 style={{
+                        fontWeight: 'bold',
+                        fontStyle: 'italic'
+                    }}>Thanh toán</h3>
                     <span onClick={() => setIsPayment(false)}>&times;</span>
                 </div>
                 <div className='payment_body'>

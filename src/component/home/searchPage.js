@@ -16,12 +16,14 @@ const SearchPage = () => {
             const res = await apiInstance.post('/products/searchtext', {
                 searchtext: valueSearch
             })
+            console.log(res.data);
             setProduct(res.data)
             setIsLoading(false)
         }
 
         getProductSearch(valueSearch)
     }, [valueSearch])
+
     return (
         <div className='container' style={{
             minHeight: '100vh',

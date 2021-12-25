@@ -86,15 +86,18 @@ const Cart = () => {
                         {
                             cart.map(p => (
                                 <tr key={p.id} >
-                                    <td className='d-flex flex-column '>
-                                        {p.name}
-                                        <img src={p.avartar} alt=''
-                                            style={{
-                                                width: '70px',
-                                                height: '80px',
-                                                marginTop: '2px'
-                                            }}
-                                        /></td>
+                                    <td className='d-flex justify-content-center align-items-center '>
+                                        <div className='d-flex flex-column'>
+                                            {p.name}
+                                            <img src={p.avartar} alt=''
+                                                style={{
+                                                    width: '70px',
+                                                    height: '80px',
+                                                    marginTop: '2px'
+                                                }}
+                                            />
+                                        </div>
+                                    </td>
 
                                     <td className='td__cart'>{numberFormat.format(p.price)}</td>
                                     <td className='td__cart'>
@@ -102,7 +105,7 @@ const Cart = () => {
 
                                     </td>
                                     <td className='td__cart'>{numberFormat.format(p && p.totalCost)}</td>
-                                    <td><button className='btn btn-outline-dark' onClick={() => removeProduct(p.id)}>
+                                    <td><button className='btn btn-primary' onClick={() => removeProduct(p.id)}>
                                         <MdDelete style={{
                                             fontSize: '20px',
 
@@ -116,11 +119,12 @@ const Cart = () => {
             </div>
             <div className="total">
                 <h4 style={{
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    fontWeight: "600"
                 }}>Chi tiết hóa đơn</h4>
 
                 <h5>Tổng cộng: {numberFormat.format(total)} </h5>
-                <h5>Số lượng sản phẩm: {cart.length} </h5>
+                <h5>Số sản phẩm mua: {cart.length} </h5>
 
                 <h5>Phí vận chuyển: 1000 đ </h5>
                 <div className='d-flex justify-content-center align-items-center'>

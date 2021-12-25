@@ -153,7 +153,9 @@ const SingleProduct = () => {
                         <div className='info_store mt-3'>
                             <div className='d-flex justify-content-around align-items-center'>
                                 <img src={infoStore.logo}
-                                    alt='' />
+                                    alt='' style={{
+                                        width: '7rem'
+                                    }} />
 
 
 
@@ -162,7 +164,8 @@ const SingleProduct = () => {
                                         textAlign: 'center',
                                         fontWeight: 'bold'
                                     }}>{infoStore.name}</span>
-                                    <Link to={`/store/${infoStore.id}`} className='action_store'><img src="https://salt.tikicdn.com/ts/upload/49/27/ff/d735c33edfdc6cf6aeb6e183bec28869.png" alt='' />
+                                    <Link to={`/store/${infoStore.id}`} className='action_store'><img src="https://salt.tikicdn.com/ts/upload/49/27/ff/d735c33edfdc6cf6aeb6e183bec28869.png" alt=''
+                                    />
                                         <span>Xem Shop</span></Link>
                                 </div>
                             </div>
@@ -174,7 +177,9 @@ const SingleProduct = () => {
             <div className='container w-100'>
                 <h3 style={{
                     textAlign: 'left',
-                    padding: '10px'
+                    padding: '10px',
+                    fontWeight: 'bold',
+                    fontStyle: 'italic'
                 }}>Sản phẩm liên quan</h3>
                 <div style={{
                     width: "100%",
@@ -183,9 +188,14 @@ const SingleProduct = () => {
                     overflow: 'hidden'
                 }}>
 
-                    <Swiper slidesPerView={5} spaceBetween={30} slidesPerGroup={5} loop={true} loopFillGroupWithBlank={true} pagination={{
-                        "clickable": true
-                    }} navigation={true} className="mySwiper1">
+                    <Swiper
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false
+                        }}
+                        slidesPerView={5} slidesPerGroup={5} loop={true} loopFillGroupWithBlank={true} pagination={{
+                            "clickable": true
+                        }} navigation={true} className="mySwiper1">
                         {
                             categories && categories.products.slice(0, 10).map(item => (
 
@@ -199,8 +209,9 @@ const SingleProduct = () => {
                 <div className='box__description'>
                     <h3 style={{
                         textAlign: 'left',
-                        padding: '10px'
-                    }}>Chi tiết sản phẩm</h3>
+                        fontWeight: 'bold',
+                        fontStyle: 'italic'
+                    }} className='py-4'>Chi tiết sản phẩm</h3>
                     <div className='d-flex mb-3'>
                         <h5>Thể loại</h5>
                         <p style={{
