@@ -4,6 +4,9 @@
     height: 100%;
     padding-top: 8rem;
 }
+li {
+    list-style: none;
+}
 .products {
     width: 100%;
     display: flex;
@@ -208,6 +211,15 @@
     width: 18px;
     animation: glowing 1s infinite;
     transform: scale(4);
+}
+/* .active_choose {
+    color: blue;
+} */
+.item_filter {
+    display: block;
+    text-align: left;
+    text-decoration: none;
+    color: black;
 }
 @keyframes glowing {
     0% {

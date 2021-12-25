@@ -188,20 +188,23 @@ const Product = () => {
                             />
 
                             Thể loại </h6>
+                        <ul>
 
 
-                        {
-                            categories.slice(0, 5).map(item => (
-                                <div key={item.id} style={{
+                            {
+                                categories.slice(0, 10).map(item => (
 
-                                    paddingTop: '2px',
-                                    cursor: 'pointer'
-                                }} className='item_filter active'
-                                    onClick={() => getProductByCategories(item.id)}
-                                > {item.name}</div>
-                            ))
-                        }
+                                    <li>     <NavLink exact activeClassName='active_choose' to='#' key={item.id} style={{
 
+                                        paddingTop: '2px',
+                                        cursor: 'pointer'
+                                    }} className='item_filter'
+                                        onClick={() => getProductByCategories(item.id)}
+                                    > {item.name}</NavLink>
+                                    </li>
+                                ))
+                            }
+                        </ul>
 
                         <hr />
 
@@ -217,18 +220,20 @@ const Product = () => {
                                 margin: '5px'
                             }} />
                             Nhà cung cấp</h6>
+                        <ul>
 
-                        {
-                            suppliers.slice(0, 5).map(item => (
-                                <div key={item.id} style={{
+                            {
+                                suppliers.slice(0, 10).map(item => (
+                                    <li><NavLink exact activeClassName='active_choose' to='#' key={item.id} style={{
 
-                                    paddingTop: '2px',
-                                    cursor: "pointer"
-                                }} className='item_filter'
-                                    onClick={() => getProductBySupplier(item.id)}
-                                > {item.name}</div>
-                            ))
-                        }
+                                        paddingTop: '2px',
+                                        cursor: "pointer"
+                                    }} className='item_filter'
+                                        onClick={() => getProductBySupplier(item.id)}
+                                    > {item.name}</NavLink></li>
+                                ))
+                            }
+                        </ul>
                     </div>
                     {products.length > 0 ?
                         <div className='products '>
