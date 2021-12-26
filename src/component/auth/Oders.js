@@ -90,7 +90,7 @@ const Oders = () => {
                                 </td>
                                 <td>
                                     <div className='d-flex flex-column justify-content-center'>
-                                        <div>
+                                        <div style={{ maxWidth: '15rem' }}>
                                             <div>{item.name}</div>
                                             <img src={item.avartar} alt='' style={{
                                                 width: '5rem',
@@ -141,6 +141,7 @@ const Oders = () => {
             {
                 isLoading && <Loading />
             }
+
         </div >
     )
 }
