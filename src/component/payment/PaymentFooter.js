@@ -12,6 +12,7 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
     const [total, setTotal] = useState(0)
     const [totalUSD, setToTalUSD] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
+    const { name } = JSON.parse(localStorage.getItem('login_admin_main'))
 
     const client = {
         sandbox:
@@ -71,7 +72,7 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
             setIsPayment(false)
             localStorage.removeItem('cart')
             setCallback(!callBack)
-            swal("Bạn đã thanh toán thành công", "Tiếp tục mua hàng", "success")
+            swal(`Cám ơn ${name} đã đặt hàng`, "Tiếp tục mua sắm", "success")
                 .then(() => {
                     window.location.href = '/home'
                 });

@@ -7,6 +7,10 @@
 li {
     list-style: none;
 }
+.aaaa {
+    font-size: 15px;
+    color: #ccc;
+}
 .products {
     width: 100%;
     display: flex;
@@ -220,6 +224,22 @@ li {
     text-align: left;
     text-decoration: none;
     color: black;
+}
+.hot_products {
+    position: relative;
+    padding: 3rem 6rem;
+}
+.sale_flash {
+    padding-left: 16px;
+    width: 173px;
+    margin-left: 5rem;
+    height: 30px;
+    line-height: 30px;
+    text-transform: uppercase;
+    display: inline-block;
+    background: url("https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/flashsale/fb1088de81e42c4e538967ec12cb5caa.png")
+        50% no-repeat;
+    background-size: contain;
 }
 @keyframes glowing {
     0% {

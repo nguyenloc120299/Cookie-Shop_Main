@@ -49,6 +49,12 @@ const Banner = () => {
                                         <img src={'https://salt.tikicdn.com/cache/w1080/ts/banner/d3/8f/6f/695a32d2f71ea6ba10f16905fdb5b5d4.png'}
                                             alt='' />
                                     </SwiperSlide>
+                                    <SwiperSlide>
+
+                                        <img src={'https://salt.tikicdn.com/cache/w1080/ts/banner/60/ff/a4/d8bfc33e47cc9b8e82dce42a7a6e9952.png'}
+                                            alt='' />
+                                    </SwiperSlide>
+
 
 
                                 </Swiper>
@@ -59,7 +65,7 @@ const Banner = () => {
                         </div>
                     </div>
                     <div className='col-md-4'>
-                        <img src='https://salt.tikicdn.com/cache/w400/ts/banner/9a/ea/aa/f7c0ef58c22a8ab06195bdbd508390b7.png' alt='' style={{
+                        <img src='https://salt.tikicdn.com/ts/brickv2og/aa/87/03/dd6702cb6925a8ce8d8698440547aa1b.jpg' alt='' style={{
                             width: '408px',
                             height: '274px'
                         }} />

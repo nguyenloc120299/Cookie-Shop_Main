@@ -24,10 +24,18 @@ const CardProduct = ({ product, isShowBtn }) => {
                     </div>
                 </Link>
                 <p>{product.sort_description}</p>
-                <div className='d-flex justify-content-around'>
-                    <h5>{numberFormat.format(product.competitive_price)}</h5>
-                    <p className='text-dark' style={{
-                        color: 'rgb(120, 120, 120)'
+                <div className='d-flex justify-content-around' style={{
+                    height: '3.5rem'
+                }}>
+                    <div className='d-flex'>
+                        {product.promotion > 0 && <div><strike className='aaaa'>{numberFormat.format(product.price)}</strike></div>}
+                        <h5 className='d-flex align-items-end'>{numberFormat.format(product.competitive_price)}</h5>
+                    </div>
+
+                    <p className={`text-dark ${product.promotion > 0 ? 'd-flex align-items-end' : ''}`} style={{
+                        color: 'rgb(120, 120, 120)',
+                        display: 'flex',
+                        alignItems: 'flex-end'
                     }}>Đã bán {product.ban_nhanh}</p>
                 </div>
                 {

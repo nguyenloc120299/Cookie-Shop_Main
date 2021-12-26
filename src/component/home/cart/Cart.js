@@ -120,7 +120,7 @@ const Cart = () => {
             <div className="total">
                 <h4 style={{
                     textAlign: 'center',
-                    fontWeight: "600"
+                    fontWeight: "800"
                 }}>Chi tiết hóa đơn</h4>
 
                 <h5>Tổng cộng: {numberFormat.format(total)} </h5>
@@ -154,14 +154,18 @@ const Cart = () => {
                             top: '50%',
                             transform: 'translate(-50%, -50%)'
                         }}>
+                            <div className='d-flex flex-column align-items-center'>
+                                <img src='shopping-basket.png' alt='' style={{
+                                    width: '30%',
 
-                            <h1>Không có sản phẩm</h1>
-                            <Link to='/' className='w-100 d-flex justify-content-center align-item-center'>
-                                <button className='btn btn-primary mt-5 ' style={{
-                                    fontWeight: 'bold',
-                                    backgroundColor: 'rgb(255, 57, 69);'
-                                }}>Mua ngay</button>
-                            </Link>
+                                }} />
+                                <Link to='/' className='w-100 d-flex justify-content-center align-item-center'>
+                                    <button className='btn btn-primary mt-5 ' style={{
+                                        fontWeight: 'bold',
+                                        backgroundColor: 'rgb(255, 57, 69);'
+                                    }}>Mua ngay</button>
+                                </Link>
+                            </div>
 
                         </div>
 

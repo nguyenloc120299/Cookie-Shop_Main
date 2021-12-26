@@ -14,6 +14,7 @@ import FeatureProduct from './banner/FeatureProduct'
 import CardProduct from './CardProduct'
 import Loading from '../../component/view/Loading'
 import './home.css'
+import HotPromotion from './banner/HotPromotion'
 
 const Product = () => {
     const context = useContext(GlobalContext)
@@ -169,7 +170,9 @@ const Product = () => {
                 isLoading && <Loading />
             }
             <Banner />
+            <HotPromotion />
             <FeatureProduct />
+
             {/* 
             {
                 products.length > 0 ? <> */}

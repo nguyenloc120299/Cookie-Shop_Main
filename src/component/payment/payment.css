@@ -12,7 +12,7 @@
     z-index: 9999999999;
 }
 .paymentModal .form_modal {
-    max-width: 700px;
+    max-width: 850px;
     width: 100%;
     background: white;
     margin: 30px auto;
@@ -23,6 +23,7 @@
     left: 50%;
     /* display: flex; */
     transform: translate(-50%, -50%);
+    overflow: scroll;
 }
 .payment_header {
     display: flex;
