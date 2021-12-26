@@ -92,7 +92,7 @@ const PaymentFooter = ({ isType, cart, user, setIsPayment, noteValue, isChangeAd
                 {
                     !isType ?
                         <div>
-                            <button className='btn btn-primary w-100 btn-payment' type='submit' style={{ height: '55px' }} onClick={() => handleSubmit()}>Đặt hàng</button>
+                            <button className='btn btn-primary w-100 btn-payment' type='submit' style={{ height: '55px', fontWeight: 'bold' }} onClick={() => handleSubmit()}>Thanh toán</button>
                         </div>
                         :
                         <PaypalExpressBtn client={client} currency={"USD"} total={total} style={style} onSuccess={handleSubmit} />

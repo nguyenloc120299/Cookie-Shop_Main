@@ -12,7 +12,7 @@ import Promotion from '../view/Promotion'
 import Banner from './banner/Banner'
 import FeatureProduct from './banner/FeatureProduct'
 import CardProduct from './CardProduct'
-
+import Loading from '../../component/view/Loading'
 import './home.css'
 
 const Product = () => {
@@ -25,27 +25,33 @@ const Product = () => {
     const [idCategory, setCategory] = useState('')
     const [listSlide, setListSlide] = useState([])
     const listRef = useRef()
-    const totalItem = 12;
+    const totalItem = 15;
     const [pageNumber, setPageNumber] = useState(0)
     const PageVisited = pageNumber * totalItem
     const pageCount = Math.ceil(products.length / totalItem);
+    const [isLoading, setIsLoading] = useState(false)
     const changePage = ({ selected }) => {
         setPageNumber(selected)
     }
 
     const getProductByCategories = async (id) => {
+        setIsLoading(true)
         setCategory(id)
         setType('categories')
         const res = await apiInstance.get(`/products/categories/${id}`)
         if (res && res.data) setProducts(res.data);
+        setIsLoading(false)
     }
     const getProductBySupplier = async (id) => {
+        setIsLoading(true)
         setCategory(id)
         setType('suppliers')
         const res = await apiInstance.get(`/products/supplier/${id}`)
         if (res && res.data) setProducts(res.data);
+        setIsLoading(false)
     }
     const sortProductBanChay = async (id, type) => {
+        setIsLoading(true)
         if (id) {
             if (type === 'categories') {
                 const res = await apiInstance.get(`/products/sellfast/categories/${id}`)
@@ -68,9 +74,11 @@ const Product = () => {
                 setProducts(res.data)
             }
         }
+        setIsLoading(false)
     }
 
     const newProduct = async (id, type) => {
+        setIsLoading(true)
         if (id) {
             if (type === 'categories') {
                 const res = await apiInstance.get(`/products/product-new/categories/${id}`)
@@ -85,10 +93,10 @@ const Product = () => {
                 setProducts(res.data)
             }
         }
-
+        setIsLoading(false)
     }
     const sortProductByPriceIncrease = async (id, type) => {
-
+        setIsLoading(true)
         if (id) {
             if (type === 'categories') {
                 const res = await apiInstance.get(` /products/increase/categories/${id}`)
@@ -110,8 +118,10 @@ const Product = () => {
                 setProducts(res.data)
             }
         }
+        setIsLoading(false)
     }
     const sortProductByPriceReduced = async (id, type) => {
+        setIsLoading(true)
         if (id) {
             if (type === 'categories') {
                 const res = await apiInstance.get(`/products/reduced/categories/${id}`)
@@ -133,6 +143,7 @@ const Product = () => {
                 setProducts(res.data)
             }
         }
+        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -147,11 +158,16 @@ const Product = () => {
         return item.status === 1
     })
     const getAll = async () => {
-        await apiInstance.get('/products')
+        setIsLoading(true)
+        const res = await apiInstance.get('/products')
+        setProducts(res.data)
+        setIsLoading(false)
     }
     return (
         <div className='product_page'>
-
+            {
+                isLoading && <Loading />
+            }
             <Banner />
             <FeatureProduct />
             {/* 
