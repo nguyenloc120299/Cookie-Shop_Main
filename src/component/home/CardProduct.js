@@ -27,7 +27,7 @@ const CardProduct = ({ product, isShowBtn }) => {
                 <div className='d-flex justify-content-around' style={{
                     height: '3.5rem'
                 }}>
-                    <div className='d-flex'>
+                    <div className={`${product.promotion > 0 ? '' : 'd-flex align-items-end'}`} >
                         {product.promotion > 0 && <div><strike className='aaaa'>{numberFormat.format(product.price)}</strike></div>}
                         <h5 className='d-flex align-items-end'>{numberFormat.format(product.competitive_price)}</h5>
                     </div>
